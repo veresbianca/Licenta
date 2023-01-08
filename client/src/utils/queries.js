@@ -10,51 +10,64 @@ export const QUERY_ME = gql`
       weight
       height
       age
-      gender   
+      gender
+      stats {
+        dailySteps
+        heartRate
+        caloriesBurn
+        protein
+        fats
+        carbs
+        sleep
+        weight
+        bloodPresure {
+          systolic
+          diastolic
+        }
+      }
       mealPlan {
-            id
-            name
-            type
-            calories
-            proteins
-            carbs
-            fats
-      }   
+        id
+        name
+        type
+        calories
+        proteins
+        carbs
+        fats
+      }
       exercisePlan {
-            id
-            name
-            type
-            calories
-            distance
-            time
-            reps
-            sets
-            liftingWeight
+        id
+        name
+        type
+        calories
+        distance
+        time
+        reps
+        sets
+        liftingWeight
       }
       goals {
         goalWeight
         goalExercise {
-            id
-            name
-            type
-            calories
-            distance
-            time
-            reps
-            sets
-            liftingWeight
+          id
+          name
+          type
+          calories
+          distance
+          time
+          reps
+          sets
+          liftingWeight
         }
       }
 
       posts {
-            id
-            postAuthor
-            message
-            createdAt
-            likes
-            tags                                
-      } 
-
+        id
+        postAuthor
+        message
+        createdAt
+        likes
+        tags
+      }
     }
   }
 `;
@@ -105,12 +118,8 @@ export const GET_POSTS = gql`
 `;
 
 export const GET_POST = gql`
-  query post(
-    $postId: ID!
-  ) {
-    post(
-      postId: $postId
-    ) {
+  query post($postId: ID!) {
+    post(postId: $postId) {
       id
       postAuthor
       message

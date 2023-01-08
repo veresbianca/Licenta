@@ -1,0 +1,16 @@
+[
+  {
+    "dailySteps": 5346,
+    "heartRate": 76,
+    "caloriesBurn": 1200,
+    "protein": 46,
+    "fats": 21,
+    "carbs": 61,
+    "sleep": 8,
+    "weight": 82,
+    "bloodPresure": {
+      "systolic": 116,
+      "diastolic": 76
+    }
+  }
+]

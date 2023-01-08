@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
-import { ChakraProvider } from '@chakra-ui/react';
-import theme from "./Theme";
+import React, { useState } from 'react';
+import { ChakraProvider, Grid, GridItem } from '@chakra-ui/react';
+import theme from './Theme';
 import i18n from './i18n';
-import { 
-  ApolloClient, 
-  ApolloProvider, 
-  InMemoryCache, 
-  createHttpLink, 
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -23,10 +23,13 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import SinglePost from './pages/SinglePost';
 import Meals from './pages/MealPlan';
-import Loading from "./components/Loading";
+import Loading from './components/Loading';
 
-import Auth from './utils/auth.js'
+import Auth from './utils/auth.js';
 import { Suspense } from 'react';
+import Sidebar from './components/Sidebar';
+
+import { withContextProvider } from './AppContext.tsx';
 
 // import LocaleContext from "./LocaleContext";
 
@@ -51,66 +54,44 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App() {
-  // const [locale, setLocale] = useState(i18n.language);
-
-  // i18n.on('languageChanged', (lng) => setLocale(i18n.language));
-
+const App = withContextProvider(() => {
   return (
     // <LocaleContext.Provider value={{locale, setLocale}}>
     // <Suspense fallback={<Loading />}>
-      <ApolloProvider client={client}>
-        <ChakraProvider theme={theme}>
-          <Router>
-            <Navbar />
-            <Routes>
-              <Route 
-                path="/" 
-                element={<Start />} 
-              />
-              <Route 
-                path="/login" 
-                element={<Login />} 
-              />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
-              />
-              <Route
-                path="/profile/edit"
-                element={<EditProfile />}
-              />
-              <Route
-                path="/profile"
-                element={Auth.loggedIn() ? <Profile /> : <Login />}
-              />
-              <Route 
-                path="/posts"
-                element={<Posts />}
-              />
-              <Route 
-                path="/contact" 
-                element={<Contact />} 
-              />
-              <Route 
-                path="/about" 
-                element={<About />} 
-              />
-              <Route
-                path="/meal-plan"
-                element={<Meals />}
-              />
-              <Route 
-                path="/post/:postId" 
-                element={<SinglePost />} 
-              />
-            </Routes>
-            <Footer />
-          </Router>
-        </ChakraProvider>
-      </ApolloProvider>
-   
+    <ApolloProvider client={client}>
+      <ChakraProvider theme={theme}>
+        <Router>
+          <Grid gridTemplateColumns={'auto 1fr'}>
+            <GridItem>
+              <Sidebar />
+            </GridItem>
+            <GridItem>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Start />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/profile/edit" element={<EditProfile />} />
+                <Route
+                  path="/profile"
+                  element={Auth.loggedIn() ? <Profile /> : <Login />}
+                />
+                <Route path="/posts" element={<Posts />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/meal-plan" element={<Meals />} />
+                <Route path="/post/:postId" element={<SinglePost />} />
+              </Routes>
+              <Footer />
+            </GridItem>
+          </Grid>
+        </Router>
+      </ChakraProvider>
+    </ApolloProvider>
   );
-}
+});
+// const [locale, setLocale] = useState(i18n.language);
+
+// i18n.on('languageChanged', (lng) => setLocale(i18n.language));
 
 export default App;

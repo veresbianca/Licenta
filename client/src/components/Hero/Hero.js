@@ -14,42 +14,32 @@ import {
   GridItem,
 } from '@chakra-ui/react';
 
-import { useAnimate }  from 'react-simple-animate';
+import { useAnimate } from 'react-simple-animate';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { useNavigate } from "react-router-dom";
-import {FormattedMessage} from 'react-intl';
+import { useNavigate } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
-
-import Sidebar from '../../components/Sidebar';
-
+import Auth from '../../utils/auth';
 
 export default function CallToActionWithAnnotation() {
   const navigate = useNavigate();
 
-  const handleClick = (event) => {
+  const handleClick = event => {
     event.preventDefault();
-    navigate('/posts', { replace: true})
-  }
+    navigate('/signup', { replace: true });
+  };
 
   return (
-    <Grid 
-      gap={1}
-      bg="lightgrey"
-      >
-      <GridItem position={'absolute'} ml={'16px'}>
-        <Sidebar />
-      </GridItem>
+    <Grid gap={1} bg="lightgrey">
       <GridItem>
-          <Container 
-          h={'73vh'}
-          sx={{'max-width':'90ch'}}
-        >
+        <Container h={'73vh'} sx={{ 'max-width': '90ch' }}>
           <Stack
             as={Box}
             textAlign={'center'}
             spacing={{ base: 8, md: 14 }}
-            py={{ base: 20, md: 36 }}>
+            py={{ base: 20, md: 36 }}
+          >
             <Heading
               fontWeight={600}
               fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
@@ -69,57 +59,59 @@ export default function CallToActionWithAnnotation() {
               </Text>
             </Heading>
             <Text color={'gray.500'}>
-                {/* <FormattedMessage
+              {/* <FormattedMessage
                   id = "homepageHeading3"
                   defaultMessage="Edit the files and save to reload"
                 /> */}
               {/* {t('homepageHeading3')} */}
             </Text>
-            <Stack
-              direction={'column'}
-              spacing={3}
-              align={'center'}
-              alignSelf={'center'}
-              position={'relative'}
-            >
-              <Link as={RouterLink} to='/signup'>
-              <Button
-                bg={'green'}
-                color={'white'}
-                rounded={'full'}
-                px={6}
-                _hover={{
-                  bg: 'darkgreen',
-                }}
-                onClick={handleClick}
+            {!Auth.loggedIn() ? (
+              <Stack
+                direction={'column'}
+                spacing={3}
+                align={'center'}
+                alignSelf={'center'}
+                position={'relative'}
               >
-                Get Started
-              </Button>
-              </Link>
-              
+                <Link as={RouterLink} to="/signup">
+                  <Button
+                    bg={'green'}
+                    color={'white'}
+                    rounded={'full'}
+                    px={6}
+                    _hover={{
+                      bg: 'darkgreen',
+                    }}
+                    onClick={handleClick}
+                  >
+                    Get Started
+                  </Button>
+                </Link>
 
-                
-              <Box>
-                <Icon
-                  as={Arrow}
-                  color={useColorModeValue('gray.800', 'gray.300')}
-                  w={71}
-                  position={'absolute'}
-                  right={-71}
-                  top={'10px'}
-                />
-                <Text
-                  fontSize={'lg'}
-                  fontFamily={'Caveat'}
-                  position={'absolute'}
-                  right={'-110px'}
-                  top={'-15px'}
-                  transform={'rotate(15deg)'}
-                >
-                  Join today
-                </Text>
-              </Box>
-            </Stack>
+                <Box>
+                  <Icon
+                    as={Arrow}
+                    // color={useColorModeValue('gray.800', 'gray.300')}
+                    w={71}
+                    position={'absolute'}
+                    right={-71}
+                    top={'10px'}
+                  />
+                  <Text
+                    fontSize={'lg'}
+                    fontFamily={'Caveat'}
+                    position={'absolute'}
+                    right={'-110px'}
+                    top={'-15px'}
+                    transform={'rotate(15deg)'}
+                  >
+                    Join today
+                  </Text>
+                </Box>
+              </Stack>
+            ) : (
+              <div>Welcome !</div>
+            )}
           </Stack>
         </Container>
       </GridItem>
