@@ -37,12 +37,6 @@ const statsSchema = new Schema({
     type: Number,
     required: true,
   },
-  bloodPresure: {
-    type: {
-      type: Schema.Types.ObjectId,
-      ref: "BloodPresure",
-    },
-  },
 });
 
 const Stats = model("Stats", statsSchema);

@@ -1,12 +1,5 @@
 const db = require("../config/connection");
-const {
-  User,
-  Post,
-  Exercise,
-  Meal,
-  Stats,
-  BloodPresure,
-} = require("../models");
+const { User, Post, Exercise, Meal, Stats } = require("../models");
 const userSeeds = require("./userSeeds.json");
 const exerciseSeeds = require("./exerciseSeeds.json");
 const mealSeeds = require("./mealSeeds.json");
@@ -54,6 +47,16 @@ db.once("open", async () => {
         }
       );
     }
+
+    const { _id } = await Stats.create(userStatsSeeds[0]);
+    await User.findOneAndUpdate(
+      { username: "johnwick1" },
+      {
+        $addToSet: {
+          stats: _id,
+        },
+      }
+    );
 
     for (let i = 0; i < exerciseSeeds.length; i++) {
       const { _id } = await Exercise.create(exerciseSeeds[i]);
@@ -166,25 +169,6 @@ db.once("open", async () => {
         );
       }
     }
-
-    const { _userId } = await Stats.create(userStatsSeeds[0]);
-    await User.findOneAndUpdate(
-      { username: "johnwick1" },
-      {
-        $addToSet: {
-          stats: _userId,
-        },
-      }
-    );
-
-    await Stats.findOneAndUpdate(
-      { postAuthor: "johnwick1" },
-      {
-        $addToSet: {
-          meals: _id,
-        },
-      }
-    );
   } catch (err) {
     console.error(err);
     process.exit(1);

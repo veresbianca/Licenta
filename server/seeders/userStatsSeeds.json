@@ -1,5 +1,6 @@
 [
   {
+    "userName": "johnwick1",
     "dailySteps": 5346,
     "heartRate": 76,
     "caloriesBurn": 1200,
@@ -7,10 +8,6 @@
     "fats": 21,
     "carbs": 61,
     "sleep": 8,
-    "weight": 82,
-    "bloodPresure": {
-      "systolic": 116,
-      "diastolic": 76
-    }
+    "weight": 82
   }
 ]

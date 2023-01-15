@@ -18,8 +18,14 @@ const typeDefs = gql`
     weight: Int
     "Store height in inches"
     height: Int
+    birthday: Date
+    country: String
+    city: String
+    address: String
+    phone: String
     age: Int
     gender: String
+    bmi: Float
     "user can have more than goals"
     goals: [Goal]
     exercisePlan: [Exercise]
@@ -31,6 +37,7 @@ const typeDefs = gql`
   }
 
   type Stats {
+    userName: String
     dailySteps: Int
     heartRate: Int
     caloriesBurn: Int
@@ -39,12 +46,6 @@ const typeDefs = gql`
     carbs: Int
     sleep: Int
     weight: Int
-    bloodPresure: [BloodPresure]
-  }
-
-  type BloodPresure {
-    systolic: Int
-    diastolic: Int
   }
 
   """
@@ -96,6 +97,7 @@ const typeDefs = gql`
   """
   type Goal {
     goalWeight: Int
+    goalCustom: String
     goalExercise: [Exercise]
   }
   """
@@ -116,6 +118,8 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+
+  scalar Date
 
   type Query {
     users: [User]
@@ -155,6 +159,7 @@ const typeDefs = gql`
   # goalInput to add new goal with ExerciseInput
   input goalInput {
     goalWeight: Int
+    goalCustom: String
     goalExercise: [ExerciseInput]
   }
   # postInput to add new post with MealInout and ExerciseInput
@@ -188,6 +193,11 @@ const typeDefs = gql`
       height: Int
       age: Int
       gender: String
+      birthday: Date
+      country: String
+      city: String
+      address: String
+      phone: String
     ): Auth
     # User authentication: Check for valid login using email and password
     login(email: String!, password: String!): Auth
@@ -244,6 +254,12 @@ const typeDefs = gql`
       height: Int
       age: Int
       gender: String
+      bmi: Float
+      birthday: Date
+      country: String
+      city: String
+      address: String
+      phone: String
     ): User
     # Update Post with Likes
     updateLikes(postId: ID!): Post

@@ -11,7 +11,14 @@ export const QUERY_ME = gql`
       height
       age
       gender
+      bmi
+      birthday
+      country
+      city
+      address
+      phone
       stats {
+        userName
         dailySteps
         heartRate
         caloriesBurn
@@ -20,10 +27,6 @@ export const QUERY_ME = gql`
         carbs
         sleep
         weight
-        bloodPresure {
-          systolic
-          diastolic
-        }
       }
       mealPlan {
         id
@@ -47,6 +50,7 @@ export const QUERY_ME = gql`
       }
       goals {
         goalWeight
+        goalCustom
         goalExercise {
           id
           name

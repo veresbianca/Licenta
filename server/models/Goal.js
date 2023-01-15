@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema } = require("mongoose");
 
 const goalSchema = new Schema({
   goalWeight: {
@@ -7,9 +7,12 @@ const goalSchema = new Schema({
   goalExercise: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Exercise',
+      ref: "Exercise",
     },
   ],
+  goalCustom: {
+    type: String,
+  },
 });
 
 module.exports = { goalSchema };

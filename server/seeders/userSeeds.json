@@ -1,32 +1,34 @@
 [
   {
-    "username":"johnwick1",
-    "password":"lol123",
-    "email":"john_wick@gmail.com",
-    "isPrivate":false,
-    "weight":200,
-    "height":61,
-    "age":23,
-    "gender":"Male",
+    "username": "johnwick1",
+    "password": "lol123",
+    "email": "john_wick@gmail.com",
+    "isPrivate": false,
+    "weight": 200,
+    "height": 61,
+    "age": 23,
+    "gender": "Male",
     "goals": [
       {
-        "goalWeight":170
+        "goalWeight": 170
       }
-    ]
+    ],
+    "bmi": null
   },
   {
-    "username":"fitguy",
-    "password":"lol124",
-    "email":"fitguy@gmail.com",
-    "isPrivate":true,
-    "weight":300,
-    "height":52,
-    "age":40,
-    "gender":"Male",
+    "username": "fitguy",
+    "password": "lol124",
+    "email": "fitguy@gmail.com",
+    "isPrivate": true,
+    "weight": 300,
+    "height": 52,
+    "age": 40,
+    "gender": "Male",
     "goals": [
       {
-        "goalWeight":200
+        "goalWeight": 200
       }
-    ]
+    ],
+    "bmi": null
   }
 ]

@@ -1,0 +1,23 @@
+.card-container {
+  display: grid;
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.full-width-gridItem {
+  grid-column: 1 / -1;
+}
+
+.card-wrapper {
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+}

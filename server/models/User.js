@@ -34,6 +34,24 @@ const userSchema = new Schema({
   gender: {
     type: String,
   },
+  bmi: {
+    type: Number,
+  },
+  birthday: {
+    type: Date,
+  },
+  country: {
+    type: String,
+  },
+  city: {
+    type: String,
+  },
+  address: {
+    type: String,
+  },
+  phone: {
+    type: String,
+  },
   goals: [goalSchema],
   exercisePlan: [
     {
