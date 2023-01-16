@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Robert Ghiță",
+    "type": "trainner",
+    "photoSrc": "trainner01"
+  },
+  {
+    "name": "Corneliu Adrian",
+    "type": "trainner",
+    "photoSrc": "trainner02"
+  },
+  {
+    "name": "Mihai Eusebiu",
+    "type": "trainner",
+    "photoSrc": "trainner03"
+  },
+  {
+    "name": "Cezar Luca",
+    "type": "trainner",
+    "photoSrc": "trainner04"
+  },
+  {
+    "name": "Nicolae Robert",
+    "type": "trainner",
+    "photoSrc": "trainner05"
+  },
+  {
+    "name": "Brândușa Marta",
+    "type": "trainner",
+    "photoSrc": "trainner06"
+  },
+  {
+    "name": "Liana Miruna",
+    "type": "trainner",
+    "photoSrc": "trainner07"
+  },
+  {
+    "name": "Viorela Cristiana",
+    "type": "trainner",
+    "photoSrc": "trainner08"
+  },
+  {
+    "name": "Elena Steliana",
+    "type": "trainner",
+    "photoSrc": "trainner10"
+  }
+]

@@ -1,4 +1,4 @@
-const { User, Exercise, Meal, Post } = require("../models");
+const { User, Exercise, Meal, Post, Profesionalist } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { Types } = require("mongoose");
@@ -66,6 +66,9 @@ const resolvers = {
             path: "usersLiked",
           },
         });
+    },
+    profesionalist: async (parent, args) => {
+      return await Profesionalist.find({});
     },
   },
   Mutation: {

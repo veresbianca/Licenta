@@ -52,16 +52,6 @@ export default function Component() {
   const [search, setSearch] = useState('');
   const [addMealBtnDisabled, setAddMealBtnDisabled] = useState(true);
 
-  // const textChange = event => {
-  //   const { value } = event.target;
-  //   setMealType(value);
-  // };
-
-  // const unitMealChange = event => {
-  //   const { value } = event.target;
-  //   setUnitPerMeal(value);
-  // };
-
   const valueMealChange = event => {
     const { value } = event.target;
     setValueMeal(parseInt(value));

@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Augustin Vasile",
+    "type": "medic",
+    "photoSrc": "medic02"
+  },
+  {
+    "name": "Dragomir Dorian",
+    "type": "medic",
+    "photoSrc": "medic03"
+  },
+  {
+    "name": "Victoria Claudia",
+    "type": "medic",
+    "photoSrc": "medic05"
+  },
+  {
+    "name": "Catrinel Liana",
+    "type": "medic",
+    "photoSrc": "medic06"
+  },
+  {
+    "name": "Isabella Georgiana",
+    "type": "medic",
+    "photoSrc": "medic07"
+  },
+  {
+    "name": "Carmen Aurora",
+    "type": "medic",
+    "photoSrc": "medic08"
+  },
+  {
+    "name": "Ștefana Raluca",
+    "type": "medic",
+    "photoSrc": "medic09"
+  },
+  {
+    "name": "Marina Mariana",
+    "type": "medic",
+    "photoSrc": "medic10"
+  },
+  {
+    "name": "Constanța Cosmina",
+    "type": "medic",
+    "photoSrc": "medic11"
+  }
+]

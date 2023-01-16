@@ -1,10 +1,20 @@
 const db = require("../config/connection");
-const { User, Post, Exercise, Meal, Stats } = require("../models");
+const {
+  User,
+  Post,
+  Exercise,
+  Meal,
+  Stats,
+  Profesionalist,
+} = require("../models");
 const userSeeds = require("./userSeeds.json");
 const exerciseSeeds = require("./exerciseSeeds.json");
 const mealSeeds = require("./mealSeeds.json");
 const postSeeds = require("./postSeeds.json");
 const userStatsSeeds = require("./userStatsSeeds.json");
+const nutritionistsSeeds = require("./nutritionistsSeeds.json");
+const medicSeeds = require("./medicSeeds.json");
+const trainnersSeeds = require("./trainnersSeeds.json");
 
 db.once("open", async () => {
   try {
@@ -12,8 +22,12 @@ db.once("open", async () => {
     await User.deleteMany({});
     await Exercise.deleteMany({});
     await Meal.deleteMany({});
+    await Profesionalist.deleteMany({});
 
     await User.create(userSeeds);
+    await Profesionalist.create(nutritionistsSeeds);
+    await Profesionalist.create(medicSeeds);
+    await Profesionalist.create(trainnersSeeds);
 
     const johnwick1 = await User.findOne({ username: "johnwick1" });
     const fitguy = await User.findOne({ username: "fitguy" });

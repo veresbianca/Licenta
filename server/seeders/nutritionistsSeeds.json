@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Ancuța Lidia",
+    "type": "nutritionist",
+    "photoSrc": "nutritionist01"
+  },
+  {
+    "name": "Elisabeta Marcela",
+    "type": "nutritionist",
+    "photoSrc": "nutritionist03"
+  },
+  {
+    "name": "Dorina Catrinel",
+    "type": "nutritionist",
+    "photoSrc": "nutritionist04"
+  },
+  {
+    "name": "Daciana Georgeta",
+    "type": "nutritionist",
+    "photoSrc": "nutritionist06"
+  },
+  {
+    "name": "Elisabeta Beatrice",
+    "type": "nutritionist",
+    "photoSrc": "nutritionist07"
+  },
+  {
+    "name": "Renata Daciana",
+    "type": "nutritionist",
+    "photoSrc": "nutritionist08"
+  },
+  {
+    "name": "Olga Ani",
+    "type": "nutritionist",
+    "photoSrc": "nutritionist09"
+  },
+  {
+    "name": "Mircea Mihail",
+    "type": "nutritionist",
+    "photoSrc": "nutritionist02"
+  }
+]

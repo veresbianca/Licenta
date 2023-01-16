@@ -23,6 +23,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import SinglePost from './pages/SinglePost';
 import Meals from './pages/MealPlan';
+import Team from './pages/Team';
 import Loading from './components/Loading';
 
 import Auth from './utils/auth.js';
@@ -81,6 +82,7 @@ const App = withContextProvider(() => {
                 <Route path="/about" element={<About />} />
                 <Route path="/meal-plan" element={<Meals />} />
                 <Route path="/post/:postId" element={<SinglePost />} />
+                <Route path="/team" element={<Team />} />
               </Routes>
               <Footer />
             </GridItem>

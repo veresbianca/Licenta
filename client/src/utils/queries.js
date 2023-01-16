@@ -189,3 +189,13 @@ export const GET_POST = gql`
     }
   }
 `;
+
+export const GET_PROF = gql`
+  query profesionalist {
+    profesionalist {
+      name
+      type
+      photoSrc
+    }
+  }
+`;

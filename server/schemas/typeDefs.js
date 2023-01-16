@@ -136,11 +136,19 @@ const typeDefs = gql`
     goals: [Goal]
     me: User
     post(postId: ID!): Post
+    profesionalist: [Profesionalist]
+  }
+
+  type Profesionalist {
+    user: User
+    name: String
+    type: String
+    photoSrc: String
   }
 
   #------------Mutations---------------
 
-  # will use MealInout to add new post
+  # will use MealInput to add new post
   input MealInput {
     name: String
     type: [String]
