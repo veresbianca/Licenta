@@ -36,6 +36,9 @@ export const QUERY_ME = gql`
         proteins
         carbs
         fats
+        photo
+        unit
+        value
       }
       exercisePlan {
         id
@@ -63,11 +66,21 @@ export const QUERY_ME = gql`
           liftingWeight
         }
       }
-
       posts {
         id
         postAuthor
         message
+        meals {
+          name
+          type
+          calories
+          proteins
+          carbs
+          fats
+          photo
+          unit
+          value
+        }
         createdAt
         likes
         tags
@@ -102,6 +115,9 @@ export const GET_POSTS = gql`
         proteins
         carbs
         fats
+        photo
+        unit
+        value
       }
       tags
       comments {
@@ -147,6 +163,9 @@ export const GET_POST = gql`
         proteins
         carbs
         fats
+        photo
+        unit
+        value
       }
       tags
       comments {

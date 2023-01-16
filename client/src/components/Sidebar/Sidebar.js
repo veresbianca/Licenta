@@ -102,9 +102,17 @@ export default function Sidebar() {
               navSize={navSize}
               icon={FiMessageCircle}
               color="black"
-              title="Chat"
-              link="/chat"
-              active={location.pathname === '/chat' ? true : false}
+              title="Posts"
+              link="/posts"
+              active={location.pathname === '/posts' ? true : false}
+            />
+
+            <NavItem
+              navSize={navSize}
+              color="black"
+              title="Meals"
+              link="/meal-plan"
+              active={location.pathname === '/meals' ? true : false}
             />
 
             <NavItem

@@ -3,15 +3,15 @@ export const searchFood = async (query, timezone) => {
     method: 'POST',
     body: JSON.stringify({
       query,
-      timezone
+      timezone,
     }),
     headers: {
       'Content-Type': 'application/json',
-      'x-app-id': process.env.REACT_APP_NUTRITIONIX_ID,
-      'x-app-key': process.env.REACT_APP_NUTRITIONIX_KEY
-    }
+      'x-app-id': '0afafc41',
+      'x-app-key': '94e49a78268303375e4e639ab878c9d1',
+    },
   });
-}
+};
 
 export const searchExercise = async (query, user) => {
   return await fetch(`https://trackapi.nutritionix.com/v2/natural/exercise`, {
@@ -25,8 +25,8 @@ export const searchExercise = async (query, user) => {
     }),
     headers: {
       'Content-Type': 'application/json',
-      'x-app-id': process.env.REACT_APP_NUTRITIONIX_ID,
-      'x-app-key': process.env.REACT_APP_NUTRITIONIX_KEY
-    }
+      'x-app-id': '0afafc41',
+      'x-app-key': '94e49a78268303375e4e639ab878c9d1',
+    },
   });
-}
+};

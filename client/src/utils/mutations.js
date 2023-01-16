@@ -116,28 +116,40 @@ export const UPDATE_USER = gql`
 
 export const ADD_MEAL = gql`
   mutation addMeal(
+    $mealAuthor: String
     $name: String!
     $type: [String]
-    $calories: Int
-    $proteins: Int
-    $carbs: Int
-    $fats: Int
+    $calories: Float
+    $proteins: Float
+    $carbs: Float
+    $fats: Float
+    $photo: String
+    $unit: String
+    $value: Float
   ) {
     addMeal(
+      mealAuthor: $mealAuthor
       name: $name
       type: $type
       calories: $calories
       proteins: $proteins
       carbs: $carbs
       fats: $fats
+      photo: $photo
+      unit: $unit
+      value: $value
     ) {
       id
+      mealAuthor
       name
       type
       calories
       proteins
       carbs
       fats
+      photo
+      unit
+      value
     }
   }
 `;
@@ -146,7 +158,7 @@ export const ADD_EXERCISE = gql`
   mutation addExercise(
     $name: String!
     $type: [String]
-    $calories: Int
+    $calories: Float
     $distance: Int
     $time: String
     $reps: Int
@@ -211,6 +223,9 @@ export const ADD_POST = gql`
         fats
         carbs
         proteins
+        photo
+        unit
+        value
       }
       tags
       createdAt

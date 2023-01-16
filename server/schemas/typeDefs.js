@@ -40,10 +40,10 @@ const typeDefs = gql`
     userName: String
     dailySteps: Int
     heartRate: Int
-    caloriesBurn: Int
-    protein: Int
-    fats: Int
-    carbs: Int
+    caloriesBurn: Float
+    protein: Float
+    fats: Float
+    carbs: Float
     sleep: Int
     weight: Int
   }
@@ -70,6 +70,7 @@ const typeDefs = gql`
   """
   type Meal {
     id: ID!
+    mealAuthor: String
     name: String
     type: [String]
     "Following macronutrients are per complete meal and not per individual intake"
@@ -77,6 +78,9 @@ const typeDefs = gql`
     proteins: Float
     carbs: Float
     fats: Float
+    photo: String
+    unit: String
+    value: Float
   }
   """
   Exercise Schema will store exercise plan user created
@@ -126,9 +130,9 @@ const typeDefs = gql`
     posts: [Post]
     meals: [Meal]
     stats: [Stats]
-    meal(calories: Int!): Meal
+    meal(calories: Float!): Meal
     exercises: [Exercise]
-    exercise(calories: Int!): Exercise
+    exercise(calories: Float!): Exercise
     goals: [Goal]
     me: User
     post(postId: ID!): Post
@@ -144,6 +148,9 @@ const typeDefs = gql`
     proteins: Float
     carbs: Float
     fats: Float
+    photo: String
+    unit: String
+    value: Float
   }
   # will use ExerciseInput to add new goal and post
   input ExerciseInput {
@@ -205,7 +212,7 @@ const typeDefs = gql`
     addExercise(
       name: String!
       type: [String]
-      calories: Int
+      calories: Float
       distance: Float
       time: String
       reps: Int
@@ -217,7 +224,7 @@ const typeDefs = gql`
       id: ID!
       name: String!
       type: [String]
-      calories: Int
+      calories: Float
       distance: Float
       time: String
       reps: Int
@@ -228,22 +235,29 @@ const typeDefs = gql`
     removeExercise(id: ID!): Exercise
     # Allow user to add meal plan
     addMeal(
+      mealAuthor: String
       name: String!
       type: [String]
-      calories: Int
-      proteins: Int
-      carbs: Int
-      fats: Int
+      calories: Float
+      proteins: Float
+      carbs: Float
+      fats: Float
+      photo: String
+      unit: String
+      value: Float
     ): Meal
     # Update user Meal plan information
     updateMeal(
       id: ID!
       name: String
       type: [String]
-      calories: Int
-      proteins: Int
-      carbs: Int
-      fats: Int
+      calories: Float
+      proteins: Float
+      carbs: Float
+      fats: Float
+      photo: String
+      unit: String
+      value: Float
     ): Meal
     # Update user information
     updateUser(
