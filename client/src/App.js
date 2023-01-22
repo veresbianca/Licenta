@@ -70,21 +70,48 @@ const App = withContextProvider(() => {
             <GridItem>
               <Navbar />
               <Routes>
-                <Route path="/" element={<Start />} />
+                <Route
+                  path="/"
+                  element={Auth.loggedIn() ? <Start /> : <Login />}
+                />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/profile/edit" element={<EditProfile />} />
+                <Route
+                  path="/profile/edit"
+                  element={Auth.loggedIn() ? <EditProfile /> : <Login />}
+                />
                 <Route
                   path="/profile"
                   element={Auth.loggedIn() ? <Profile /> : <Login />}
                 />
-                <Route path="/posts" element={<Posts />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/meal-plan" element={<Meals />} />
-                <Route path="/post/:postId" element={<SinglePost />} />
-                <Route path="/team" element={<Team />} />
-                <Route path="/exercice" element={<Exercice />} />
+                <Route
+                  path="/posts"
+                  element={Auth.loggedIn() ? <Posts /> : <Login />}
+                />
+                <Route
+                  path="/contact"
+                  element={Auth.loggedIn() ? <Contact /> : <Login />}
+                />
+                <Route
+                  path="/about"
+                  element={Auth.loggedIn() ? <About /> : <Login />}
+                />
+                <Route
+                  path="/meal-plan"
+                  element={Auth.loggedIn() ? <Meals /> : <Login />}
+                />
+                <Route
+                  path="/post/:postId"
+                  element={Auth.loggedIn() ? <SinglePost /> : <Login />}
+                />
+                <Route
+                  path="/team"
+                  element={Auth.loggedIn() ? <Team /> : <Login />}
+                />
+                <Route
+                  path="/exercice"
+                  element={Auth.loggedIn() ? <Exercice /> : <Login />}
+                />
               </Routes>
               <Footer />
             </GridItem>
