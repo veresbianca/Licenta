@@ -159,13 +159,14 @@ export const ADD_EXERCISE = gql`
     $name: String!
     $type: [String]
     $calories: Float
-    $distance: Int
+    $distance: Float
     $time: String
     $reps: Int
     $sets: Int
     $liftingWeight: Int
+    $plannedDates: [Date]
   ) {
-    addMeal(
+    addExercise(
       name: $name
       type: $type
       calories: $calories
@@ -174,6 +175,7 @@ export const ADD_EXERCISE = gql`
       reps: $reps
       sets: $sets
       liftingWeight: $liftingWeight
+      plannedDates: $plannedDates
     ) {
       id
       name
@@ -182,8 +184,9 @@ export const ADD_EXERCISE = gql`
       distance
       time
       reps
-      set
+      sets
       liftingWeight
+      plannedDates
     }
   }
 `;

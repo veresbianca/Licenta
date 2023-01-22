@@ -90,11 +90,12 @@ const typeDefs = gql`
     name: String!
     type: [String]
     calories: Float
-    distance: String
+    distance: Float
     time: String
-    reps: String
-    sets: String
+    reps: Int
+    sets: Int
     liftingWeight: String
+    plannedDates: Date
   }
   """
   Goal Schema will store goal user created
@@ -165,10 +166,10 @@ const typeDefs = gql`
     name: String!
     type: [String]
     calories: Float
-    distance: String
+    distance: Float
     time: String
-    reps: String
-    sets: String
+    reps: Int
+    sets: Int
     liftingWeight: String
   }
   # goalInput to add new goal with ExerciseInput
@@ -226,6 +227,7 @@ const typeDefs = gql`
       reps: Int
       sets: Int
       liftingWeight: Int
+      plannedDates: [Date]
     ): Exercise
     # Update user Exercise plan information
     updateExercise(

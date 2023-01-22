@@ -1,48 +1,34 @@
 import React, { useState } from 'react';
 import {
   FormControl,
-  FormLabel,
   chakra,
   Box,
   Container,
   Heading,
-  StackDivider,
-  useColorModeValue,
   SimpleGrid,
   Stack,
   Button,
-  ButtonGroup,
   Center,
   Input,
-  ListItem,
   IconButton,
   CircularProgress,
-  List,
   Image,
-  HStack,
   RadioGroup,
   Radio,
 } from '@chakra-ui/react';
 
-import {
-  BsFillPersonLinesFill,
-  BsTools,
-  BsFillPlusCircleFill,
-} from 'react-icons/bs';
-
-import { Link as RouterLink } from 'react-router-dom';
-
 import { searchFood } from '../../utils/API';
 import { FaPlus, FaCheck } from 'react-icons/fa';
-
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_MEAL } from '../../utils/mutations';
 import MealPlan from '../MealPlan';
 
+import nutritionBanner from '../../assets/images/nutrition-baner.jpg';
+
 export default function Component() {
   const user = Auth.loggedIn() ? Auth.getProfile() : null;
-  const [newMeal, newMealtMutation] = useMutation(ADD_MEAL);
+  const [newMeal] = useMutation(ADD_MEAL);
   const [mealTypeValue, setMealTypeValue] = useState('');
   const [unit, setUnit] = useState('');
   const [valueMeal, setValueMeal] = useState(0);
@@ -89,7 +75,6 @@ export default function Component() {
           bg={added ? 'green' : 'white'}
           onClick={() => addResult(food)}
         />
-        {console.log({ food })}
         {food.food_name}
 
         <Image src={food.photo.thumb} />
@@ -227,7 +212,7 @@ export default function Component() {
       });
     }
 
-    const createMeal = await newMeal({
+    await newMeal({
       variables: {
         name: newMeals[0].name,
         type: type,
@@ -244,24 +229,27 @@ export default function Component() {
   };
 
   return (
-    <Container maxW={'5xl'} py={12}>
-      <SimpleGrid>
-        <chakra.form
-          method="POST"
-          onSubmit={e => {
-            e.preventDefault();
-            return addMeal(mealTypeValue, unit, valueMeal);
-          }}
-        >
-          <Center>
-            <Heading size="lg">
-              Search for food to add to your meal plan!
-            </Heading>
-          </Center>
+    <>
+      <Image src={nutritionBanner} width="100%" />
+      <Container maxW={'5xl'} py={12}>
+        <SimpleGrid>
+          <chakra.form
+            method="POST"
+            onSubmit={e => {
+              e.preventDefault();
+              return addMeal(mealTypeValue, unit, valueMeal);
+            }}
+          >
+            <Center>
+              <Heading size="lg">
+                Search for food to add to your meal plan!
+              </Heading>
+            </Center>
 
-          {renderMeal()}
-        </chakra.form>
-      </SimpleGrid>
-    </Container>
+            {renderMeal()}
+          </chakra.form>
+        </SimpleGrid>
+      </Container>
+    </>
   );
 }

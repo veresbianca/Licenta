@@ -50,6 +50,7 @@ export const QUERY_ME = gql`
         reps
         sets
         liftingWeight
+        plannedDates
       }
       goals {
         goalWeight
@@ -196,6 +197,15 @@ export const GET_PROF = gql`
       name
       type
       photoSrc
+    }
+  }
+`;
+
+export const GET_EXERCICES = gql`
+  query exercises {
+    exercises {
+      name
+      type
     }
   }
 `;

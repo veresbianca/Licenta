@@ -25,6 +25,7 @@ import SinglePost from './pages/SinglePost';
 import Meals from './pages/MealPlan';
 import Team from './pages/Team';
 import Loading from './components/Loading';
+import Exercice from './pages/Exercice';
 
 import Auth from './utils/auth.js';
 import { Suspense } from 'react';
@@ -83,6 +84,7 @@ const App = withContextProvider(() => {
                 <Route path="/meal-plan" element={<Meals />} />
                 <Route path="/post/:postId" element={<SinglePost />} />
                 <Route path="/team" element={<Team />} />
+                <Route path="/exercice" element={<Exercice />} />
               </Routes>
               <Footer />
             </GridItem>

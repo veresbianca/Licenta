@@ -1,46 +1,210 @@
 [
   {
-    "name": "Pullups",
-    "type": ["Strength", "Cardio"],
-    "calories": 200,
-    "reps": 5,
-    "sets": 2
+    "name": "Barbell Close Grip Bench Press",
+    "type": ["Triceps", "Chest"]
   },
   {
-    "name": "Run",
-    "type": ["Cardio"],
-    "calories": 250,
-    "distance": 5,
-    "time": 10
+    "name": "Barbell Close Grip Press",
+    "type": ["Triceps"]
   },
   {
-    "name": "Deadlift",
-    "type": ["Strength"],
-    "calories": 40,
-    "reps": 20,
-    "sets": 1,
-    "liftingWeight": 400
+    "name": "Barbell Incline Close Grip Bench Press",
+    "type": ["Triceps", "Chest"]
   },
   {
-    "name": "Pullups",
-    "type": ["Strength", "Cardio"],
-    "calories": 300,
-    "reps": 10,
-    "sets": 4
+    "name": "Barbell Overhead Tricep Extension",
+    "type": ["Triceps"]
   },
   {
-    "name": "Run",
-    "type": ["Cardio"],
-    "calories": 400,
-    "distance": 10,
-    "time": 15
+    "name": "Barbell Rear Tricep Extension",
+    "type": ["Triceps"]
   },
   {
-    "name": "Deadlift",
-    "type": ["Strength"],
-    "calories": 100,
-    "reps": 50,
-    "sets": 1,
-    "liftingWeight": 500
+    "name": "Bench Dip",
+    "type": ["Triceps"]
+  },
+  {
+    "name": "Cable High Pulley Tricep Extension",
+    "type": ["Triceps"]
+  },
+  {
+    "name": "Barbell Bicep Drag Curl",
+    "type": ["Biceps"]
+  },
+  {
+    "name": "Barbell Close Grip Curl",
+    "type": ["Biceps"]
+  },
+  {
+    "name": "Barbell Inverted Row",
+    "type": ["Biceps"]
+  },
+  {
+    "name": "Barbell Preacher Curl",
+    "type": ["Biceps"]
+  },
+  {
+    "name": "Cable Biceps Curl",
+    "type": ["Biceps"]
+  },
+  {
+    "name": "Cable Incline Curl",
+    "type": ["Biceps"]
+  },
+  {
+    "name": "Dumbbell Alternating Bicep Curl",
+    "type": ["Biceps"]
+  },
+  {
+    "name": "Dumbbell Alternating Preacher Curl",
+    "type": ["Biceps"]
+  },
+  {
+    "name": "Dumbbell Bicep Curl",
+    "type": ["Biceps"]
+  },
+  {
+    "name": "Dumbbell Inner Bicep Curl",
+    "type": ["Biceps"]
+  },
+  {
+    "name": "Barbell Glute Bridge",
+    "type": ["Glutes"]
+  },
+  {
+    "name": "Bridge",
+    "type": ["Glutes"]
+  },
+  {
+    "name": "Cable Leg Kickback",
+    "type": ["Glutes"]
+  },
+  {
+    "name": "Cable Pull Through",
+    "type": ["Glutes"]
+  },
+  {
+    "name": "Flutter Kick",
+    "type": ["Glutes"]
+  },
+  {
+    "name": "Glute Kickback",
+    "type": ["Glutes"]
+  },
+  {
+    "name": "Glute Stretch",
+    "type": ["Glutes"]
+  },
+  {
+    "name": "Hip Adduction",
+    "type": ["Glutes"]
+  },
+  {
+    "name": "Single-Leg Glute Bridge",
+    "type": ["Glutes"]
+  },
+  {
+    "name": "Planks",
+    "type": ["Abs"]
+  },
+  {
+    "name": "Ab Draw Leg Slide",
+    "type": ["Abs"]
+  },
+  {
+    "name": "Ab Roll",
+    "type": ["Abs"]
+  },
+  {
+    "name": "Abdominal Hip Roll",
+    "type": ["Abs"]
+  },
+  {
+    "name": "Air Bike",
+    "type": ["Abs"]
+  },
+  {
+    "name": "Alternate Heel Touches",
+    "type": ["Abs"]
+  },
+  {
+    "name": "Alternating Leg Bridge",
+    "type": ["Abs"]
+  },
+  {
+    "name": "Barbell Ab Rollout",
+    "type": ["Abs"]
+  },
+  {
+    "name": "Side Bridge",
+    "type": ["Abs"]
+  },
+  {
+    "name": "Crunches",
+    "type": ["Abs"]
+  },
+  {
+    "name": "Push-Up",
+    "type": ["Chest"]
+  },
+  {
+    "name": "Band Bench Press",
+    "type": ["Chest"]
+  },
+  {
+    "name": "Barbell Bench Press",
+    "type": ["Chest"]
+  },
+  {
+    "name": "Barbell Incline Bench Press",
+    "type": ["Chest"]
+  },
+  {
+    "name": "Bench Press Machine",
+    "type": ["Chest"]
+  },
+  {
+    "name": "Bench Push-Up",
+    "type": ["Chest"]
+  },
+  {
+    "name": "Cable Cross-Over",
+    "type": ["Chest"]
+  },
+  {
+    "name": "Cable Inner Chest Press",
+    "type": ["Chest"]
+  },
+  {
+    "name": "Barbell Bench Squat",
+    "type": ["Legs"]
+  },
+  {
+    "name": "Band Squat",
+    "type": ["Legs"]
+  },
+  {
+    "name": "Barbell Deep Squat",
+    "type": ["Legs"]
+  },
+  {
+    "name": "Barbell Lunge",
+    "type": ["Legs"]
+  },
+  {
+    "name": "Barbell Single-Leg Squat",
+    "type": ["Legs"]
+  },
+  {
+    "name": "Barbell Squat",
+    "type": ["Legs"]
+  },
+  {
+    "name": "Bodyweight Squat",
+    "type": ["Legs"]
+  },
+  {
+    "name": "Bodyweight Lunge",
+    "type": ["Legs"]
   }
 ]

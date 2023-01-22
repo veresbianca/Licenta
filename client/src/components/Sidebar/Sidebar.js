@@ -1,54 +1,32 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Flex, Avatar, useMediaQuery, Link, Image } from '@chakra-ui/react';
 import {
-  Flex,
-  Text,
-  IconButton,
-  Divider,
-  Avatar,
-  Heading,
-  useMediaQuery,
-  Link,
-  Image,
-  Button,
-} from '@chakra-ui/react';
-import {
-  FiMenu,
   FiHome,
   FiUser,
-  FiSettings,
-  FiLogOut,
   FiMessageCircle,
   FiUsers,
   FiActivity,
+  FiLogOut,
 } from 'react-icons/fi';
 import NavItem from './NavItem';
-import { useNavigate, Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import logoImg from '../../assets/images/logos/healthy-studio-logo.png';
 
 import Auth from '../../utils/auth';
 
 import AppContext from '../../AppContext.tsx';
-import { use } from 'i18next';
 
 export default function Sidebar() {
   const [navSize, changeNavSize] = useState('small');
-  const [isLargerThan426] = useMediaQuery('(min-width: 426px)');
   const [isLargerThan1024] = useMediaQuery('(min-width: 1024px)');
   const { showMobileMenu } = useContext(AppContext);
 
-  const navigate = useNavigate();
   const location = useLocation();
-
-  const handleClick = event => {
-    event.preventDefault();
-    navigate('/profile', { replace: true });
-  };
 
   useEffect(() => {
     changeNavSize(isLargerThan1024 ? 'large' : 'small');
   }, [isLargerThan1024]);
 
-  console.log(location.pathname);
   return (
     <Flex
       pos="sticky"
@@ -128,9 +106,9 @@ export default function Sidebar() {
               navSize={navSize}
               icon={FiActivity}
               color="black"
-              title="Activity"
-              link="/activity"
-              active={location.pathname === '/activity' ? true : false}
+              title="Exercice"
+              link="/exercice"
+              active={location.pathname === '/exercice' ? true : false}
             ></NavItem>
 
             <NavItem
@@ -158,25 +136,6 @@ export default function Sidebar() {
           </>
         )}
       </Flex>
-
-      {/* <Flex
-                    p="5%"
-                    flexDir="column"
-                    w="100%"
-                    alignItems={navSize === "small" ? "center" : "flex-start"}
-                    mb={4}
-                >
-                    <Divider display={navSize === "small" ? "none" : "flex"} />
-                    <Flex mt={4} align="center">
-                        <Avatar size="sm" src="https://avatars.dicebear.com/api/male/username.svg" />
-                        <Flex flexDir="column" ml={4} display={navSize === "small" ? "none" : "flex"}>
-    {/* need to make username change */}
-      {/* {Auth.loggedIn() &&
-                            <Heading as="h3" size="sm">{Auth.getProfile().data.username}</Heading>
-                        }
-                        </Flex> */}
-      {/* </Flex> */}
-      {/* </Flex> */}
     </Flex>
   );
 }

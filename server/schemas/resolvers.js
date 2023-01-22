@@ -70,6 +70,9 @@ const resolvers = {
     profesionalist: async (parent, args) => {
       return await Profesionalist.find({});
     },
+    exercises: async (parent, args) => {
+      return await Exercise.find({});
+    },
   },
   Mutation: {
     // add new user
@@ -119,6 +122,7 @@ const resolvers = {
         { $addToSet: { exercisePlan: exerciseId } },
         { new: true }
       );
+
       return updatedUser;
     },
     // update Exercise plan

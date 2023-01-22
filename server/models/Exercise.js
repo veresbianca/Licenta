@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const exerciseSchema = new Schema({
   name: {
@@ -26,8 +26,11 @@ const exerciseSchema = new Schema({
   liftingWeight: {
     type: String,
   },
+  plannedDates: {
+    type: [Date],
+  },
 });
 
-const Exercise = model('Exercise', exerciseSchema);
+const Exercise = model("Exercise", exerciseSchema);
 
 module.exports = Exercise;

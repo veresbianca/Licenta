@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
 import {
-  ChakraProvider,
   Grid,
   GridItem,
   Heading,
@@ -9,6 +8,7 @@ import {
   CircularProgress,
   CircularProgressLabel,
   Progress,
+  Text,
 } from '@chakra-ui/react';
 
 import { useQuery } from '@apollo/client';
@@ -32,24 +32,43 @@ function setBMICategory(bmi) {
 }
 
 export default function Start() {
-  const { loading, error, data, refetch } = useQuery(QUERY_ME);
+  const { data, refetch } = useQuery(QUERY_ME);
   const [bmi, changeBMI] = useState(0);
   const [category, changeCategory] = useState('');
-  console.log({ data });
-  const user = data?.me || {};
-  // const stats = user?.stats[0] ? user.stats[0] : {};
+  const [user, setUser] = useState();
 
-  // useEffect(() => {
-  //   console.log('usee effect');
-  //   changeBMI(user.bmi);
-  //   refetch;
-  // }, [data]);
+  const getTodayExercises = exercisePlan => {
+    if (exercisePlan) {
+      const result = exercisePlan.filter(checkDate);
+
+      return result;
+    }
+  };
+
+  const checkDate = exercise => {
+    const today = new Date().toISOString().slice(0, 10);
+    const arrayOfDates = exercise.plannedDates.map((date, index) => {
+      return new Date(date).toISOString().slice(0, 10);
+    });
+
+    if (arrayOfDates.includes(today)) {
+      return exercise;
+    }
+  };
 
   useEffect(() => {
+    if (data) {
+      setUser(data.me);
+      console.log({ data });
+    }
+
+    if (user) {
+      changeBMI(user.bmi);
+      changeCategory(setBMICategory(user.bmi));
+    }
+
     refetch();
-    changeBMI(user.bmi);
-    changeCategory(setBMICategory(user.bmi));
-  }, [data]);
+  }, [data, refetch, user]);
 
   return (
     <>
@@ -86,14 +105,16 @@ export default function Start() {
                   <div className="card-wrapper">
                     <Heading size={'xs'}>Macronutrient Ratios</Heading>
                     <p>
-                      Carbohidrati: {user.stats ? user.stats[0]?.carbs : ''}
+                      Carbohidrati: {user?.stats ? user?.stats[0]?.carbs : ''}
                     </p>
                     <Progress value={80} colorScheme="orange" size="sm" />
 
-                    <p>Proteine: {user.stats ? user.stats[0]?.protein : ''}</p>
+                    <p>
+                      Proteine: {user?.stats ? user?.stats[0]?.protein : ''}
+                    </p>
                     <Progress value={20} colorScheme="blue" size="sm" />
 
-                    <p>Lipide: {user.stats ? user.stats[0]?.fats : ''}</p>
+                    <p>Lipide: {user?.stats ? user?.stats[0]?.fats : ''}</p>
                     <Progress value={45} colorScheme="pink" size="sm" />
                   </div>
                 </div>
@@ -103,7 +124,21 @@ export default function Start() {
               <Stack>
                 <Heading>Today's activity</Heading>
                 <div className="card-container">
-                  <div></div>
+                  {user
+                    ? getTodayExercises(user.exercisePlan).map(
+                        (exercise, index) => {
+                          console.log({ exercise });
+                          return (
+                            <Stack border="1px solid">
+                              <Text>{exercise.name}</Text>
+                              <Text>{exercise.type}</Text>
+                              <Text>{exercise.reps}</Text>
+                              <Text>{exercise.sets}</Text>
+                            </Stack>
+                          );
+                        }
+                      )
+                    : null}
                 </div>
               </Stack>
             </GridItem>
