@@ -1,34 +1,8 @@
 [
   {
-    "username": "johnwick1",
+    "username": "administrator",
     "password": "lol123",
-    "email": "john_wick@gmail.com",
-    "isPrivate": false,
-    "weight": 200,
-    "height": 61,
-    "age": 23,
-    "gender": "Male",
-    "goals": [
-      {
-        "goalWeight": 170
-      }
-    ],
-    "bmi": null
-  },
-  {
-    "username": "fitguy",
-    "password": "lol124",
-    "email": "fitguy@gmail.com",
-    "isPrivate": true,
-    "weight": 300,
-    "height": 52,
-    "age": 40,
-    "gender": "Male",
-    "goals": [
-      {
-        "goalWeight": 200
-      }
-    ],
-    "bmi": null
+    "email": "biancaveres93@gmail.com",
+    "isPrivate": true
   }
 ]

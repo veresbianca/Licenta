@@ -38,6 +38,7 @@ export default function AddExercise({ exerciseType }) {
         sets: sets,
         liftingWeight: 0,
         plannedDates: date,
+        new: false,
       },
     });
   };

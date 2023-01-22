@@ -23,7 +23,6 @@ export const LOGIN_USER = gql`
   }
 `;
 
-// add new user
 export const ADD_USER = gql`
   mutation addUser(
     $username: String!
@@ -65,7 +64,6 @@ export const ADD_USER = gql`
   }
 `;
 
-// mutation to update user
 export const UPDATE_USER = gql`
   mutation updateUser(
     $username: String!
@@ -165,6 +163,7 @@ export const ADD_EXERCISE = gql`
     $sets: Int
     $liftingWeight: Int
     $plannedDates: [Date]
+    $new: Boolean
   ) {
     addExercise(
       name: $name
@@ -176,6 +175,7 @@ export const ADD_EXERCISE = gql`
       sets: $sets
       liftingWeight: $liftingWeight
       plannedDates: $plannedDates
+      new: $new
     ) {
       id
       name
@@ -261,6 +261,42 @@ export const UPDATE_LIKES = gql`
   }
 `;
 
+export const UPDATE_EXERCISE_FROM_ROUTINE = gql`
+  mutation updateExercise(
+    $id: ID!
+    $name: String!
+    $type: [String]
+    $calories: Float
+    $distance: Float
+    $time: String
+    $reps: Int
+    $sets: Int
+    $liftingWeight: Int
+  ) {
+    updateExercise(
+      id: $id
+      name: $name
+      type: $type
+      calories: $calories
+      distance: $distance
+      time: $time
+      reps: $reps
+      sets: $sets
+      liftingWeight: $liftingWeight
+    ) {
+      id
+      name
+      type
+      calories
+      distance
+      time
+      reps
+      sets
+      liftingWeight
+    }
+  }
+`;
+
 export const UPDATE_COMMENT_LIKES = gql`
   mutation updateCommentLikes($postId: ID!, $commentId: ID!) {
     updateCommentLikes(postId: $postId, commentId: $commentId) {
@@ -271,6 +307,16 @@ export const UPDATE_COMMENT_LIKES = gql`
           username
         }
       }
+    }
+  }
+`;
+
+export const REMOVE_EXERCISE_FROM_ROUTINE = gql`
+  mutation removeExercise($id: ID!) {
+    removeExercise(id: $id) {
+      id
+      name
+      type
     }
   }
 `;

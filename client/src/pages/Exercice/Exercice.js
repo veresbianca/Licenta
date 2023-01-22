@@ -3,6 +3,7 @@ import { Image } from '@chakra-ui/react';
 
 import CreateExercisePlan from '../../components/CreateExercisePlan';
 import ListExercise from '../../components/ListExercise';
+import UserExercices from '../../components/UserExercices';
 
 import fitnessBanner from '../../assets/images/fitness-banner.webp';
 
@@ -12,6 +13,7 @@ export default function Exercise() {
       <Image src={fitnessBanner} width="100%" />
       <ListExercise></ListExercise>
       <CreateExercisePlan></CreateExercisePlan>
+      <UserExercices></UserExercices>
     </>
   );
 }

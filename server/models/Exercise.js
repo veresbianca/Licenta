@@ -29,6 +29,9 @@ const exerciseSchema = new Schema({
   plannedDates: {
     type: [Date],
   },
+  new: {
+    type: Boolean,
+  },
 });
 
 const Exercise = model("Exercise", exerciseSchema);

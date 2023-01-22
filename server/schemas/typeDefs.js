@@ -96,6 +96,7 @@ const typeDefs = gql`
     sets: Int
     liftingWeight: String
     plannedDates: Date
+    new: Boolean
   }
   """
   Goal Schema will store goal user created
@@ -228,6 +229,7 @@ const typeDefs = gql`
       sets: Int
       liftingWeight: Int
       plannedDates: [Date]
+      new: Boolean
     ): Exercise
     # Update user Exercise plan information
     updateExercise(

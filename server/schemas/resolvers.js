@@ -111,17 +111,30 @@ const resolvers = {
     },
     // add exercise plan
     addExercise: async (parent, args, context) => {
+      let updatedUser;
       if (!context.user)
         throw new AuthenticationError(
           "You must be logged in to add Exercise plan!"
         );
+      console.log(args);
+      // if (args.new) {
       const exercise = await Exercise.create(args);
       const exerciseId = exercise.id;
-      const updatedUser = await User.findByIdAndUpdate(
+
+      updatedUser = await User.findByIdAndUpdate(
         { _id: context.user._id },
         { $addToSet: { exercisePlan: exerciseId } },
         { new: true }
       );
+      // } else {
+      //   const exerciseId = args.id;
+
+      //   updatedUser = await User.findByIdAndUpdate(
+      //     { _id: context.user._id },
+      //     { $addToSet: { exercisePlan: exerciseId } },
+      //     { new: true }
+      //   );
+      // }
 
       return updatedUser;
     },

@@ -47,6 +47,7 @@ export default function ExercisePlan() {
           reps: reps,
           sets: sets,
           plannedDates: date,
+          new: true,
         },
       });
       formik.values.workout = '';
