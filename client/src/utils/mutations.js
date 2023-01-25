@@ -1,4 +1,6 @@
 import { gql } from '@apollo/client';
+import { userFragment } from './fragments';
+
 // validate user and return user info
 export const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
@@ -322,10 +324,31 @@ export const REMOVE_EXERCISE_FROM_ROUTINE = gql`
 `;
 
 export const CREATE_SUBSCRIPTION = gql`
-  mutation createSubscription($source: String) {
-    createSubscription(source: $source) {
-      id
-      email
+  mutation createSubscription($source: String, $ccLast4: String) {
+    createSubscription(source: $source, ccLast4: $ccLast4) {
+      ...UserInfo
     }
   }
+
+  ${userFragment}
+`;
+
+export const CHANGE_CREDIT_CARD = gql`
+  mutation changeCreditCard($source: String, $ccLast4: String) {
+    changeCreditCard(source: $source, ccLast4: $ccLast4) {
+      ...UserInfo
+    }
+  }
+
+  ${userFragment}
+`;
+
+export const CANCEL_SUBSCRIPTION = gql`
+  mutation cancelSubscription {
+    cancelSubscription {
+      ...UserInfo
+    }
+  }
+
+  ${userFragment}
 `;

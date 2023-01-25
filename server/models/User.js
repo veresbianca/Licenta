@@ -90,6 +90,9 @@ const userSchema = new Schema({
     type: String,
     default: "free-trial",
   },
+  ccLast4: {
+    type: String,
+  },
 });
 
 userSchema.pre("save", async function (next) {

@@ -190,7 +190,9 @@ export default function Profile() {
               alignItems="center"
             >
               <Heading size="sm">Abonament:</Heading>
-              <span>test abonament</span>
+              <Link as={RouterLink} to="/subscription">
+                Go to Subscription page
+              </Link>
             </Box>
           </Stack>
 

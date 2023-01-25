@@ -34,6 +34,8 @@ const typeDefs = gql`
     "user can create post want to share with reference to exercise and meal plan"
     posts: [Post]
     friends: [User]
+    userType: String
+    ccLast4: String
   }
 
   type Stats {
@@ -300,7 +302,9 @@ const typeDefs = gql`
     addPost(input: postInput): Post
     # Allow user to add comment
     addComment(input: commentInput!): Post
-    createSubscription(source: String): User
+    createSubscription(source: String, ccLast4: String): User
+    changeCreditCard(source: String, ccLast4: String): User
+    cancelSubscription: User
   }
 `;
 

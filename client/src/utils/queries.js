@@ -1,11 +1,10 @@
 import { gql } from '@apollo/client';
+import { userFragment } from './fragments';
 
 export const QUERY_ME = gql`
   query me {
     me {
-      id
-      username
-      email
+      ...UserInfo
       isPrivate
       weight
       height
@@ -88,6 +87,8 @@ export const QUERY_ME = gql`
       }
     }
   }
+
+  ${userFragment}
 `;
 
 export const GET_POSTS = gql`
