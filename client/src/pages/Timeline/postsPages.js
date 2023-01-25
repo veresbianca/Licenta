@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PostList from '../../components/PostList';
 import CreatePost from '../../components/createPost';
 import { useQuery } from '@apollo/client';
-import { GET_POSTS } from '../../utils/queries';
 import { Center, CircularProgress, Container } from '@chakra-ui/react';
+import { GET_POSTS } from '../../utils/queries';
 
 import { Grid, GridItem } from '@chakra-ui/react';
 

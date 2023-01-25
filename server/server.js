@@ -1,6 +1,10 @@
 const express = require("express");
+const dotenv = require("dotenv");
+const buf = Buffer.from("BASIC=basic");
+const config = dotenv.parse(buf); // will return an object
 const { makeExecutableSchema } = require("@graphql-tools/schema");
 const { DateTimeResolver, DateTimeTypeDefinition } = require("graphql-scalars");
+const cors = require("cors");
 
 // for refactor with passport
 // const session = require('express-session');
@@ -63,7 +67,7 @@ app.get("/", (req, res) => {
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
-  server.applyMiddleware({ app });
+  server.applyMiddleware({ app, path: "/graphql", cors: false });
 
   db.once("open", () => {
     app.listen(PORT, () => {
@@ -74,6 +78,13 @@ const startApolloServer = async (typeDefs, resolvers) => {
     });
   });
 };
+
+var corsOption = {
+  origin: "http://localhost:3000",
+  credentials: true,
+};
+
+app.use(cors(corsOption));
 
 // Call the async function to start the server
 startApolloServer(typeDefs, resolvers);

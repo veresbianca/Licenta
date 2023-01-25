@@ -2,6 +2,11 @@ const { User, Exercise, Meal, Post, Profesionalist } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { Types } = require("mongoose");
+const Stripe = require("stripe");
+
+const stripe = new Stripe(
+  "sk_test_51MTrHCL1p6qnKEuvmzMebqXnhpnSuyrlN7QKJJMhewH4nBYlTSH42Qc5C7pSh0t5dGXofiJSTiip9R85nHuvGW4y00qh2MwxHZ"
+);
 
 const resolvers = {
   Query: {
@@ -73,6 +78,28 @@ const resolvers = {
     exercises: async (parent, args) => {
       return await Exercise.find({});
     },
+    // createCheckoutSession: async () => {
+    //   const FRONTEND_DOMAIN = "http://localhost:3000";
+    //   const session = await stripe.checkout.sessions.create({
+    //     line_items: [
+    //       {
+    //         price: "price_1MTrL5L1p6qnKEuvDkY1BIdw",
+    //         quantity: 1,
+    //       },
+    //       {
+    //         price: "price_1MTsj1L1p6qnKEuv98A1mB3j",
+    //         quantity: 1,
+    //       },
+    //     ],
+    //     mode: "subscription",
+    //     success_url: FRONTEND_DOMAIN + "/success",
+    //     cancel_url: FRONTEND_DOMAIN + "/cancel",
+    //   });
+
+    //   return JSON.stringify({
+    //     url: session.url,
+    //   });
+    // },
   },
   Mutation: {
     // add new user
@@ -372,6 +399,30 @@ const resolvers = {
         });
       }
       return updateComment;
+    },
+    createSubscription: async (_, { source }, context) => {
+      if (!context.user)
+        throw new AuthenticationError(
+          "You must be logged in to buy a subscription!"
+        );
+
+      const user = await User.findOne({ _id: context.user._id });
+
+      if (!user) {
+        throw new Error();
+      }
+
+      const customer = await stripe.customers.create({
+        email: user.email,
+        source,
+        plan: "price_1MTrL5L1p6qnKEuvDkY1BIdw",
+      });
+
+      user.stripeId = customer.id;
+      user.userType = "monthlySubscription";
+      await user.save();
+
+      return user;
     },
   },
 };

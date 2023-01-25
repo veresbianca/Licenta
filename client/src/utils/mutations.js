@@ -320,3 +320,12 @@ export const REMOVE_EXERCISE_FROM_ROUTINE = gql`
     }
   }
 `;
+
+export const CREATE_SUBSCRIPTION = gql`
+  mutation createSubscription($source: String) {
+    createSubscription(source: $source) {
+      id
+      email
+    }
+  }
+`;

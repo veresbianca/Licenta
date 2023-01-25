@@ -83,6 +83,13 @@ const userSchema = new Schema({
       ref: "User",
     },
   ],
+  stripeId: {
+    type: String,
+  },
+  userType: {
+    type: String,
+    default: "free-trial",
+  },
 });
 
 userSchema.pre("save", async function (next) {

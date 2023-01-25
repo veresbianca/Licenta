@@ -26,6 +26,9 @@ import Meals from './pages/MealPlan';
 import Team from './pages/Team';
 import Loading from './components/Loading';
 import Exercice from './pages/Exercice';
+import Subscription from './pages/Subscription';
+import PaymentCancel from './pages/PaymentCancel';
+import PaymentSuccess from './pages/PaymentSuccess';
 
 import Auth from './utils/auth.js';
 import { Suspense } from 'react';
@@ -111,6 +114,15 @@ const App = withContextProvider(() => {
                 <Route
                   path="/exercice"
                   element={Auth.loggedIn() ? <Exercice /> : <Login />}
+                />
+                <Route path="/subscription" element={<Subscription />} />
+                <Route
+                  path="/success"
+                  element={Auth.loggedIn() ? <PaymentSuccess /> : <Login />}
+                />
+                <Route
+                  path="/cancel"
+                  element={Auth.loggedIn() ? <PaymentCancel /> : <Login />}
                 />
               </Routes>
               <Footer />

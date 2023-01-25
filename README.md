@@ -13,10 +13,9 @@
 
 ## Description
 
-
 ## Deployment
 
-Deployed Application: 
+Deployed Application:
 
 ## Technologies
 
@@ -26,5 +25,6 @@ Deployed Application:
 - Chakra UI
 - MongoDB
 - GraphQL
-- Nutrition API by Nutritionix
+- Nutrition API by Nutritionix ( food database )
+- Stripe ( payments )
 - bcrypt

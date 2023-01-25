@@ -139,6 +139,7 @@ const typeDefs = gql`
     me: User
     post(postId: ID!): Post
     profesionalist: [Profesionalist]
+    createCheckoutSession: String # '{ url: "STRIPEURL.com"}'
   }
 
   type Profesionalist {
@@ -299,6 +300,7 @@ const typeDefs = gql`
     addPost(input: postInput): Post
     # Allow user to add comment
     addComment(input: commentInput!): Post
+    createSubscription(source: String): User
   }
 `;
 
