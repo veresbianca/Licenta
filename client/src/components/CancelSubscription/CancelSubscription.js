@@ -44,8 +44,7 @@ export default function CancelSubscription() {
   return (
     <Container>
       <Text>
-        Anuleaza subscriptia trimitand un email la adresa:
-        healthystudio@gmail.com
+        Anuleaza subscriptia trimitand un email la adresa: healthystudio@app.com
       </Text>
     </Container>
   );

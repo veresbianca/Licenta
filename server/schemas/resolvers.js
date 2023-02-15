@@ -3,6 +3,12 @@ const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { Types } = require("mongoose");
 const Stripe = require("stripe");
+const { getTransport } = require("../mail/transport");
+const {
+  generateRegisterConfirmationEmail,
+  generatePaymentSuccesfulEmail,
+} = require("../mail/emailTemplates");
+const nodemailer = require("nodemailer");
 
 const stripe = new Stripe(
   "sk_test_51MTrHCL1p6qnKEuvmzMebqXnhpnSuyrlN7QKJJMhewH4nBYlTSH42Qc5C7pSh0t5dGXofiJSTiip9R85nHuvGW4y00qh2MwxHZ"
@@ -106,6 +112,17 @@ const resolvers = {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
+      const transport = await getTransport();
+      transport
+        .sendMail(
+          generateRegisterConfirmationEmail({
+            username: user.username,
+            email: user.email,
+          })
+        )
+        .then((info) => {
+          console.log(`Message id: ${info.messageId}`);
+        });
       return { token, user };
     },
     // update user information
@@ -422,6 +439,18 @@ const resolvers = {
       user.userType = "monthlySubscription";
       user.ccLast4 = ccLast4;
       await user.save();
+
+      const transport = await getTransport();
+      transport
+        .sendMail(
+          generatePaymentSuccesfulEmail({
+            username: user.username,
+            email: user.email,
+          })
+        )
+        .then((info) => {
+          console.log(`Message id: ${info.messageId}`);
+        });
 
       return user;
     },

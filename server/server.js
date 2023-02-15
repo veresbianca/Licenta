@@ -80,7 +80,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
 };
 
 var corsOption = {
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "https://studio.apollographql.com"],
   credentials: true,
 };
 
