@@ -11,15 +11,8 @@ import { Container, Text, Box } from '@chakra-ui/react';
 import { CANCEL_SUBSCRIPTION } from '../../utils/mutations';
 
 export default function CancelSubscription() {
-  const [cancelSubscription] = useMutation(CANCEL_SUBSCRIPTION);
   const { loading, error, data: userData } = useQuery(QUERY_ME);
   const [currentUser, setCurrentUser] = useState();
-
-  const cancelUserSubscription = async () => {
-    const response = await cancelSubscription();
-
-    console.log(response);
-  };
 
   useEffect(() => {
     if (userData) {
@@ -50,9 +43,10 @@ export default function CancelSubscription() {
 
   return (
     <Container>
-      <Button onClick={() => cancelUserSubscription()}>
-        cancel subscription
-      </Button>
+      <Text>
+        Anuleaza subscriptia trimitand un email la adresa:
+        healthystudio@gmail.com
+      </Text>
     </Container>
   );
 }

@@ -444,34 +444,6 @@ const resolvers = {
 
       return user;
     },
-    cancelSubscription: async (_, source, context) => {
-      if (!context.user)
-        throw new AuthenticationError(
-          "You must be logged in to buy a subscription!"
-        );
-
-      const user = await User.findOne({ _id: context.user._id });
-
-      if (!user || !user.stripeId || user.userType !== "monthlySubscription") {
-        throw new Error();
-      }
-
-      const stripeCustomer = await stripe.customers.retrieve(user.stripeId);
-
-      const [subscription] = stripeCustomer.subscriptions.data;
-
-      await stripe.subscriptions.del(subscription.id);
-
-      await stripe.customers.deleteCard(
-        user.stripeId,
-        stripeCustomer.default_source
-      );
-
-      user.userType = "free-trial";
-      await user.save();
-
-      return user;
-    },
   },
 };
 module.exports = resolvers;
