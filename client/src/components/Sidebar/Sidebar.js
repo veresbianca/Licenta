@@ -11,6 +11,8 @@ import {
 import NavItem from './NavItem';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import logoImg from '../../assets/images/logos/healthy-studio-logo.png';
+import { QUERY_ME } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
 import Auth from '../../utils/auth';
 
@@ -18,14 +20,22 @@ import AppContext from '../../AppContext.tsx';
 
 export default function Sidebar() {
   const [navSize, changeNavSize] = useState('small');
+  const { loading, error, data: userData } = useQuery(QUERY_ME);
   const [isLargerThan1024] = useMediaQuery('(min-width: 1024px)');
   const { showMobileMenu } = useContext(AppContext);
+  const [currentUser, setCurrentUser] = useState();
 
   const location = useLocation();
 
   useEffect(() => {
     changeNavSize(isLargerThan1024 ? 'large' : 'small');
   }, [isLargerThan1024]);
+
+  useEffect(() => {
+    if (userData) {
+      setCurrentUser(userData.me);
+    }
+  }, [userData]);
 
   return (
     <Flex
@@ -101,6 +111,22 @@ export default function Sidebar() {
               link="/team"
               active={location.pathname === '/team' ? true : false}
             ></NavItem>
+
+            {currentUser?.userRole === 'FITNESS' ||
+            currentUser?.userRole === 'MEDIC' ||
+            currentUser?.userRole === 'NUTRITIONIST' ||
+            currentUser?.userRole === 'PSIHOLOG' ? (
+              <NavItem
+                navSize={navSize}
+                icon={FiUsers}
+                color="black"
+                title="Clienti"
+                link="/clients"
+                active={location.pathname === '/clients' ? true : false}
+              ></NavItem>
+            ) : (
+              <></>
+            )}
 
             <NavItem
               navSize={navSize}

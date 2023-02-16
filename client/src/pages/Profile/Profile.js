@@ -191,7 +191,7 @@ export default function Profile() {
             >
               <Heading size="sm">Abonament:</Heading>
               <Link as={RouterLink} to="/subscription">
-                Go to Subscription page
+                Vezi detalii abonament
               </Link>
             </Box>
           </Stack>
@@ -206,12 +206,26 @@ export default function Profile() {
               Cardurile tale
             </Heading>
             <Box display="grid" gap="20px" textAlign="center">
-              <Heading size="sm">Nu ai nici un card adaugat</Heading>
-              <span>
-                Pentru a putea plati mai usor, adauga cardul tau.Poti oricand sa
-                stergi cardurile din aplicatie.
-              </span>
-              <Button children="Adauga un card" />
+              {user?.ccLast4 ? (
+                <>
+                  <Heading size="sm">
+                    Ai un card salvat in procesatorul de plati
+                  </Heading>
+                  <Text>
+                    Ultimele <b>4 cifre</b> ale cardului tau sunt:{' '}
+                    <b>{user?.ccLast4}</b>
+                  </Text>
+                </>
+              ) : (
+                <>
+                  <Heading size="sm">Nu ai nici un card adaugat</Heading>
+                  <Text>
+                    Pentru a putea plati mai usor, adauga cardul tau.Poti
+                    oricand sa stergi cardurile din aplicatie.
+                  </Text>
+                  <Button children="Adauga un card" />
+                </>
+              )}
             </Box>
           </Stack>
 
@@ -439,20 +453,6 @@ export default function Profile() {
                 Incepe sa scrii in jurnalul tau.
               </AlertDescription>
             </Alert>
-          </Stack>
-
-          <Stack
-            border={'1px solid transparent'}
-            borderRadius={'8px'}
-            boxShadow={'0px 0px 10px -2px #ACACAC'}
-            padding="20px"
-          >
-            <Heading size="md" className="sub-heading">
-              Stergere cont
-            </Heading>
-            <Button colorScheme="red" onClick={onRemoveAccountOpen}>
-              Sterge contul
-            </Button>
           </Stack>
         </Container>
       </Box>

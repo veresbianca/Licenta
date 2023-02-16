@@ -262,7 +262,7 @@ export default function EditProfile() {
             />
           </FormControl>
 
-          <FormControl as="fieldset">
+          {/* <FormControl as="fieldset">
             <FormLabel as="legend">Private Profile?</FormLabel>
             <RadioGroup value={formik.values.isPrivate}>
               <HStack spacing="24px">
@@ -282,7 +282,7 @@ export default function EditProfile() {
                 </Radio>
               </HStack>
             </RadioGroup>
-          </FormControl>
+          </FormControl> */}
           <Stack spacing={10} pt={2}>
             <Button
               type="submit"

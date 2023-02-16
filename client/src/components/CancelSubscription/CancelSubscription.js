@@ -8,17 +8,24 @@ import { QUERY_ME } from '../../utils/queries';
 
 import { Container, Text, Box } from '@chakra-ui/react';
 
-import { CANCEL_SUBSCRIPTION } from '../../utils/mutations';
+import { REMOVE_USER } from '../../utils/mutations';
 
 export default function CancelSubscription() {
   const { loading, error, data: userData } = useQuery(QUERY_ME);
   const [currentUser, setCurrentUser] = useState();
+  const [removeUser] = useMutation(REMOVE_USER);
 
   useEffect(() => {
     if (userData) {
       setCurrentUser(userData.me);
     }
   }, [userData]);
+
+  const sendEmailToRemoveUser = async () => {
+    await removeUser({
+      variables: { username: currentUser.username },
+    });
+  };
 
   //   const renderPage = () => {
   //     if (currentUser?.userType === 'free-trial') {
@@ -46,6 +53,9 @@ export default function CancelSubscription() {
       <Text>
         Anuleaza subscriptia trimitand un email la adresa: healthystudio@app.com
       </Text>
+      <Button type="button" onClick={sendEmailToRemoveUser()}>
+        Trimite email
+      </Button>
     </Container>
   );
 }

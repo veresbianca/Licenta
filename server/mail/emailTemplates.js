@@ -21,7 +21,15 @@ const generatePaymentSuccesfulEmail = ({ username, email }) => ({
         `,
 });
 
+const generateRemoveAccountEmail = ({ username, email }) => ({
+  from: "HealthyStudio <healthystudio.noreply@app.com",
+  to: email,
+  subject: `Stergere cont, ${username}`,
+  html: `<h1>Doresc stergerea contului!</h1>`,
+});
+
 module.exports = {
   generateRegisterConfirmationEmail,
   generatePaymentSuccesfulEmail,
+  generateRemoveAccountEmail,
 };

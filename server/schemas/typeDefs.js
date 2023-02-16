@@ -36,6 +36,7 @@ const typeDefs = gql`
     friends: [User]
     userType: String
     ccLast4: String
+    userRole: String
   }
 
   type Stats {
@@ -302,7 +303,8 @@ const typeDefs = gql`
     addPost(input: postInput): Post
     # Allow user to add comment
     addComment(input: commentInput!): Post
-    createSubscription(source: String, ccLast4: String): User
+    removeUser(username: String!): User
+    createSubscription(source: String, ccLast4: String, type: String): User
     changeCreditCard(source: String, ccLast4: String): User
     cancelSubscription: User
   }

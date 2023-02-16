@@ -7,6 +7,7 @@ const { getTransport } = require("../mail/transport");
 const {
   generateRegisterConfirmationEmail,
   generatePaymentSuccesfulEmail,
+  generateRemoveAccountEmail,
 } = require("../mail/emailTemplates");
 const nodemailer = require("nodemailer");
 
@@ -124,6 +125,22 @@ const resolvers = {
           console.log(`Message id: ${info.messageId}`);
         });
       return { token, user };
+    },
+    removeUser: async (parent, args, context) => {
+      const userToBeRemoved = await User.findByIdAndUpdate({
+        _id: context.user._id,
+      });
+      const transport = await getTransport();
+      transport
+        .sendMail(
+          generateRemoveAccountEmail({
+            username: userToBeRemoved.username,
+            email: userToBeRemoved.email,
+          })
+        )
+        .then((info) => {
+          console.log(`Message id: ${info.messageId}`);
+        });
     },
     // update user information
     updateUser: async (parent, args, context) => {
@@ -417,7 +434,9 @@ const resolvers = {
       }
       return updateComment;
     },
-    createSubscription: async (_, { source, ccLast4 }, context) => {
+    createSubscription: async (_, { source, ccLast4, type }, context) => {
+      let subscriptionPlan;
+
       if (!context.user)
         throw new AuthenticationError(
           "You must be logged in to buy a subscription!"
@@ -429,14 +448,21 @@ const resolvers = {
         throw new Error();
       }
 
+      if (type === "monthly") {
+        subscriptionPlan = "price_1Mbw2nL1p6qnKEuvXYeyZ0Q0";
+        user.userType = "monthlySubscription";
+      } else {
+        subscriptionPlan = "price_1Mbw7ZL1p6qnKEuvzt8ZPgAp";
+        user.userType = "yearlySubscription";
+      }
+
       const customer = await stripe.customers.create({
         email: user.email,
         source,
-        plan: "price_1MTrL5L1p6qnKEuvDkY1BIdw",
+        plan: subscriptionPlan,
       });
 
       user.stripeId = customer.id;
-      user.userType = "monthlySubscription";
       user.ccLast4 = ccLast4;
       await user.save();
 
@@ -462,7 +488,12 @@ const resolvers = {
 
       const user = await User.findOne({ _id: context.user._id });
 
-      if (!user || !user.stripeId || user.userType !== "monthlySubscription") {
+      if (
+        !user ||
+        !user.stripeId ||
+        user.userType !== "monthlySubscription" ||
+        user.userType !== "yearlySubscription"
+      ) {
         throw new Error();
       }
 

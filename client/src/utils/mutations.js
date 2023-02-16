@@ -25,6 +25,17 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const REMOVE_USER = gql`
+  mutation removeUser($username: String!) {
+    removeUser(username: $username) {
+      user {
+        id
+        username
+      }
+    }
+  }
+`;
+
 export const ADD_USER = gql`
   mutation addUser(
     $username: String!
@@ -324,8 +335,12 @@ export const REMOVE_EXERCISE_FROM_ROUTINE = gql`
 `;
 
 export const CREATE_SUBSCRIPTION = gql`
-  mutation createSubscription($source: String, $ccLast4: String) {
-    createSubscription(source: $source, ccLast4: $ccLast4) {
+  mutation createSubscription(
+    $source: String
+    $ccLast4: String
+    $type: String
+  ) {
+    createSubscription(source: $source, ccLast4: $ccLast4, type: $type) {
       ...UserInfo
     }
   }

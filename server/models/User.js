@@ -93,6 +93,10 @@ const userSchema = new Schema({
   ccLast4: {
     type: String,
   },
+  userRole: {
+    type: String,
+    default: "BASIC",
+  },
 });
 
 userSchema.pre("save", async function (next) {
