@@ -9,7 +9,6 @@
 3. [Requirements](#project-requirements)
 4. [Technologies](#technologies)
 5. [Screenshots](#screenshots)
-6. [Contributors](#contributors)
 
 ## Description
 
