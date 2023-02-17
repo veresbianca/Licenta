@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Heading } from '@chakra-ui/react';
-import { useLazyQuery } from '@apollo/client';
-import { CHECKOUT } from '../../utils/queries';
 import { useQuery, gql, useMutation } from '@apollo/client';
-import httpClient from 'react-http-client';
 import { QUERY_ME } from '../../utils/queries';
 
-import { Container, Text, Box } from '@chakra-ui/react';
+import { Container, Stack, Text, Box } from '@chakra-ui/react';
 
 import { CREATE_SUBSCRIPTION } from '../../utils/mutations';
 
@@ -14,8 +11,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import ChangeCreditCard from '../../components/ChangeCreditCard';
 import CancelSubscription from '../../components/CancelSubscription';
 
-import { SimpleGrid, useColorModeValue } from '@chakra-ui/react';
-import { SiHive, SiMarketo, SiMicrosoft } from 'react-icons/si';
+import { SimpleGrid } from '@chakra-ui/react';
 import { ActionButton } from '../../components/ActionButton/ActionButton';
 import { PricingCard } from '../../components/PricingCard/PricingCard';
 
@@ -37,20 +33,6 @@ export default function Subscription() {
       setCurrentUser(userData.me);
     }
   }, [userData]);
-
-  // const renderPage = () => {
-  //   if (currentUser?.userType === 'free-trial') {
-  //     return (
-  //       <StripeCheckout
-  //         token={token => addSubscription(token)}
-  //         stripeKey="pk_test_51MTrHCL1p6qnKEuvenqU57mxJDfM184hWdgAeXHPRftG3Bz6xVHcxmsw4jkP6gtT5LJVRAkDfIRbG3nfHDpieFCl00sPVjdoUs"
-  //         amount={4999.99}
-  //         currency="RON"
-  //       />
-  //     );
-  //   } else {
-  //   }
-  // };
 
   return currentUser?.userType === 'free-trial' ? (
     <Box
@@ -128,9 +110,44 @@ export default function Subscription() {
       </SimpleGrid>
     </Box>
   ) : (
-    <Box>
-      <ChangeCreditCard />
-      <CancelSubscription />
+    <Box display="flex">
+      <Container maxW={'5xl'} py={12}>
+        <Stack
+          border={'1px solid transparent'}
+          borderRadius={'8px'}
+          boxShadow={'0px 0px 10px -2px #ACACAC'}
+          padding="20px"
+          mb="60px"
+        >
+          <Heading size="md" className="sub-heading">
+            Cardurile tale
+          </Heading>
+          <Box display="grid" gap="20px" textAlign="center">
+            {currentUser?.ccLast4 ? (
+              <>
+                <Heading size="sm">
+                  Ai un card salvat in procesatorul de plati
+                </Heading>
+                <Text>
+                  Ultimele <b>4 cifre</b> ale cardului tau sunt:{' '}
+                  <b>{currentUser?.ccLast4}</b>
+                </Text>
+                <ChangeCreditCard />
+              </>
+            ) : (
+              <>
+                <Heading size="sm">Nu ai nici un card adaugat</Heading>
+                <Text>
+                  Pentru a putea plati mai usor, adauga cardul tau.Poti oricand
+                  sa stergi cardurile din aplicatie.
+                </Text>
+                <Button children="Adauga un card" />
+              </>
+            )}
+          </Box>
+        </Stack>
+        <CancelSubscription />
+      </Container>
     </Box>
   );
 }

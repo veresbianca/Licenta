@@ -66,11 +66,15 @@ const App = withContextProvider(() => {
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
         <Router>
-          <Grid gridTemplateColumns={'auto 1fr'}>
+          <Grid
+            gridTemplateColumns={'auto 1fr'}
+            position="relative"
+            minH="100vh"
+          >
             <GridItem>
               <Sidebar />
             </GridItem>
-            <GridItem>
+            <GridItem display="grid" gridTemplateRows="auto 1fr auto">
               <Navbar />
               <Routes>
                 <Route

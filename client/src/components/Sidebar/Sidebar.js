@@ -42,7 +42,6 @@ export default function Sidebar() {
       pos="sticky"
       left="5"
       h="100%"
-      marginTop="2.5vh"
       boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
       borderRadius={navSize === 'small' ? '15px' : '30px'}
       w={navSize === 'small' ? '75px' : '200px'}
@@ -50,13 +49,7 @@ export default function Sidebar() {
       flexDir="column"
       justifyContent="space-between"
     >
-      <Flex
-        p="10%"
-        flexDir="column"
-        w="100%"
-        alignItems={navSize === 'small' ? 'center' : 'flex-start'}
-        as="nav"
-      >
+      <Flex p="10%" flexDir="column" w="100%" alignItems="center" as="nav">
         <Link as={RouterLink} to="/">
           <Image boxSize="48px" objectFit="contain" src={logoImg} alt="Logo" />
         </Link>
@@ -72,7 +65,7 @@ export default function Sidebar() {
               navSize={navSize}
               icon={FiHome}
               color="black"
-              title="Home"
+              title="Acasă"
               link="/"
               active={location.pathname === '/' ? true : false}
             />
@@ -81,7 +74,7 @@ export default function Sidebar() {
               navSize={navSize}
               icon={FiUser}
               color="black"
-              title="Profile"
+              title="Profil"
               link="/profile"
               active={location.pathname === '/profile' ? true : false}
             />
@@ -90,7 +83,7 @@ export default function Sidebar() {
               navSize={navSize}
               icon={FiMessageCircle}
               color="black"
-              title="Posts"
+              title="Postări"
               link="/posts"
               active={location.pathname === '/posts' ? true : false}
             />
@@ -98,7 +91,7 @@ export default function Sidebar() {
             <NavItem
               navSize={navSize}
               color="black"
-              title="Meals"
+              title="Mese"
               link="/meal-plan"
               active={location.pathname === '/meals' ? true : false}
             />
@@ -107,7 +100,7 @@ export default function Sidebar() {
               navSize={navSize}
               icon={FiUsers}
               color="black"
-              title="Team"
+              title="Echipa"
               link="/team"
               active={location.pathname === '/team' ? true : false}
             ></NavItem>
@@ -132,7 +125,7 @@ export default function Sidebar() {
               navSize={navSize}
               icon={FiActivity}
               color="black"
-              title="Exercice"
+              title="Exerciții"
               link="/exercice"
               active={location.pathname === '/exercice' ? true : false}
             ></NavItem>
@@ -141,7 +134,7 @@ export default function Sidebar() {
               navSize={navSize}
               icon={FiLogOut}
               color="black"
-              title="Logout"
+              title="Deconectare"
               link="/"
               onClick={e => {
                 e.preventDefault();

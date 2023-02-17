@@ -140,8 +140,6 @@ export default function Profile() {
     );
   }
 
-  //post a goal
-
   const textChange = event => {
     const { value } = event.target;
     setGoalData(value);
@@ -158,7 +156,6 @@ export default function Profile() {
           goalExercise: {},
         },
       },
-      // refetchQueries: [{ query: GET_POSTS }, 'posts'],
     });
   };
 
@@ -166,7 +163,7 @@ export default function Profile() {
     <>
       <Box display="flex">
         <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
-          <Heading mb="40px">Your Profile</Heading>
+          <Heading mb="40px">Profilul tău</Heading>
           <Stack
             border={'1px solid transparent'}
             borderRadius={'8px'}
@@ -181,7 +178,7 @@ export default function Profile() {
               gridTemplateColumns="auto 1fr"
               alignItems="center"
             >
-              <Heading size="sm">Username:</Heading>
+              <Heading size="sm">Nume:</Heading>
               <span>{user.username}</span>
             </Box>
             <Box
@@ -203,49 +200,16 @@ export default function Profile() {
             padding="20px"
           >
             <Heading size="md" className="sub-heading">
-              Cardurile tale
-            </Heading>
-            <Box display="grid" gap="20px" textAlign="center">
-              {user?.ccLast4 ? (
-                <>
-                  <Heading size="sm">
-                    Ai un card salvat in procesatorul de plati
-                  </Heading>
-                  <Text>
-                    Ultimele <b>4 cifre</b> ale cardului tau sunt:{' '}
-                    <b>{user?.ccLast4}</b>
-                  </Text>
-                </>
-              ) : (
-                <>
-                  <Heading size="sm">Nu ai nici un card adaugat</Heading>
-                  <Text>
-                    Pentru a putea plati mai usor, adauga cardul tau.Poti
-                    oricand sa stergi cardurile din aplicatie.
-                  </Text>
-                  <Button children="Adauga un card" />
-                </>
-              )}
-            </Box>
-          </Stack>
-
-          <Stack
-            border={'1px solid transparent'}
-            borderRadius={'8px'}
-            boxShadow={'0px 0px 10px -2px #ACACAC'}
-            padding="20px"
-          >
-            <Heading size="md" className="sub-heading">
-              INFORMATII PERSONALE
+              INFORMAȚII PERSONALE
             </Heading>
             <Box>
               <Box mb="20px">
-                Te rugam sa ne tii la curent cu orice modificare a acestor date.
+                Te rugăm să ne ții la curent cu orice modificare a acestor date.
               </Box>
               <SimpleGrid gridTemplateColumns="1fr 1fr">
                 <SimpleGrid gap="20px">
                   <Box>
-                    <Heading size="xs">Username</Heading>
+                    <Heading size="xs">Nume</Heading>
                     <div>{user.username}</div>
                   </Box>
                   <Box>
@@ -275,7 +239,7 @@ export default function Profile() {
 
                   <Link as={RouterLink} to="/profile/edit">
                     <Button
-                      children="Modifica date personale"
+                      children="Modifică date personale"
                       leftIcon={<BsFillPersonLinesFill />}
                       px={8}
                       bg={buttonBg}
@@ -295,7 +259,7 @@ export default function Profile() {
                     name={user.username}
                     src="https://bit.ly/"
                   />{' '}
-                  <Button children="Adauga poza de profil" />
+                  <Button children="Adaugă poza de profil" />
                 </SimpleGrid>
               </SimpleGrid>
             </Box>
@@ -304,9 +268,9 @@ export default function Profile() {
               status="error"
             >
               <AlertIcon />
-              <AlertTitle>Your profile is not complete!</AlertTitle>
+              <AlertTitle>Profilul tău nu este complet!</AlertTitle>
               <AlertDescription>
-                Adauga toate informatiile pe profilul tau.
+                Adaugă toate informațiile pe profilul tău.
               </AlertDescription>
             </Alert>
           </Stack>
@@ -360,7 +324,7 @@ export default function Profile() {
             padding="20px"
           >
             <Heading size="md" className="sub-heading">
-              Planul tau de exercitii
+              Planul tău de exerciții
             </Heading>
             <Button
               leftIcon={<BsFillPlusCircleFill />}
@@ -374,14 +338,14 @@ export default function Profile() {
               }}
               // onClick={console.log("poke")}
             >
-              Create Exercise Plan
+              Crează planul de exerciții
             </Button>
             <Alert
               display={user.exercisePlan.length > 0 ? 'none' : 'flex'}
               status="error"
             >
               <AlertIcon />
-              <AlertTitle>You don't have an exercise plan!</AlertTitle>
+              <AlertTitle>Nu ai un plan de exerciții!</AlertTitle>
             </Alert>
           </Stack>
 
@@ -392,7 +356,7 @@ export default function Profile() {
             padding="20px"
           >
             <Heading size="md" className="sub-heading">
-              Planul tau alimentar
+              Planul tău alimentar
             </Heading>
             <Link as={RouterLink} to="/meal-plan">
               <Button
@@ -405,9 +369,8 @@ export default function Profile() {
                   transform: 'translateY(-2px)',
                   boxShadow: 'lg',
                 }}
-                // onClick={console.log("poke")}
               >
-                Create Meal Plan
+                Crează planul tău alimentar
               </Button>
             </Link>
             <Alert
@@ -415,7 +378,7 @@ export default function Profile() {
               status="error"
             >
               <AlertIcon />
-              <AlertTitle>You don't have a meal plan!</AlertTitle>
+              <AlertTitle>Nu ai un plan alimentar!</AlertTitle>
             </Alert>
           </Stack>
 
@@ -426,7 +389,7 @@ export default function Profile() {
             padding="20px"
           >
             <Heading size="md" className="sub-heading">
-              Cea mai recenta postare
+              Cea mai recentă postare
             </Heading>
             <Link as={RouterLink} to="/posts">
               <Button
@@ -440,7 +403,7 @@ export default function Profile() {
                   boxShadow: 'lg',
                 }}
               >
-                Create Post
+                Adaugă o postare
               </Button>
             </Link>
             <Alert
@@ -448,9 +411,9 @@ export default function Profile() {
               status="error"
             >
               <AlertIcon />
-              <AlertTitle>Your don't any posts!</AlertTitle>
+              <AlertTitle>Nu ai postări!</AlertTitle>
               <AlertDescription>
-                Incepe sa scrii in jurnalul tau.
+                Incepe să scrii în jurnalul tau.
               </AlertDescription>
             </Alert>
           </Stack>
@@ -490,7 +453,7 @@ export default function Profile() {
       <Modal isOpen={removeModalIsOpen} onClose={onRemoveAccountClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Esti sigur ca vrei sa stergi contul?</ModalHeader>
+          <ModalHeader>Ești sigur că vrei sa stergi contul?</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             Daca stergi contul, nu o sa il mai poti recupera.

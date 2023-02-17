@@ -49,13 +49,13 @@ export default function CancelSubscription() {
   //   };
 
   return (
-    <Container>
-      <Text>
-        Anuleaza subscriptia trimitand un email la adresa: healthystudio@app.com
+    <Box>
+      <Text mb="20px">
+        Anulează subscripția trimițând un email la adresa: healthystudio@app.com
       </Text>
-      <Button type="button" onClick={sendEmailToRemoveUser()}>
+      <Button type="button" onClick={() => sendEmailToRemoveUser()}>
         Trimite email
       </Button>
-    </Container>
+    </Box>
   );
 }
