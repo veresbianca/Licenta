@@ -84,6 +84,7 @@ const typeDefs = gql`
     photo: String
     unit: String
     value: Float
+    date: Date
   }
   """
   Exercise Schema will store exercise plan user created
@@ -169,6 +170,7 @@ const typeDefs = gql`
     photo: String
     unit: String
     value: Float
+    date: Date
   }
   # will use ExerciseInput to add new goal and post
   input ExerciseInput {
@@ -265,6 +267,7 @@ const typeDefs = gql`
       photo: String
       unit: String
       value: Float
+      date: Date
     ): Meal
     # Update user Meal plan information
     updateMeal(

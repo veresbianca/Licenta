@@ -157,8 +157,7 @@ const resolvers = {
     },
     // update user information
     updateUser: async (parent, args, context) => {
-      if (!context.user)
-        throw new AuthenticationError("You must be logged in to update user!");
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       const updatedUser = await User.findByIdAndUpdate(
         { _id: context.user._id },
         { $set: args },
@@ -171,13 +170,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("No user with this email found!");
+        throw new AuthenticationError("Nu există nici un user cu acest email!");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect password!");
+        throw new AuthenticationError("Parolă incorectă!");
       }
 
       const token = signToken(user);
@@ -188,12 +187,17 @@ const resolvers = {
       const user = await User.findOne({ email });
       const userId = user.id;
 
-      if (!context.user)
-        throw new AuthenticationError("You must be logged in to add a friend!");
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
 
       updatedUser = await User.findByIdAndUpdate(
         { _id: context.user._id },
         { $addToSet: { friends: userId } },
+        { new: true }
+      );
+
+      await User.findByIdAndUpdate(
+        { _id: userId },
+        { $addToSet: { friends: context.user._id } },
         { new: true }
       );
 
@@ -204,8 +208,7 @@ const resolvers = {
       const user = await User.findOne({ email });
       const userId = user.id;
 
-      if (!context.user)
-        throw new AuthenticationError("You must be logged in to add a friend!");
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
 
       updatedUser = await User.findByIdAndUpdate(
         { _id: context.user._id },
@@ -218,10 +221,7 @@ const resolvers = {
     // add exercise plan
     addExercise: async (parent, args, context) => {
       let updatedUser;
-      if (!context.user)
-        throw new AuthenticationError(
-          "You must be logged in to add Exercise plan!"
-        );
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       console.log(args);
       // if (args.new) {
       const exercise = await Exercise.create(args);
@@ -232,24 +232,12 @@ const resolvers = {
         { $addToSet: { exercisePlan: exerciseId } },
         { new: true }
       );
-      // } else {
-      //   const exerciseId = args.id;
-
-      //   updatedUser = await User.findByIdAndUpdate(
-      //     { _id: context.user._id },
-      //     { $addToSet: { exercisePlan: exerciseId } },
-      //     { new: true }
-      //   );
-      // }
 
       return updatedUser;
     },
     // update Exercise plan
     updateExercise: async (parent, args, context) => {
-      if (!context.user)
-        throw new AuthenticationError(
-          "You must be logged in to update Exercise plan!"
-        );
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       const updatedExercise = await Exercise.findByIdAndUpdate(
         { _id: args.id },
         { $set: args },
@@ -259,10 +247,7 @@ const resolvers = {
     },
     // remove Exercise plan
     removeExercise: async (parent, { id }, context) => {
-      if (!context.user)
-        throw new AuthenticationError(
-          "You must be logged in to update Exercise plan!"
-        );
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       const exercise = await Exercise.findOneAndDelete({
         _id: id,
       });
@@ -275,10 +260,7 @@ const resolvers = {
     },
     // add meal plan
     addMeal: async (parent, args, context) => {
-      if (!context.user)
-        throw new AuthenticationError(
-          "You must be logged in to add Meal plan!"
-        );
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       const meal = await Meal.create(args);
       const mealId = meal.id;
       const updatedUser = await User.findByIdAndUpdate(
@@ -290,10 +272,7 @@ const resolvers = {
     },
     // update meal plan
     updateMeal: async (parent, args, context) => {
-      if (!context.user)
-        throw new AuthenticationError(
-          "You must be logged in to update Meal plan!"
-        );
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       const updatedMeal = await Meal.findByIdAndUpdate(
         { _id: args.id },
         { $set: args },
@@ -303,10 +282,7 @@ const resolvers = {
     },
     // remove meal plan
     removeMeal: async (parent, { id }, context) => {
-      if (!context.user)
-        throw new AuthenticationError(
-          "You must be logged in to update Meal plan!"
-        );
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       const meal = await Meal.findOneAndDelete({
         _id: id,
       });
@@ -346,10 +322,7 @@ const resolvers = {
     },
     // add post
     addPost: async (parent, postInput, context) => {
-      if (!context.user)
-        throw new AuthenticationError(
-          "You must be logged in to add Meal plan!"
-        );
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       let postExerciseList = [];
       // iterate over array of exercise and insert each to exercise collection
 
@@ -395,8 +368,7 @@ const resolvers = {
     },
     // add comment to post
     addComment: async (parent, commentInput, context) => {
-      if (!context.user)
-        throw new AuthenticationError("You must be logged in to add comment!");
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       const postId = commentInput.input.postId;
       const updatePost = await Post.findByIdAndUpdate(
         { _id: postId },
@@ -407,8 +379,7 @@ const resolvers = {
     },
     // add likes
     updateLikes: async (parent, { postId }, context) => {
-      if (!context.user)
-        throw new AuthenticationError("You must be logged in to like!");
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       const userId = new Types.ObjectId(context.user._id);
       const post = await Post.findOne({ _id: postId });
       let updatePost;
@@ -436,8 +407,7 @@ const resolvers = {
     },
     // add comment likes
     updateCommentLikes: async (parent, { postId, commentId }, context) => {
-      if (!context.user)
-        throw new AuthenticationError("You must be logged in to like!");
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       const userId = new Types.ObjectId(context.user._id);
       const post = await Post.findOne({
         _id: postId,
@@ -482,10 +452,7 @@ const resolvers = {
     createSubscription: async (_, { source, ccLast4, type }, context) => {
       let subscriptionPlan;
 
-      if (!context.user)
-        throw new AuthenticationError(
-          "You must be logged in to buy a subscription!"
-        );
+      if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
 
       const user = await User.findOne({ _id: context.user._id });
 

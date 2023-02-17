@@ -137,6 +137,7 @@ export const ADD_MEAL = gql`
     $photo: String
     $unit: String
     $value: Float
+    $date: Date
   ) {
     addMeal(
       mealAuthor: $mealAuthor
@@ -149,6 +150,7 @@ export const ADD_MEAL = gql`
       photo: $photo
       unit: $unit
       value: $value
+      date: $date
     ) {
       id
       mealAuthor
@@ -161,6 +163,7 @@ export const ADD_MEAL = gql`
       photo
       unit
       value
+      date
     }
   }
 `;
@@ -261,6 +264,7 @@ export const ADD_POST = gql`
         photo
         unit
         value
+        date
       }
       tags
       createdAt

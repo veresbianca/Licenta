@@ -493,8 +493,6 @@ export default function Component({ postUpdate }) {
             mt={0}
             align="center"
           >
-            <Center></Center>
-
             <GridItem mt={[0, null, 0]} colSpan={4}>
               <chakra.form
                 method="POST"
@@ -511,8 +509,6 @@ export default function Component({ postUpdate }) {
                   px={4}
                   py={5}
                   bg={useColorModeValue('white', 'gray.700')}
-                  spacing={4}
-                  p={2}
                   align="stretch"
                 >
                   <FormControl id="email" mt={1}>
@@ -537,7 +533,7 @@ export default function Component({ postUpdate }) {
                       />
                     </FormControl>
 
-                    <AccordionItem>
+                    {/* <AccordionItem>
                       <h2>
                         <AccordionButton>
                           <AccordionPanel>
@@ -600,11 +596,11 @@ export default function Component({ postUpdate }) {
                           <AccordionIcon />
                         </AccordionButton>
                       </h2>
-                    </AccordionItem>
+                    </AccordionItem> */}
                   </Accordion>
-                  {renderExercise()}
+                  {/* {renderExercise()}
                   {renderCardio()}
-                  {renderMeal()}
+                  {renderMeal()} */}
                 </Stack>
                 <FormControl>
                   <Center pb="2">

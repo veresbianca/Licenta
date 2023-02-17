@@ -32,6 +32,7 @@ export default function Component() {
   const [mealTypeValue, setMealTypeValue] = useState('');
   const [unit, setUnit] = useState('');
   const [valueMeal, setValueMeal] = useState(0);
+  const [mealDate, setMealDate] = useState();
   const [meal, setMeal] = useState(false);
   const [results, setResults] = useState(null);
   const [data, setData] = useState(null);
@@ -41,6 +42,12 @@ export default function Component() {
   const valueMealChange = event => {
     const { value } = event.target;
     setValueMeal(parseInt(value));
+  };
+
+  const dateMealOnChange = event => {
+    const { value } = event.target;
+    console.log(value);
+    setMealDate(value);
   };
 
   const handleChange = event => {
@@ -144,6 +151,16 @@ export default function Component() {
         </FormControl>
 
         <FormControl margin="20px 0">
+          <Heading size="md" children="date" mb="20px" />
+          <Input
+            id="date"
+            name="date"
+            type="date"
+            onChange={dateMealOnChange}
+          />
+        </FormControl>
+
+        <FormControl margin="20px 0">
           <Heading
             size="md"
             children="Cauta alimente in baza de date"
@@ -188,7 +205,7 @@ export default function Component() {
     );
   };
 
-  const addMeal = async (type, unit, value) => {
+  const addMeal = async (type, unit, value, date) => {
     let newMeals;
 
     if (meal === false) {
@@ -218,6 +235,7 @@ export default function Component() {
         type: type,
         unit: unit,
         value: value,
+        date: date,
         mealAuthor: user.data.username,
         calories: newMeals[0].calories,
         proteins: newMeals[0].proteins,
@@ -237,7 +255,7 @@ export default function Component() {
             method="POST"
             onSubmit={e => {
               e.preventDefault();
-              return addMeal(mealTypeValue, unit, valueMeal);
+              return addMeal(mealTypeValue, unit, valueMeal, mealDate);
             }}
           >
             <Center>

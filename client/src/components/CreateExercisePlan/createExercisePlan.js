@@ -12,6 +12,7 @@ import {
   Button,
   Radio,
   RadioGroup,
+  Container,
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { ADD_EXERCISE } from '../../utils/mutations';
@@ -59,108 +60,105 @@ export default function ExercisePlan() {
   });
 
   return (
-    <>
-      <Flex
-        minH={'100vh'}
-        align={'center'}
-        justify={'center'}
-        bg={useColorModeValue('gray.50', 'gray.800')}
-      >
-        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-          <Text fonstSize={'lg'} color={'gray.600'}>
-            If you can't find anything you like, add a custom exercise
-          </Text>
+    <Box display="flex" bg="gray.100">
+      <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
+        <Heading fonstSize={'lg'}>
+          Dacă nu găsesți nimic care să îți placă, adaugă un exercițiu nou
+        </Heading>
 
-          <Box
-            rounded={'lg'}
-            bg={useColorModeValue('white', 'gray.700')}
-            boxShadow={'lg'}
-            p={8}
-          >
-            <Stack spacing={4}>
-              <form onSubmit={formik.handleSubmit}>
-                <FormControl>
-                  <FormLabel htmlFor="workout">Workout name</FormLabel>
-                  <Input
-                    id="workout"
-                    name="workout"
-                    type="text"
-                    variant="filled"
-                    // use handlechange, variable name is same as variable above
-                    onChange={formik.handleChange}
-                    value={formik.values.initialValues.workouts.workout}
-                  />
-                </FormControl>
-                <FormControl>
-                  <FormLabel htmlFor="reps">Reps</FormLabel>
-                  <Input
-                    id="reps"
-                    name="reps"
-                    type="number"
-                    variant="filled"
-                    // use handlechange, variable name is same as variable above
-                    onChange={formik.handleChange}
-                    value={formik.values.initialValues.workouts.reps}
-                  />
-                </FormControl>
-                <FormControl>
-                  <FormLabel htmlFor="sets">Sets</FormLabel>
-                  <Input
-                    id="sets"
-                    name="sets"
-                    type="number"
-                    variant="filled"
-                    onChange={formik.handleChange}
-                    value={formik.values.initialValues.workouts.sets}
-                  />
-                </FormControl>
+        <Box
+          rounded={'lg'}
+          bg={useColorModeValue('white', 'gray.700')}
+          boxShadow={'lg'}
+          p={8}
+        >
+          <Stack spacing={4}>
+            <form onSubmit={formik.handleSubmit}>
+              <FormControl>
+                <FormLabel htmlFor="workout">Nume</FormLabel>
+                <Input
+                  id="workout"
+                  name="workout"
+                  type="text"
+                  variant="filled"
+                  // use handlechange, variable name is same as variable above
+                  onChange={formik.handleChange}
+                  value={formik.values.initialValues.workouts.workout}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel htmlFor="reps">Repetări</FormLabel>
+                <Input
+                  id="reps"
+                  name="reps"
+                  type="number"
+                  variant="filled"
+                  // use handlechange, variable name is same as variable above
+                  onChange={formik.handleChange}
+                  value={formik.values.initialValues.workouts.reps}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel htmlFor="sets">Seturi</FormLabel>
+                <Input
+                  id="sets"
+                  name="sets"
+                  type="number"
+                  variant="filled"
+                  onChange={formik.handleChange}
+                  value={formik.values.initialValues.workouts.sets}
+                />
+              </FormControl>
 
-                <FormControl>
-                  <FormLabel htmlFor="date">Date</FormLabel>
-                  <Input
-                    id="date"
-                    name="date"
-                    type="date"
-                    variant="filled"
-                    onChange={formik.handleChange}
-                    value={formik.values.initialValues.workouts.date}
-                  />
-                </FormControl>
+              <FormControl>
+                <FormLabel htmlFor="date">Dată</FormLabel>
+                <Input
+                  id="date"
+                  name="date"
+                  type="date"
+                  variant="filled"
+                  onChange={formik.handleChange}
+                  value={formik.values.initialValues.workouts.date}
+                />
+              </FormControl>
 
-                <FormControl as="fieldset" margin="20px 0">
-                  <Heading size="md" children="Choose workout type" mb="20px" />
+              <FormControl as="fieldset" margin="20px 0">
+                <Heading
+                  size="md"
+                  children="Alege tipul exercițiului"
+                  mb="20px"
+                />
 
-                  <RadioGroup
-                    name="type"
-                    onClick={formik.handleChange}
-                    value={formik.values.initialValues.workouts.type}
-                  >
-                    <Stack spacing="24px" direction="row">
-                      <Radio value="Legs">Legs</Radio>
-                      <Radio value="Chest">Chest</Radio>
-                      <Radio value="Abs">Abs</Radio>
-                      <Radio value="Triceps">Triceps</Radio>
-                      <Radio value="Biceps">Biceps</Radio>
-                      <Radio value="Glutes">Glutes</Radio>
-                    </Stack>
-                  </RadioGroup>
-                </FormControl>
-
-                <Button
-                  type="submit"
-                  bg={'blue.400'}
-                  color={'white'}
-                  _hover={{
-                    bg: 'blue.500',
-                  }}
+                <RadioGroup
+                  name="type"
+                  onClick={formik.handleChange}
+                  value={formik.values.initialValues.workouts.type}
                 >
-                  Create Workout
-                </Button>
-              </form>
-            </Stack>
-          </Box>
-        </Stack>
-      </Flex>
-    </>
+                  <Stack spacing="24px" direction="row">
+                    <Radio value="Legs">Picioare</Radio>
+                    <Radio value="Chest">Piept</Radio>
+                    <Radio value="Abs">Abdomen</Radio>
+                    <Radio value="Triceps">Triceps</Radio>
+                    <Radio value="Biceps">Biceps</Radio>
+                    <Radio value="Glutes">Fesieri</Radio>
+                  </Stack>
+                </RadioGroup>
+              </FormControl>
+
+              <Button
+                type="submit"
+                bg={'blue.400'}
+                color={'white'}
+                _hover={{
+                  bg: 'blue.500',
+                }}
+              >
+                Crează exercițiu
+              </Button>
+            </form>
+          </Stack>
+        </Box>
+      </Container>
+    </Box>
   );
 }

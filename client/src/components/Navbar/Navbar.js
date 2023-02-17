@@ -129,7 +129,7 @@ export default function Navbar() {
                         Auth.logout();
                       }}
                     >
-                      Logout
+                      Deconectare
                     </MenuItem>
                   </MenuList>
                 </Menu>
@@ -143,7 +143,7 @@ export default function Navbar() {
                         bg: 'lightgreen',
                       }}
                     >
-                      Log in
+                      Conectare
                     </Button>
                   </Link>
                   <Link as={RouterLink} to="/signup">
@@ -154,7 +154,7 @@ export default function Navbar() {
                         bg: 'darkgreen',
                       }}
                     >
-                      Sign up
+                      Înregistrare
                     </Button>
                   </Link>
                 </>

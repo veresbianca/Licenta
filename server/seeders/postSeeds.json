@@ -1,30 +1,8 @@
 [
   {
-    "postAuthor":"johnwick1",
-    "message": "first!",
-    "likes": 1,
-    "tags": ["#first"],
-    "comments": [
-      {
-        "commentAuthor": "fitguy",
-        "message":"hi",
-        "likes":3,
-        "tags": ["#hi", "#hello", "#thisisatag"]
-      }
-    ]
-  },
-  {
-    "postAuthor":"fitguy",
-    "message": "second!",
-    "likes": 24,
-    "tags": ["#second", "#anothertag", "#thirdtag"],
-    "comments": [
-      {
-        "commentAuthor": "johnwick1",
-        "message":"hello",
-        "likes":3,
-        "tags": ["#hello"]
-      }
-    ]
+    "postAuthor": "administrator",
+    "message": "Acesta este o postare! În felul acesta putem să comunicăm intre noi. ",
+    "likes": 0,
+    "tags": ["#first"]
   }
 ]

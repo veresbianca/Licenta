@@ -44,9 +44,9 @@ db.once("open", async () => {
       await Exercise.create(exerciseSeeds[i]);
     }
 
-    for (let i = 0; i < mealSeeds.length; i++) {
-      await Meal.create(mealSeeds[i]);
-    }
+    // for (let i = 0; i < mealSeeds.length; i++) {
+    //   await Meal.create(mealSeeds[i]);
+    // }
   } catch (err) {
     console.error(err);
     process.exit(1);

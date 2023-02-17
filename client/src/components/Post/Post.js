@@ -186,10 +186,7 @@ export default function Post({
           <Stack direction={'row'} justifyContent={'space-between'}>
             <Stack direction={'row'} mt={6} justifyContent={'space-between'}>
               <Stack direction={'row'} spacing={4} align={'center'}>
-                <Avatar
-                  src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-                  alt={'Author'}
-                />
+                <Avatar alt={'Author'} />
                 <Stack direction={'column'} spacing={0} fontSize={'sm'}>
                   <Text fontWeight={600}>{postAuthor}</Text>
                   <Text color={'gray.500'}>{createdAt}</Text>

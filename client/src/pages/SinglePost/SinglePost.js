@@ -5,7 +5,10 @@ import {
   Center,
   CircularProgress,
   Container,
+  Link,
+  Box,
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_POST } from '../../utils/queries';
@@ -13,7 +16,6 @@ import Auth from '../../utils/auth';
 import Post from '../../components/Post';
 import CreateComment from '../../components/CreateComment';
 import Comment from '../../components/Comment';
-import Sidebar from '../../components/Sidebar';
 
 export default function SinglePost() {
   const { postId } = useParams();
@@ -51,17 +53,18 @@ export default function SinglePost() {
     );
   }
 
-  console.log(data);
-
   return (
     <>
-      <Grid
-        gap={1}
-        templateRows="repeat(2, auto 1fr)"
-        templateColumns="repeat(5, 1fr)"
-        bg="lightgrey"
-      >
+      <Grid gap={1} bg="lightgrey">
         <GridItem row span={1} colSpan={4}>
+          <Box display="flex" bg="gray.100">
+            <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
+              <Link as={RouterLink} to="/posts" fontWeight="bold">
+                {'<'} Înapoi la postări
+              </Link>
+            </Container>
+          </Box>
+
           <Post
             key={id}
             postId={id}

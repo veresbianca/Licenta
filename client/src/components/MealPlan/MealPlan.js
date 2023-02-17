@@ -38,6 +38,13 @@ import {
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../../utils/queries';
 
+const checkDate = date => {
+  const today = new Date();
+  const comparisonDate = new Date(date);
+
+  return today.getDate() === comparisonDate.getDate();
+};
+
 export default function MealPlan() {
   const { loading, error, data } = useQuery(QUERY_ME);
   console.log({ data });
@@ -85,7 +92,7 @@ export default function MealPlan() {
 
           <UnorderedList listStyleType="none" margin={0}>
             {breakfast.map((meal, index, { length }) => {
-              return (
+              return checkDate(meal.date) ? (
                 <>
                   <ListItem
                     key={index}
@@ -103,6 +110,8 @@ export default function MealPlan() {
                   </ListItem>
                   <Divider display={length - 1 === index ? 'none' : 'block'} />
                 </>
+              ) : (
+                <></>
               );
             })}
           </UnorderedList>

@@ -29,6 +29,9 @@ const mealSchema = new Schema({
   value: {
     type: Number,
   },
+  date: {
+    type: Date,
+  },
 });
 
 const Meal = model("Meal", mealSchema);

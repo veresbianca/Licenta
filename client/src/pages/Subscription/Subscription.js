@@ -68,11 +68,11 @@ export default function Subscription() {
             ],
           }}
           button={
-            <ActionButton variant="outline" borderWidth="2px">
+            <ActionButton>
               <StripeCheckout
                 token={token => addSubscription(token, 'monthly')}
                 stripeKey="pk_test_51MTrHCL1p6qnKEuvenqU57mxJDfM184hWdgAeXHPRftG3Bz6xVHcxmsw4jkP6gtT5LJVRAkDfIRbG3nfHDpieFCl00sPVjdoUs"
-                amount={50}
+                amount={5000}
                 label="Cumpara acum"
                 currency="RON"
               />
@@ -100,7 +100,7 @@ export default function Subscription() {
               <StripeCheckout
                 token={token => addSubscription(token, 'yearly')}
                 stripeKey="pk_test_51MTrHCL1p6qnKEuvenqU57mxJDfM184hWdgAeXHPRftG3Bz6xVHcxmsw4jkP6gtT5LJVRAkDfIRbG3nfHDpieFCl00sPVjdoUs"
-                amount={4200}
+                amount={420000}
                 label="Cumpara acum"
                 currency="RON"
               />

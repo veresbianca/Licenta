@@ -90,24 +90,24 @@ export default function AddExercise({ exerciseType }) {
 
                 <Box>
                   <FormControl>
-                    <FormLabel>Reps</FormLabel>
+                    <FormLabel>Repetări</FormLabel>
                     <Input type="number" onChange={repsChange} />
                   </FormControl>
 
                   <FormControl>
-                    <FormLabel>Sets</FormLabel>
+                    <FormLabel>Seturi</FormLabel>
                     <Input type="number" onChange={setsChange} />
                   </FormControl>
 
                   <FormControl>
-                    <FormLabel>Date</FormLabel>
+                    <FormLabel>Dată</FormLabel>
                     <Input type="date" onChange={dateChange} />
                   </FormControl>
                 </Box>
 
                 <Button
                   type="submit"
-                  children="Add"
+                  children="Adaugă"
                   width="120px"
                   alignSelf="end"
                   justifySelf="center"
@@ -117,7 +117,7 @@ export default function AddExercise({ exerciseType }) {
                       isClosable: true,
                       render: () => (
                         <Box color="white" p={3} bg="blue.500">
-                          {exercise.name} added.
+                          {exercise.name} adăugat.
                         </Box>
                       ),
                     });

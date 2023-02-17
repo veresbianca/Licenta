@@ -38,6 +38,7 @@ export const QUERY_ME = gql`
         photo
         unit
         value
+        date
       }
       exercisePlan {
         id
@@ -80,6 +81,7 @@ export const QUERY_ME = gql`
           photo
           unit
           value
+          date
         }
         createdAt
         likes
@@ -125,6 +127,7 @@ export const GET_POSTS = gql`
         photo
         unit
         value
+        date
       }
       tags
       comments {
@@ -173,6 +176,7 @@ export const GET_POST = gql`
         photo
         unit
         value
+        date
       }
       tags
       comments {

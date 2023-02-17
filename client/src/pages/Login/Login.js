@@ -9,6 +9,7 @@ import {
   Button,
   Heading,
   useColorModeValue,
+  Container,
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 
@@ -38,88 +39,76 @@ export default function SimpleCard() {
   });
 
   return (
-    <Flex
-      minH={'100vh'}
-      align={'center'}
-      justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}
-    >
-      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-        <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Log in to your account</Heading>
-        </Stack>
-        <Box
-          rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.700')}
-          boxShadow={'lg'}
-          p={8}
-        >
-          <Stack spacing={4}>
-            <form
-              onSubmit={e => {
-                e.preventDefault();
-                formik.handleSubmit(e);
-              }}
-            >
-              <FormControl>
-                <FormLabel htmlFor="email">Email address</FormLabel>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  variant="filled"
-                  // use handlechange, variable name is same as variable above
-                  onChange={formik.handleChange}
-                  value={formik.values.email}
-                />
-              </FormControl>
-              <FormControl>
-                <FormLabel htmlFor="password">Password</FormLabel>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  variant="filled"
-                  onChange={formik.handleChange}
-                  value={formik.values.password}
-                />
-              </FormControl>
-              <Stack spacing={10}>
-                <Stack
-                  direction={{ base: 'column', sm: 'row' }}
-                  align={'start'}
-                  justify={'space-between'}
-                >
-                  {/* <Checkbox 
-                    id='remember'
-                    name='remember'
-                    onChange={formik.handleChange}
-                    isChecked={formik.values.remember}
-                  >
-                    Remember me
-                  </Checkbox> */}
-                  {/* <Link color={'darkgreen'}>Forgot password?</Link> */}
-                </Stack>
-                <Button
-                  type="submit"
-                  bg={'green'}
-                  color={'white'}
-                  _hover={{
-                    bg: 'darkgreen',
-                  }}
-                >
-                  Sign in
-                </Button>
-              </Stack>
-            </form>
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
+    <Box display="flex" bg="gray.100">
+      <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
+        <Stack spacing={8} py={12} px={6} justifyContent="center">
+          <Stack align={'center'}>
+            <Heading fontSize={'4xl'} align="center">
+              Conectează-te la contul tău
+            </Heading>
           </Stack>
-        </Box>
-      </Stack>
-    </Flex>
+          <Box
+            rounded={'lg'}
+            bg={useColorModeValue('white', 'gray.700')}
+            boxShadow={'lg'}
+            p={8}
+          >
+            <Stack spacing={4}>
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  formik.handleSubmit(e);
+                }}
+              >
+                <FormControl>
+                  <FormLabel htmlFor="email">Adresă email</FormLabel>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    variant="filled"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel htmlFor="password">Parolă</FormLabel>
+                  <Input
+                    id="password"
+                    name="password"
+                    type="password"
+                    variant="filled"
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
+                  />
+                </FormControl>
+                <Stack spacing={10}>
+                  <Stack
+                    direction={{ base: 'column', sm: 'row' }}
+                    align={'start'}
+                    justify={'space-between'}
+                  ></Stack>
+                  <Button
+                    type="submit"
+                    bg={'green'}
+                    color={'white'}
+                    _hover={{
+                      bg: 'darkgreen',
+                    }}
+                  >
+                    Conectare
+                  </Button>
+                </Stack>
+              </form>
+              {error && (
+                <div className="my-3 p-3 bg-danger text-white">
+                  {error.message}
+                </div>
+              )}
+            </Stack>
+          </Box>
+        </Stack>
+      </Container>
+    </Box>
   );
 }

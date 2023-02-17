@@ -105,22 +105,6 @@ export default function Sidebar() {
               active={location.pathname === '/team' ? true : false}
             ></NavItem>
 
-            {currentUser?.userRole === 'FITNESS' ||
-            currentUser?.userRole === 'MEDIC' ||
-            currentUser?.userRole === 'NUTRITIONIST' ||
-            currentUser?.userRole === 'PSIHOLOG' ? (
-              <NavItem
-                navSize={navSize}
-                icon={FiUsers}
-                color="black"
-                title="Clienti"
-                link="/clients"
-                active={location.pathname === '/clients' ? true : false}
-              ></NavItem>
-            ) : (
-              <></>
-            )}
-
             <NavItem
               navSize={navSize}
               icon={FiActivity}

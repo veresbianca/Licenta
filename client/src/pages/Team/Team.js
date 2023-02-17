@@ -95,281 +95,310 @@ export default function Team() {
         boxShadow={'0px 0px 10px -2px #ACACAC'}
         padding="20px"
       >
-        <Heading size="md" className="sub-heading">
-          Echipa ta!
-        </Heading>
-        <UnorderedList>
-          {currentUser?.friends.map((friend, index) => {
-            return (
-              <ListItem display="grid">
-                <Box
-                  display="grid"
-                  gridTemplateColumns="auto 1fr 1fr"
-                  alignItems="center"
-                >
-                  <Heading size="sm">Nume: </Heading>
-                  <span>{friend.username}</span>
-                  <Button onClick={() => handleRemoveFriend(friend.email)}>
-                    Renunță
-                  </Button>
-                </Box>
-                <Box
-                  display="grid"
-                  gridTemplateColumns="auto 1fr"
-                  alignItems="center"
-                >
-                  <Heading size="sm">Rol: </Heading>
-                  <span>{friend.userRole}</span>
-                </Box>
-              </ListItem>
-            );
-          })}
-        </UnorderedList>
+        {currentUser?.userRole === 'BASIC' ||
+        currentUser?.userRole === 'FULL' ? (
+          <Heading size="md" className="sub-heading">
+            Echipa ta!
+          </Heading>
+        ) : (
+          <Heading size="md" className="sub-heading">
+            Clienții tăi!
+          </Heading>
+        )}
+
+        {currentUser?.friends.length > 0 ? (
+          <UnorderedList>
+            {currentUser?.friends.map((friend, index) => {
+              return (
+                <ListItem display="grid" key={index}>
+                  <Box
+                    display="grid"
+                    gridTemplateColumns="auto 1fr 1fr"
+                    alignItems="center"
+                  >
+                    <Heading size="sm">Nume: </Heading>
+                    <span>{friend.username}</span>
+                    <Button onClick={() => handleRemoveFriend(friend.email)}>
+                      Renunță
+                    </Button>
+                  </Box>
+                  <Box
+                    display="grid"
+                    gridTemplateColumns="auto 1fr"
+                    alignItems="center"
+                  >
+                    <Heading size="sm">Rol: </Heading>
+                    <span>{friend.userRole}</span>
+                  </Box>
+                </ListItem>
+              );
+            })}
+          </UnorderedList>
+        ) : (
+          <>
+            <Text>Nu ai pe nimeni in echipa ta.</Text>
+
+            {currentUser?.userRole === 'BASIC' ||
+            currentUser?.userRole === 'FULL' ? (
+              <Text>
+                Alege profesioniștii pentru echipa ta, dintre cei de mai jos!
+              </Text>
+            ) : (
+              <></>
+            )}
+          </>
+        )}
       </Stack>
 
-      <Heading
-        textAlign="center"
-        size="lg"
-        mb="60px"
-        mt="60px"
-        children="Alege din baza noastra de specialisti"
-      />
-      <SimpleGrid gap={'40px'}>
-        <GridItem>
-          <Heading size="md" mb="26px" textAlign="center">
-            Medici
-          </Heading>
-          <SimpleGrid
-            gap="10px"
-            rowGap="60px"
-            gridTemplateColumns={
-              isLargerThan426
-                ? '1fr 1fr 1fr'
-                : isLargerThan728
-                ? '1fr 1fr 1fr 1fr'
-                : '1fr 1fr'
-            }
-          >
-            {medicData?.medic.map((result, index) => {
-              return (
-                <GridItem
-                  display="grid"
-                  padding="10px"
-                  justifyContent="center"
-                  textAlign="center"
-                  _hover={{
-                    boxShadow: '0px 0px 10px -2px #acacac',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <Image
-                    borderRadius="full"
-                    objectFit="contain"
-                    src={`/Medici/${result.photoSrc}.jpg`}
-                    boxSize="150px"
-                    fallbackSrc="https://via.placeholder.com/150"
-                  />
-                  <Text
-                    mt="20px"
-                    height="40px"
-                    fontSize="18px"
-                    _hover={{
-                      fontSize: '24px',
-                    }}
-                  >
-                    {result.username}
-                  </Text>
-                  {!findProf('MEDIC') ? (
-                    <Button
-                      children="Alege"
-                      onClick={() => handleClick(result.email)}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                </GridItem>
-              );
-            })}
-          </SimpleGrid>
-        </GridItem>
+      {currentUser?.userRole === 'BASIC' || currentUser?.userRole === 'FULL' ? (
+        <>
+          <Heading
+            textAlign="center"
+            size="lg"
+            mb="60px"
+            mt="60px"
+            children="Alege din baza noastra de specialisti"
+          />
+          <SimpleGrid gap={'40px'}>
+            <GridItem>
+              <Heading size="md" mb="26px" textAlign="center">
+                Medici
+              </Heading>
+              <SimpleGrid
+                gap="10px"
+                rowGap="60px"
+                gridTemplateColumns={
+                  isLargerThan426
+                    ? '1fr 1fr 1fr'
+                    : isLargerThan728
+                    ? '1fr 1fr 1fr 1fr'
+                    : '1fr 1fr'
+                }
+              >
+                {medicData?.medic.map((result, index) => {
+                  return (
+                    <GridItem
+                      display="grid"
+                      padding="10px"
+                      justifyContent="center"
+                      textAlign="center"
+                      _hover={{
+                        boxShadow: '0px 0px 10px -2px #acacac',
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <Image
+                        borderRadius="full"
+                        objectFit="contain"
+                        src={`/Medici/${result.photoSrc}.jpg`}
+                        boxSize="150px"
+                        fallbackSrc="https://via.placeholder.com/150"
+                      />
+                      <Text
+                        mt="20px"
+                        height="40px"
+                        fontSize="18px"
+                        _hover={{
+                          fontSize: '24px',
+                        }}
+                      >
+                        {result.username}
+                      </Text>
+                      {!findProf('MEDIC') ? (
+                        <Button
+                          children="Alege"
+                          onClick={() => handleClick(result.email)}
+                        />
+                      ) : (
+                        <></>
+                      )}
+                    </GridItem>
+                  );
+                })}
+              </SimpleGrid>
+            </GridItem>
 
-        <GridItem>
-          <Heading size="md" mb="26px" textAlign="center">
-            Antrenori fitness
-          </Heading>
-          <SimpleGrid
-            gap="10px"
-            rowGap="60px"
-            gridTemplateColumns={
-              isLargerThan426
-                ? '1fr 1fr 1fr'
-                : isLargerThan728
-                ? '1fr 1fr 1fr 1fr'
-                : '1fr 1fr'
-            }
-          >
-            {trainnerData?.trainner.map((result, index) => {
-              return (
-                <GridItem
-                  display="grid"
-                  padding="10px"
-                  justifyContent="center"
-                  textAlign="center"
-                  _hover={{
-                    boxShadow: '0px 0px 10px -2px #acacac',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <Image
-                    borderRadius="full"
-                    objectFit="contain"
-                    src={`/Traineri/${result.photoSrc}.jpg`}
-                    boxSize="150px"
-                    fallbackSrc="https://via.placeholder.com/150"
-                  />
-                  <Text
-                    mt="20px"
-                    height="40px"
-                    fontSize="18px"
-                    _hover={{
-                      fontSize: '24px',
-                    }}
-                  >
-                    {result.username}
-                  </Text>
-                  {!findProf('TRAINNER') ? (
-                    <Button
-                      children="Alege"
-                      onClick={() => handleClick(result.email)}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                </GridItem>
-              );
-            })}
-          </SimpleGrid>
-        </GridItem>
+            <GridItem>
+              <Heading size="md" mb="26px" textAlign="center">
+                Antrenori fitness
+              </Heading>
+              <SimpleGrid
+                gap="10px"
+                rowGap="60px"
+                gridTemplateColumns={
+                  isLargerThan426
+                    ? '1fr 1fr 1fr'
+                    : isLargerThan728
+                    ? '1fr 1fr 1fr 1fr'
+                    : '1fr 1fr'
+                }
+              >
+                {trainnerData?.trainner.map((result, index) => {
+                  return (
+                    <GridItem
+                      display="grid"
+                      padding="10px"
+                      justifyContent="center"
+                      textAlign="center"
+                      _hover={{
+                        boxShadow: '0px 0px 10px -2px #acacac',
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <Image
+                        borderRadius="full"
+                        objectFit="contain"
+                        src={`/Traineri/${result.photoSrc}.jpg`}
+                        boxSize="150px"
+                        fallbackSrc="https://via.placeholder.com/150"
+                      />
+                      <Text
+                        mt="20px"
+                        height="40px"
+                        fontSize="18px"
+                        _hover={{
+                          fontSize: '24px',
+                        }}
+                      >
+                        {result.username}
+                      </Text>
+                      {!findProf('TRAINNER') ? (
+                        <Button
+                          children="Alege"
+                          onClick={() => handleClick(result.email)}
+                        />
+                      ) : (
+                        <></>
+                      )}
+                    </GridItem>
+                  );
+                })}
+              </SimpleGrid>
+            </GridItem>
 
-        <GridItem>
-          <Heading size="md" mb="26px" textAlign="center">
-            Nutritionisti
-          </Heading>
-          <SimpleGrid
-            gap="10px"
-            rowGap="60px"
-            gridTemplateColumns={
-              isLargerThan426
-                ? '1fr 1fr 1fr'
-                : isLargerThan728
-                ? '1fr 1fr 1fr 1fr'
-                : '1fr 1fr'
-            }
-          >
-            {nutritionistData?.nutritionist.map((result, index) => {
-              return (
-                <GridItem
-                  display="grid"
-                  padding="10px"
-                  justifyContent="center"
-                  textAlign="center"
-                  _hover={{
-                    boxShadow: '0px 0px 10px -2px #acacac',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <Image
-                    borderRadius="full"
-                    objectFit="contain"
-                    src={`/Nutritionisti/${result.photoSrc}.jpg`}
-                    boxSize="150px"
-                    fallbackSrc="https://via.placeholder.com/150"
-                  />
-                  <Text
-                    mt="20px"
-                    height="40px"
-                    fontSize="18px"
-                    _hover={{
-                      fontSize: '24px',
-                    }}
-                  >
-                    {result.username}
-                  </Text>
-                  {!findProf('NUTRITIONIST') ? (
-                    <Button
-                      children="Alege"
-                      onClick={() => handleClick(result.email)}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                </GridItem>
-              );
-            })}
+            <GridItem>
+              <Heading size="md" mb="26px" textAlign="center">
+                Nutritionisti
+              </Heading>
+              <SimpleGrid
+                gap="10px"
+                rowGap="60px"
+                gridTemplateColumns={
+                  isLargerThan426
+                    ? '1fr 1fr 1fr'
+                    : isLargerThan728
+                    ? '1fr 1fr 1fr 1fr'
+                    : '1fr 1fr'
+                }
+              >
+                {nutritionistData?.nutritionist.map((result, index) => {
+                  return (
+                    <GridItem
+                      display="grid"
+                      padding="10px"
+                      justifyContent="center"
+                      textAlign="center"
+                      _hover={{
+                        boxShadow: '0px 0px 10px -2px #acacac',
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <Image
+                        borderRadius="full"
+                        objectFit="contain"
+                        src={`/Nutritionisti/${result.photoSrc}.jpg`}
+                        boxSize="150px"
+                        fallbackSrc="https://via.placeholder.com/150"
+                      />
+                      <Text
+                        mt="20px"
+                        height="40px"
+                        fontSize="18px"
+                        _hover={{
+                          fontSize: '24px',
+                        }}
+                      >
+                        {result.username}
+                      </Text>
+                      {!findProf('NUTRITIONIST') ? (
+                        <Button
+                          children="Alege"
+                          onClick={() => handleClick(result.email)}
+                        />
+                      ) : (
+                        <></>
+                      )}
+                    </GridItem>
+                  );
+                })}
+              </SimpleGrid>
+            </GridItem>
+            <GridItem>
+              <Heading size="md" mb="26px" textAlign="center">
+                Psihologi
+              </Heading>
+              <SimpleGrid
+                gap="10px"
+                rowGap="60px"
+                gridTemplateColumns={
+                  isLargerThan426
+                    ? '1fr 1fr 1fr'
+                    : isLargerThan728
+                    ? '1fr 1fr 1fr 1fr'
+                    : '1fr 1fr'
+                }
+              >
+                {psihologistData?.psihologist.map((result, index) => {
+                  return (
+                    <GridItem
+                      display="grid"
+                      padding="10px"
+                      justifyContent="center"
+                      textAlign="center"
+                      _hover={{
+                        boxShadow: '0px 0px 10px -2px #acacac',
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <Image
+                        borderRadius="full"
+                        objectFit="contain"
+                        src={`/Nutritionisti/${result.photoSrc}.jpg`}
+                        boxSize="150px"
+                        fallbackSrc="https://via.placeholder.com/150"
+                      />
+                      <Text
+                        mt="20px"
+                        height="40px"
+                        fontSize="18px"
+                        _hover={{
+                          fontSize: '24px',
+                        }}
+                      >
+                        {result.username}
+                      </Text>
+                      {!findProf('PSIHOLOGIST') ? (
+                        <Button
+                          children="Alege"
+                          onClick={() => handleClick(result.email)}
+                        />
+                      ) : (
+                        <></>
+                      )}
+                    </GridItem>
+                  );
+                })}
+              </SimpleGrid>
+            </GridItem>
           </SimpleGrid>
-        </GridItem>
-        <GridItem>
-          <Heading size="md" mb="26px" textAlign="center">
-            Psihologi
-          </Heading>
-          <SimpleGrid
-            gap="10px"
-            rowGap="60px"
-            gridTemplateColumns={
-              isLargerThan426
-                ? '1fr 1fr 1fr'
-                : isLargerThan728
-                ? '1fr 1fr 1fr 1fr'
-                : '1fr 1fr'
-            }
-          >
-            {psihologistData?.psihologist.map((result, index) => {
-              return (
-                <GridItem
-                  display="grid"
-                  padding="10px"
-                  justifyContent="center"
-                  textAlign="center"
-                  _hover={{
-                    boxShadow: '0px 0px 10px -2px #acacac',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <Image
-                    borderRadius="full"
-                    objectFit="contain"
-                    src={`/Nutritionisti/${result.photoSrc}.jpg`}
-                    boxSize="150px"
-                    fallbackSrc="https://via.placeholder.com/150"
-                  />
-                  <Text
-                    mt="20px"
-                    height="40px"
-                    fontSize="18px"
-                    _hover={{
-                      fontSize: '24px',
-                    }}
-                  >
-                    {result.username}
-                  </Text>
-                  {!findProf('PSIHOLOGIST') ? (
-                    <Button
-                      children="Alege"
-                      onClick={() => handleClick(result.email)}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                </GridItem>
-              );
-            })}
-          </SimpleGrid>
-        </GridItem>
-      </SimpleGrid>
+        </>
+      ) : (
+        <></>
+      )}
     </Container>
   );
 }

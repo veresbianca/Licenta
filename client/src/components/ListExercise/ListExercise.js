@@ -15,15 +15,15 @@ export default function ListExercise() {
     <Container maxWidth="100vw">
       <Heading
         size="lg"
-        children="Please choose from the list of exercises or add a custom exercise"
+        children="Alege din lista de exerciții de mai jos sau crează un exercițiu nou"
         paddingBottom="20px"
       ></Heading>
       <Tabs>
         <TabList>
-          <Tab>Legs</Tab>
-          <Tab>Chest</Tab>
-          <Tab>Abs</Tab>
-          <Tab>Glutes</Tab>
+          <Tab>Picioare</Tab>
+          <Tab>Piept</Tab>
+          <Tab>Abdomen</Tab>
+          <Tab>Fesieri</Tab>
           <Tab>Biceps</Tab>
           <Tab>Triceps</Tab>
         </TabList>

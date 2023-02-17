@@ -8,7 +8,7 @@ import {
   AlertIcon,
   AlertTitle,
   Button,
-  Input,
+  Container,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
@@ -48,84 +48,129 @@ export default function UserExercices() {
   };
 
   return (
-    <Stack>
-      <Heading>This is your workout routine!</Heading>
-      {exercisePlan !== undefined && exercisePlan.length > 0 ? (
-        exercisePlan.map((exercise, index) => {
-          return (
-            <Box border="1px solid">
-              {editMode ? (
-                // <form onSubmit={formik.handleSubmit}>
-                //   <Text>
-                //     name: <Input value={formik.values.name}></Input>
-                //   </Text>
-                //   <Text>
-                //     type: <Input value={formik.values.type}></Input>
-                //   </Text>
-                //   <Text>
-                //     sets:
-                //     <Input value={formik.values.sets}></Input>
-                //   </Text>
-                //   <Text>
-                //     reps:
-                //     <Input value={formik.values.reps}></Input>
-                //   </Text>
-                //   <Text>
-                //     time: <Input value={formik.values.time}></Input>
-                //   </Text>
-                //   <Text>
-                //     liftingWeight:{' '}
-                //     <Input value={formik.values.liftingWeight}></Input>
-                //   </Text>
-                //   <Text>
-                //     distance: <Input value={formik.values.distance}></Input>
-                //   </Text>
-                //   <Text>
-                //     calories: <Input value={formik.values.calories}></Input>
-                //   </Text>
-                //   <Text>
-                //     dates: <Input value={formik.values.plannedDates}></Input>
-                //   </Text>
-
-                //   <Button type="submit">save</Button>
-                // </form>
-                <UpdateExercise exercise={exercise}></UpdateExercise>
-              ) : (
-                <>
-                  <Text>name: {exercise.name}</Text>
-                  <Text>type: {exercise.type}</Text>
-                  <Text>sets: {exercise.sets}</Text>
-                  <Text>reps: {exercise.reps}</Text>
-                  <Text>time: {exercise.time}</Text>
-                  <Text>liftingWeight: {exercise.liftingWeight}</Text>
-                  <Text>distance:{exercise.distance}</Text>
-                  <Text>calories:{exercise.calories}</Text>
-                  <Text>
-                    dates:{' '}
-                    {new Date(exercise.plannedDates).toISOString().slice(0, 10)}
-                  </Text>
-                </>
-              )}
-
-              <Button onClick={() => handleRemoveExercise(exercise.id)}>
-                Remove exercise from workout
-              </Button>
-
-              <Button
-                onClick={() => setEditMode(true)}
-                display={editMode ? 'none' : 'block'}
+    <Box display="flex" bg="gray.100">
+      <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
+        <Heading>Aceasta este rutina ta de azi!</Heading>
+        {exercisePlan !== undefined && exercisePlan.length > 0 ? (
+          exercisePlan.map((exercise, index) => {
+            return (
+              <Stack
+                bg="white"
+                border={'1px solid transparent'}
+                borderRadius={'8px'}
+                boxShadow={'0px 0px 10px -2px #ACACAC'}
+                padding="20px"
               >
-                Edit exercise
-              </Button>
-            </Box>
-          );
-        })
-      ) : (
-        <Alert status="error">
-          <AlertIcon />
-          <AlertTitle>you don't have any activity set! </AlertTitle>
-        </Alert>
-      )}
-    </Stack>
+                {editMode ? (
+                  <UpdateExercise exercise={exercise}></UpdateExercise>
+                ) : (
+                  <Box>
+                    <Box
+                      display="grid"
+                      gridTemplateColumns="auto 1fr"
+                      alignItems="center"
+                    >
+                      <Heading size="sm">Nume:</Heading>
+                      <span>{exercise.name}</span>
+                    </Box>
+                    <Box
+                      display="grid"
+                      gridTemplateColumns="auto 1fr"
+                      alignItems="center"
+                    >
+                      <Heading size="sm">Tip:</Heading>
+                      <span>{exercise.type}</span>
+                    </Box>
+                    <Box
+                      display="grid"
+                      gridTemplateColumns="auto 1fr"
+                      alignItems="center"
+                    >
+                      <Heading size="sm">Seturi:</Heading>
+                      <span>{exercise.sets}</span>
+                    </Box>
+                    <Box
+                      display="grid"
+                      gridTemplateColumns="auto 1fr"
+                      alignItems="center"
+                    >
+                      <Heading size="sm">Repetări:</Heading>
+                      <span>{exercise.reps}</span>
+                    </Box>
+                    <Box
+                      display="grid"
+                      gridTemplateColumns="auto 1fr"
+                      alignItems="center"
+                    >
+                      <Heading size="sm">Timp:</Heading>
+                      <span>{exercise.time}</span>
+                    </Box>
+                    <Box
+                      display="grid"
+                      gridTemplateColumns="auto 1fr"
+                      alignItems="center"
+                    >
+                      <Heading size="sm">Greutate:</Heading>
+                      <span>{exercise.liftingWeight}</span>
+                    </Box>
+                    <Box
+                      display="grid"
+                      gridTemplateColumns="auto 1fr"
+                      alignItems="center"
+                    >
+                      <Heading size="sm">Dsitanță:</Heading>
+                      <span>{exercise.distance}</span>
+                    </Box>
+                    <Box
+                      display="grid"
+                      gridTemplateColumns="auto 1fr"
+                      alignItems="center"
+                    >
+                      <Heading size="sm">Calorii:</Heading>
+                      <span>{exercise.calories}</span>
+                    </Box>
+                    <Box
+                      display="grid"
+                      gridTemplateColumns="auto 1fr"
+                      alignItems="center"
+                    >
+                      <Heading size="sm">Date:</Heading>
+                      <span>
+                        {new Date(exercise.plannedDates)
+                          .toISOString()
+                          .slice(0, 10)}
+                      </span>
+                    </Box>
+
+                    <Box
+                      display="grid"
+                      gridTemplateColumns="1fr 1fr"
+                      gap="20px"
+                      mt="20px"
+                    >
+                      <Button onClick={() => handleRemoveExercise(exercise.id)}>
+                        Remove exercise from workout
+                      </Button>
+
+                      <Button
+                        onClick={() => setEditMode(true)}
+                        display={editMode ? 'none' : 'block'}
+                      >
+                        Editează
+                      </Button>
+                    </Box>
+                  </Box>
+                )}
+              </Stack>
+            );
+          })
+        ) : (
+          <Alert status="error">
+            <AlertIcon />
+            <AlertTitle>Nu ai adăugat nici un exercițiu! </AlertTitle>
+          </Alert>
+        )}
+      </Container>
+    </Box>
   );
 }
