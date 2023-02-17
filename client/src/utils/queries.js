@@ -85,6 +85,11 @@ export const QUERY_ME = gql`
         likes
         tags
       }
+      friends {
+        username
+        email
+        userRole
+      }
     }
   }
 
@@ -198,6 +203,42 @@ export const GET_PROF = gql`
       name
       type
       photoSrc
+    }
+  }
+`;
+
+export const GET_MEDIC = gql`
+  query medic($type: String!) {
+    medic(type: $type) {
+      username
+      email
+    }
+  }
+`;
+
+export const GET_TRAINNER = gql`
+  query trainner($type: String!) {
+    trainner(type: $type) {
+      username
+      email
+    }
+  }
+`;
+
+export const GET_NUTRITIONIST = gql`
+  query nutritionist($type: String!) {
+    nutritionist(type: $type) {
+      username
+      email
+    }
+  }
+`;
+
+export const GET_PSIHOLOGIST = gql`
+  query psihologist($type: String!) {
+    psihologist(type: $type) {
+      username
+      email
     }
   }
 `;

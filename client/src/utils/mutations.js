@@ -165,6 +165,25 @@ export const ADD_MEAL = gql`
   }
 `;
 
+export const ADD_FRIEND = gql`
+  mutation addFriend($email: String) {
+    addFriend(email: $email) {
+      username
+      email
+      userRole
+    }
+  }
+`;
+
+export const REMOVE_FRIEND = gql`
+  mutation removeFriend($email: String) {
+    removeFriend(email: $email) {
+      username
+      email
+    }
+  }
+`;
+
 export const ADD_EXERCISE = gql`
   mutation addExercise(
     $name: String!

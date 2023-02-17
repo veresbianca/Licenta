@@ -141,6 +141,10 @@ const typeDefs = gql`
     goals: [Goal]
     me: User
     post(postId: ID!): Post
+    medic(type: String!): [User]
+    trainner(type: String!): [User]
+    nutritionist(type: String!): [User]
+    psihologist(type: String!): [User]
     profesionalist: [Profesionalist]
     createCheckoutSession: String # '{ url: "STRIPEURL.com"}'
   }
@@ -307,6 +311,8 @@ const typeDefs = gql`
     createSubscription(source: String, ccLast4: String, type: String): User
     changeCreditCard(source: String, ccLast4: String): User
     cancelSubscription: User
+    addFriend(email: String): User
+    removeFriend(email: String): User
   }
 `;
 

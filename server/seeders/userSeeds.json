@@ -2,7 +2,90 @@
   {
     "username": "administrator",
     "password": "lol123",
-    "email": "biancaveres93@gmail.com",
-    "isPrivate": true
+    "email": "biancaveres93@gmail.com"
+  },
+  {
+    "username": "Augustin Vasile",
+    "password": "lol123",
+    "email": "augustinvasile@gmail.com",
+    "userRole": "MEDIC"
+  },
+  {
+    "username": "Dragomir Dorian",
+    "password": "lol123",
+    "email": "dragomirdorian@gmail.com",
+    "userRole": "MEDIC"
+  },
+  {
+    "username": "Victoria Claudia",
+    "password": "lol123",
+    "email": "victoriaclaudia@gmail.com",
+    "userRole": "MEDIC"
+  },
+  {
+    "username": "Robert Ghiță",
+    "password": "lol123",
+    "email": "robertghita@gmail.com",
+    "userRole": "TRAINNER"
+  },
+  {
+    "username": "Corneliu Adrian",
+    "password": "lol123",
+    "email": "corneliuadrian@gmail.com",
+    "userRole": "TRAINNER"
+  },
+  {
+    "username": "Mihai Eusebiu",
+    "password": "lol123",
+    "email": "mihaieusebiu@gmail.com",
+    "userRole": "TRAINNER"
+  },
+  {
+    "username": "Cezar Luca",
+    "password": "lol123",
+    "email": "cezarluca@gmail.com",
+    "userRole": "TRAINNER"
+  },
+  {
+    "username": "Ancuța Lidia",
+    "password": "lol123",
+    "email": "ancutalidia@gmail.com",
+    "userRole": "NUTRITIONIST"
+  },
+  {
+    "username": "Elisabeta Marcela",
+    "password": "lol123",
+    "email": "elisabetamarcela@gmail.com",
+    "userRole": "NUTRITIONIST"
+  },
+  {
+    "username": "Dorina Catrinel",
+    "password": "lol123",
+    "email": "dorinacatrinel@gmail.com",
+    "userRole": "NUTRITIONIST"
+  },
+  {
+    "username": "Daciana Georgeta",
+    "password": "lol123",
+    "email": "daicanageorgeta@gmail.com",
+    "userRole": "NUTRITIONIST"
+  },
+  {
+    "username": "Isabella Georgiana",
+    "password": "lol123",
+    "email": "isabellageorgiana@gmail.com",
+    "userRole": "PSIHOLOGIST"
+  },
+  {
+    "username": "Carmen Aurora",
+    "password": "lol123",
+    "email": "carmenaurora@gmail.com",
+    "userRole": "PSIHOLOGIST"
+  },
+  {
+    "username": "Ștefana Raluca",
+    "password": "lol123",
+    "email": "stefanaraluca@gmail.com",
+    "userRole": "PSIHOLOGIST"
   }
 ]

@@ -79,12 +79,25 @@ const resolvers = {
           },
         });
     },
+    medic: async (parent, { type }) => {
+      return await User.find({ userRole: type });
+    },
+    trainner: async (parent, { type }) => {
+      return await User.find({ userRole: type });
+    },
+    nutritionist: async (parent, { type }) => {
+      return await User.find({ userRole: type });
+    },
+    psihologist: async (parent, { type }) => {
+      return await User.find({ userRole: type });
+    },
     profesionalist: async (parent, args) => {
       return await Profesionalist.find({});
     },
     exercises: async (parent, args) => {
       return await Exercise.find({});
     },
+
     // createCheckoutSession: async () => {
     //   const FRONTEND_DOMAIN = "http://localhost:3000";
     //   const session = await stripe.checkout.sessions.create({
@@ -169,6 +182,38 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+    addFriend: async (parent, { email }, context) => {
+      let updatedUser;
+      const user = await User.findOne({ email });
+      const userId = user.id;
+
+      if (!context.user)
+        throw new AuthenticationError("You must be logged in to add a friend!");
+
+      updatedUser = await User.findByIdAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { friends: userId } },
+        { new: true }
+      );
+
+      return updatedUser;
+    },
+    removeFriend: async (parent, { email }, context) => {
+      let updatedUser;
+      const user = await User.findOne({ email });
+      const userId = user.id;
+
+      if (!context.user)
+        throw new AuthenticationError("You must be logged in to add a friend!");
+
+      updatedUser = await User.findByIdAndUpdate(
+        { _id: context.user._id },
+        { $pull: { friends: userId } },
+        { new: true }
+      );
+
+      return updatedUser;
     },
     // add exercise plan
     addExercise: async (parent, args, context) => {
