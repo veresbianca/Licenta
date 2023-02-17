@@ -25,19 +25,14 @@ export default function PostsPages() {
 
   return (
     <>
-      <Grid
-        gap={1}
-        templateRows="repeat(2, auto 1fr)"
-        templateColumns="repeat(5, 1fr)"
-        bg="lightgrey"
-      >
+      <Grid gap={1} bg="lightgrey">
         {Auth.loggedIn() && (
-          <GridItem row span={1} colSpan={4}>
+          <GridItem>
             <CreatePost />
           </GridItem>
         )}
 
-        <GridItem row span={1} colSpan={4}>
+        <GridItem>
           <PostList posts={posts} />
         </GridItem>
       </Grid>

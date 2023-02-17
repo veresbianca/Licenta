@@ -110,9 +110,10 @@ export default function Subscription() {
       </SimpleGrid>
     </Box>
   ) : (
-    <Box display="flex">
+    <Box display="flex" bg="gray.100">
       <Container maxW={'5xl'} py={12}>
         <Stack
+          bg="white"
           border={'1px solid transparent'}
           borderRadius={'8px'}
           boxShadow={'0px 0px 10px -2px #ACACAC'}

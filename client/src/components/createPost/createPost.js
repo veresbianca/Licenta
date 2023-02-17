@@ -22,6 +22,7 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionIcon,
+  Container,
 } from '@chakra-ui/react';
 // import { Formik, useFormik } from 'formik';
 import { searchFood, searchExercise } from '../../utils/API';
@@ -35,12 +36,10 @@ export default function Component({ postUpdate }) {
   const user = Auth.loggedIn() ? Auth.getProfile() : null;
   const [newPost, newPostMutation] = useMutation(ADD_POST);
 
-  //Rendered States
   const [exercise, setExercise] = useState(false);
   const [cardio, setCardio] = useState(false);
   const [meal, setMeal] = useState(false);
 
-  //states for exercise query
   const [lift, setLift] = useState('');
   const [weight, setWeight] = useState('');
   const [sets, setSets] = useState('');
@@ -278,7 +277,6 @@ export default function Component({ postUpdate }) {
 
   const searchCardio = async () => {
     setCardiosearch(cardiotype + ' for ' + time + ' ' + distance + ' ');
-    // console.log(lift + ' ' + weight +'lbs ' + sets + ' sets ' + reps + ' reps')
     const response = await searchExercise(
       cardiotype + ' ' + distance + ' for ' + time,
       user
@@ -416,14 +414,12 @@ export default function Component({ postUpdate }) {
       renderMeal();
     }
   };
-  //POST the POST
   const [postdata, setPostdata] = useState('');
   const textChange = event => {
     const { value } = event.target;
     setPostdata(value);
   };
   const addPost = async text => {
-    //ADD TO DB
     const newExercises = [];
     const hashtagRegExp = /#[a-z0-9_]+/g;
     const tags = text.match(hashtagRegExp);
@@ -468,8 +464,6 @@ export default function Component({ postUpdate }) {
       });
     }
 
-    console.log(user?.data?.username);
-
     const createPost = await newPost({
       variables: {
         input: {
@@ -484,14 +478,12 @@ export default function Component({ postUpdate }) {
     });
   };
 
-  //Rendered onto timeline page
   return (
-    <Center>
+    <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
       <Box
         bg={useColorModeValue('gray.50', 'inherit')}
         p={6}
         alignItems="center"
-        w={'55%'}
       >
         <Box alignItems="center">
           <Grid
@@ -529,13 +521,13 @@ export default function Component({ postUpdate }) {
                       fontWeight="md"
                       color={useColorModeValue('gray.700', 'gray.50')}
                     >
-                      Write a Post!
+                      Scrie o postare!
                     </FormLabel>
                   </FormControl>
                   <Accordion allowMultiple allowToggle>
                     <FormControl id="createpost" mt={1}>
                       <Textarea
-                        placeholder="Big Lift Today! New PR 225 Bench "
+                        placeholder="Adaugă în jurnalul tău..."
                         mt={1}
                         rows={3}
                         shadow="sm"
@@ -558,22 +550,6 @@ export default function Component({ postUpdate }) {
                                   size="sm"
                                   fontWeight="medium"
                                   _focus={{ shadow: 'none' }}
-                                  bg="lightblue"
-                                  color={'white'}
-                                  _hover={{
-                                    bg: 'darkblue',
-                                    boxShadow: 'xl',
-                                  }}
-                                >
-                                  Add Image
-                                </Button>
-                                <Button
-                                  type="button"
-                                  ml={5}
-                                  variant="outline"
-                                  size="sm"
-                                  fontWeight="medium"
-                                  _focus={{ shadow: 'none' }}
                                   onClick={() => handleExercise()}
                                   bg="lightblue"
                                   color={'white'}
@@ -582,7 +558,7 @@ export default function Component({ postUpdate }) {
                                     boxShadow: 'xl',
                                   }}
                                 >
-                                  Add Strength Training
+                                  antrenament cu greutăți
                                 </Button>
                                 <Button
                                   type="button"
@@ -599,7 +575,7 @@ export default function Component({ postUpdate }) {
                                     boxShadow: 'xl',
                                   }}
                                 >
-                                  Add Cardio
+                                  antrenament cardio
                                 </Button>
                                 <Button
                                   type="button"
@@ -616,7 +592,7 @@ export default function Component({ postUpdate }) {
                                     boxShadow: 'xl',
                                   }}
                                 >
-                                  Add Meal
+                                  mâncare
                                 </Button>
                               </Flex>
                             </FormControl>
@@ -680,6 +656,6 @@ export default function Component({ postUpdate }) {
           </Box>
         </Box>
       </Box>
-    </Center>
+    </Container>
   );
 }

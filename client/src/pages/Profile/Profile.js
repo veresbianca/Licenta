@@ -161,10 +161,11 @@ export default function Profile() {
 
   return (
     <>
-      <Box display="flex">
+      <Box display="flex" bg="gray.100">
         <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
           <Heading mb="40px">Profilul tău</Heading>
           <Stack
+            bg="white"
             border={'1px solid transparent'}
             borderRadius={'8px'}
             boxShadow={'0px 0px 10px -2px #ACACAC'}
@@ -194,6 +195,7 @@ export default function Profile() {
           </Stack>
 
           <Stack
+            bg="white"
             border={'1px solid transparent'}
             borderRadius={'8px'}
             boxShadow={'0px 0px 10px -2px #ACACAC'}
@@ -318,6 +320,7 @@ export default function Profile() {
           </Stack> */}
 
           <Stack
+            bg="white"
             border={'1px solid transparent'}
             borderRadius={'8px'}
             boxShadow={'0px 0px 10px -2px #ACACAC'}
@@ -350,6 +353,7 @@ export default function Profile() {
           </Stack>
 
           <Stack
+            bg="white"
             border={'1px solid transparent'}
             borderRadius={'8px'}
             boxShadow={'0px 0px 10px -2px #ACACAC'}
@@ -383,6 +387,7 @@ export default function Profile() {
           </Stack>
 
           <Stack
+            bg="white"
             border={'1px solid transparent'}
             borderRadius={'8px'}
             boxShadow={'0px 0px 10px -2px #ACACAC'}
