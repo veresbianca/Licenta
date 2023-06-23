@@ -329,20 +329,23 @@ export default function Profile() {
             <Heading size="md" className="sub-heading">
               Planul tău de exerciții
             </Heading>
-            <Button
-              leftIcon={<BsFillPlusCircleFill />}
-              px={8}
-              bg={buttonBg}
-              color={'white'}
-              rounded={'md'}
-              _hover={{
-                transform: 'translateY(-2px)',
-                boxShadow: 'lg',
-              }}
-              // onClick={console.log("poke")}
-            >
-              Crează planul de exerciții
-            </Button>
+            <Link as={RouterLink} to="/exercice">
+              <Button
+                leftIcon={<BsFillPlusCircleFill />}
+                px={8}
+                bg={buttonBg}
+                color={'white'}
+                rounded={'md'}
+                _hover={{
+                  transform: 'translateY(-2px)',
+                  boxShadow: 'lg',
+                }}
+                // onClick={console.log("poke")}
+              >
+                Vezi planul de exerciții
+              </Button>
+            </Link>
+
             <Alert
               display={user.exercisePlan.length > 0 ? 'none' : 'flex'}
               status="error"
@@ -374,7 +377,7 @@ export default function Profile() {
                   boxShadow: 'lg',
                 }}
               >
-                Crează planul tău alimentar
+                Vezi planul tău alimentar
               </Button>
             </Link>
             <Alert

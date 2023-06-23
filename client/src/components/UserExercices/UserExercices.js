@@ -64,84 +64,85 @@ export default function UserExercices() {
                 {editMode ? (
                   <UpdateExercise exercise={exercise}></UpdateExercise>
                 ) : (
-                  <Box>
-                    <Box
-                      display="grid"
-                      gridTemplateColumns="auto 1fr"
-                      alignItems="center"
-                    >
-                      <Heading size="sm">Nume:</Heading>
-                      <span>{exercise.name}</span>
+                  <>
+                    <Box display="grid" gridTemplateColumns="repeat(5, 1fr)">
+                      <Box
+                        display="grid"
+                        gridTemplateColumns="auto 1fr"
+                        alignItems="center"
+                      >
+                        <Heading size="sm">Nume:</Heading>
+                        <span>{exercise.name}</span>
+                      </Box>
+                      <Box
+                        display="grid"
+                        gridTemplateColumns="auto 1fr"
+                        alignItems="center"
+                      >
+                        <Heading size="sm">Tip:</Heading>
+                        <span>{exercise.type}</span>
+                      </Box>
+                      <Box
+                        display="grid"
+                        gridTemplateColumns="auto 1fr"
+                        alignItems="center"
+                      >
+                        <Heading size="sm">Seturi:</Heading>
+                        <span>{exercise.sets}</span>
+                      </Box>
+                      <Box
+                        display="grid"
+                        gridTemplateColumns="auto 1fr"
+                        alignItems="center"
+                      >
+                        <Heading size="sm">Repetări:</Heading>
+                        <span>{exercise.reps}</span>
+                      </Box>
+                      <Box
+                        display="grid"
+                        gridTemplateColumns="auto 1fr"
+                        alignItems="center"
+                      >
+                        <Heading size="sm">Timp:</Heading>
+                        <span>{exercise.time}</span>
+                      </Box>
+                      <Box
+                        display="grid"
+                        gridTemplateColumns="auto 1fr"
+                        alignItems="center"
+                      >
+                        <Heading size="sm">Greutate:</Heading>
+                        <span>{exercise.liftingWeight}</span>
+                      </Box>
+                      <Box
+                        display="grid"
+                        gridTemplateColumns="auto 1fr"
+                        alignItems="center"
+                      >
+                        <Heading size="sm">Dsitanță:</Heading>
+                        <span>{exercise.distance}</span>
+                      </Box>
+                      <Box
+                        display="grid"
+                        gridTemplateColumns="auto 1fr"
+                        alignItems="center"
+                      >
+                        <Heading size="sm">Calorii:</Heading>
+                        <span>{exercise.calories}</span>
+                      </Box>
+                      <Box
+                        display="grid"
+                        gridTemplateColumns="auto 1fr"
+                        alignItems="center"
+                      >
+                        <Heading size="sm">Date:</Heading>
+                        <span>
+                          {new Date(exercise.plannedDates)
+                            .toISOString()
+                            .slice(0, 10)}
+                        </span>
+                      </Box>
                     </Box>
-                    <Box
-                      display="grid"
-                      gridTemplateColumns="auto 1fr"
-                      alignItems="center"
-                    >
-                      <Heading size="sm">Tip:</Heading>
-                      <span>{exercise.type}</span>
-                    </Box>
-                    <Box
-                      display="grid"
-                      gridTemplateColumns="auto 1fr"
-                      alignItems="center"
-                    >
-                      <Heading size="sm">Seturi:</Heading>
-                      <span>{exercise.sets}</span>
-                    </Box>
-                    <Box
-                      display="grid"
-                      gridTemplateColumns="auto 1fr"
-                      alignItems="center"
-                    >
-                      <Heading size="sm">Repetări:</Heading>
-                      <span>{exercise.reps}</span>
-                    </Box>
-                    <Box
-                      display="grid"
-                      gridTemplateColumns="auto 1fr"
-                      alignItems="center"
-                    >
-                      <Heading size="sm">Timp:</Heading>
-                      <span>{exercise.time}</span>
-                    </Box>
-                    <Box
-                      display="grid"
-                      gridTemplateColumns="auto 1fr"
-                      alignItems="center"
-                    >
-                      <Heading size="sm">Greutate:</Heading>
-                      <span>{exercise.liftingWeight}</span>
-                    </Box>
-                    <Box
-                      display="grid"
-                      gridTemplateColumns="auto 1fr"
-                      alignItems="center"
-                    >
-                      <Heading size="sm">Dsitanță:</Heading>
-                      <span>{exercise.distance}</span>
-                    </Box>
-                    <Box
-                      display="grid"
-                      gridTemplateColumns="auto 1fr"
-                      alignItems="center"
-                    >
-                      <Heading size="sm">Calorii:</Heading>
-                      <span>{exercise.calories}</span>
-                    </Box>
-                    <Box
-                      display="grid"
-                      gridTemplateColumns="auto 1fr"
-                      alignItems="center"
-                    >
-                      <Heading size="sm">Date:</Heading>
-                      <span>
-                        {new Date(exercise.plannedDates)
-                          .toISOString()
-                          .slice(0, 10)}
-                      </span>
-                    </Box>
-
                     <Box
                       display="grid"
                       gridTemplateColumns="1fr 1fr"
@@ -149,7 +150,7 @@ export default function UserExercices() {
                       mt="20px"
                     >
                       <Button onClick={() => handleRemoveExercise(exercise.id)}>
-                        Remove exercise from workout
+                        Sterge
                       </Button>
 
                       <Button
@@ -159,7 +160,7 @@ export default function UserExercices() {
                         Editează
                       </Button>
                     </Box>
-                  </Box>
+                  </>
                 )}
               </Stack>
             );

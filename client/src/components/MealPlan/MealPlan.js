@@ -85,7 +85,7 @@ export default function MealPlan() {
           borderRadius="8px"
           boxShadow="0px 0px 10px -2px #acacac"
         >
-          <Heading size="md" children="Breakfast" padding="20px 20px 0" />
+          <Heading size="md" children="Mic dejun" padding="20px 20px 0" />
           <Center height="50px">
             <Divider />
           </Center>
@@ -121,7 +121,7 @@ export default function MealPlan() {
           borderRadius="8px"
           boxShadow="0px 0px 10px -2px #acacac"
         >
-          <Heading size="md" children="Snack" padding="20px 20px 0" />
+          <Heading size="md" children="Gustare" padding="20px 20px 0" />
           <Center height="50px">
             <Divider />
           </Center>
@@ -154,7 +154,7 @@ export default function MealPlan() {
           borderRadius="8px"
           boxShadow="0px 0px 10px -2px #acacac"
         >
-          <Heading size="md" children="Lunch" padding="20px 20px 0" />
+          <Heading size="md" children="Pranz" padding="20px 20px 0" />
           <Center height="50px">
             <Divider />
           </Center>
@@ -187,7 +187,7 @@ export default function MealPlan() {
           borderRadius="8px"
           boxShadow="0px 0px 10px -2px #acacac"
         >
-          <Heading size="md" children="Dinner" padding="20px 20px 0" />
+          <Heading size="md" children="Cina" padding="20px 20px 0" />
           <Center height="50px">
             <Divider />
           </Center>

@@ -81,29 +81,28 @@ export default function AddExercise({ exerciseType }) {
                 key={index}
                 display="grid"
                 justifyContent="space-between"
-                gridTemplateColumns="repeat(3, 1fr)"
+                alignItems="center"
+                gridTemplateColumns="repeat(5, 1fr)"
                 gap="30px"
                 padding="20px"
                 borderBottom="1px solid"
               >
                 <Heading size="sm">{exercise.name}</Heading>
 
-                <Box>
-                  <FormControl>
-                    <FormLabel>Repetări</FormLabel>
-                    <Input type="number" onChange={repsChange} />
-                  </FormControl>
+                <FormControl>
+                  <FormLabel>Repetări</FormLabel>
+                  <Input type="number" onChange={repsChange} />
+                </FormControl>
 
-                  <FormControl>
-                    <FormLabel>Seturi</FormLabel>
-                    <Input type="number" onChange={setsChange} />
-                  </FormControl>
+                <FormControl>
+                  <FormLabel>Seturi</FormLabel>
+                  <Input type="number" onChange={setsChange} />
+                </FormControl>
 
-                  <FormControl>
-                    <FormLabel>Dată</FormLabel>
-                    <Input type="date" onChange={dateChange} />
-                  </FormControl>
-                </Box>
+                <FormControl>
+                  <FormLabel>Dată</FormLabel>
+                  <Input type="date" onChange={dateChange} />
+                </FormControl>
 
                 <Button
                   type="submit"

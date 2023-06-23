@@ -93,55 +93,55 @@ export default function Component() {
     return (
       <>
         <FormControl as="fieldset" margin="20px 0">
-          <Heading size="md" children="Choose meal type" mb="20px" />
+          <Heading size="md" children="Alege tipul de masa" mb="20px" />
 
           <RadioGroup onChange={setMealTypeValue} value={mealTypeValue}>
             <Stack spacing="24px" direction="row">
               <Radio name="mealType" value="breakfast">
-                Breakfast
+                Mic dejun
               </Radio>
               <Radio name="mealType" value="snack">
-                Snack
+                Gustare
               </Radio>
               <Radio name="mealType" value="lunch">
-                Lunch
+                Pranz
               </Radio>
               <Radio name="mealType" value="dinner">
-                Dinner
+                Cina
               </Radio>
             </Stack>
           </RadioGroup>
         </FormControl>
 
         <FormControl as="fieldset" margin="20px 0">
-          <Heading size="md" children="Choose unit" mb="20px" />
+          <Heading size="md" children="Alege unitatea de masura" mb="20px" />
 
           <RadioGroup onChange={setUnit} value={unit}>
             <Stack spacing="24px" direction="column">
               <Radio name="unit" value="large">
-                large portion
+                Portie mare
               </Radio>
               <Radio name="unit" value="medium">
-                medium portion
+                Portie medie
               </Radio>
               <Radio name="unit" value="small">
-                small portion
+                Portie mica
               </Radio>
               <Radio name="unit" value="oz">
                 Oz
               </Radio>
               <Radio name="unit" value="litre">
-                Litres
+                Litrii
               </Radio>
               <Radio name="unit" value="g">
-                Grams
+                Grame
               </Radio>
             </Stack>
           </RadioGroup>
         </FormControl>
 
         <FormControl margin="20px 0">
-          <Heading size="md" children="Value" mb="20px" />
+          <Heading size="md" children="Valoare numerica" mb="20px" />
           <Input
             id="valuePerMeal"
             name="valuePerMeal"
@@ -151,7 +151,7 @@ export default function Component() {
         </FormControl>
 
         <FormControl margin="20px 0">
-          <Heading size="md" children="date" mb="20px" />
+          <Heading size="md" children="Data" mb="20px" />
           <Input
             id="date"
             name="date"
@@ -178,7 +178,7 @@ export default function Component() {
         <Button
           my={6}
           onClick={() => searchNutrition(search)}
-          children="Search Food"
+          children="Cauta"
         ></Button>
 
         {results === 'loading' ? (
@@ -195,7 +195,7 @@ export default function Component() {
           <Button
             type="submit"
             my={6}
-            children="Add Meal"
+            children="Adauga"
             disabled={addMealBtnDisabled}
           ></Button>
         </Box>
@@ -260,7 +260,7 @@ export default function Component() {
           >
             <Center>
               <Heading size="lg">
-                Search for food to add to your meal plan!
+                Cauta alimente pentru a ale adauga in planul tau alimentar!
               </Heading>
             </Center>
 

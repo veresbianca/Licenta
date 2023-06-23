@@ -63,8 +63,8 @@ export default function Subscription() {
             type: 'luna',
             name: 'Incepator',
             features: [
-              'Functionalitate de adaugare meniu',
-              'Functionalitate de adaugare exercitii',
+              'Creaza-ti meniul zilnic, avand acces la o baza mare de alimente',
+              'Creaza-ti planul de exercitii',
             ],
           }}
           button={
