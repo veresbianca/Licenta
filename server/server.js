@@ -5,6 +5,7 @@ const config = dotenv.parse(buf); // will return an object
 const { makeExecutableSchema } = require("@graphql-tools/schema");
 const { DateTimeResolver, DateTimeTypeDefinition } = require("graphql-scalars");
 const cors = require("cors");
+const pubsub = new PubSub();
 
 // for refactor with passport
 // const session = require('express-session');
@@ -19,6 +20,7 @@ const { authMiddleware } = require("./utils/auth.js");
 
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
+const { PubSub } = require("graphql-subscriptions");
 
 const PORT = process.env.PORT || 3001;
 const app = express();

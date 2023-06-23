@@ -1,4 +1,11 @@
-const { User, Exercise, Meal, Post, Profesionalist } = require("../models");
+const {
+  User,
+  Exercise,
+  Meal,
+  Post,
+  Profesionalist,
+  Message,
+} = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { Types } = require("mongoose");
@@ -37,6 +44,9 @@ const resolvers = {
     users: async () => {
       // Populate the meal and exercise subdocuments when querying for user
       return await User.find({}).populate("goals");
+    },
+    messages: async () => {
+      return await Message.find();
     },
     // Query array of subdocs: https://www.mongodb.com/docs/v5.2/tutorial/query-array-of-documents/
     stats: async (parent, args) => {
@@ -122,6 +132,38 @@ const resolvers = {
     // },
   },
   Mutation: {
+    createMessage: async (
+      _,
+      { senderMail, receiverMail, message, timestamp }
+    ) => {
+      const userText = new Message({
+        senderMail,
+        receiverMail,
+        message,
+        timestamp,
+      });
+      await userText.save();
+      pubsub.publish("newMessage", {
+        newMessage: userText,
+        receiverMail: receiverMail,
+      });
+      return userText;
+    },
+
+    updateMessage: async (_, { id, message }) => {
+      const userText = await Message.findOneAndUpdate(
+        { _id: id },
+        { message },
+        { new: true }
+      );
+      return userText;
+    },
+
+    deleteMessage: async (_, { id }) => {
+      await Message.findOneAndDelete({ _id: id });
+      return true;
+    },
+
     // add new user
     addUser: async (parent, args) => {
       const user = await User.create(args);
@@ -515,6 +557,37 @@ const resolvers = {
       await user.save();
 
       return user;
+    },
+  },
+  Subscription: {
+    newMessage: {
+      subscribe: withFilter(
+        () => pubsub.asyncIterator("newMessage"),
+        (payload, variables) => {
+          return payload.receiverMail === variables.receiverMail;
+        }
+      ),
+    },
+
+    newUser: {
+      subscribe: (_, {}, { pubsub }) => {
+        return pubsub.asyncIterator("newUser");
+      },
+    },
+
+    oldUser: {
+      subscribe: (_, {}, { pubsub }) => {
+        return pubsub.asyncIterator("oldUser");
+      },
+    },
+
+    userTyping: {
+      subscribe: withFilter(
+        () => pubsub.asyncIterator("userTyping"),
+        (payload, variables) => {
+          return payload.receiverMail === variables.receiverMail;
+        }
+      ),
     },
   },
 };

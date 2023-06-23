@@ -148,6 +148,16 @@ const typeDefs = gql`
     psihologist(type: String!): [User]
     profesionalist: [Profesionalist]
     createCheckoutSession: String # '{ url: "STRIPEURL.com"}'
+    messages: [Message]
+  }
+
+  type Message {
+    id: ID!
+    message: String!
+    senderMail: String!
+    receiverMail: String!
+    timestamp: Float!
+    users: [User]
   }
 
   type Profesionalist {
@@ -211,6 +221,15 @@ const typeDefs = gql`
   }
   # Following defines mutation
   type Mutation {
+    createMessage(
+      senderMail: String!
+      receiverMail: String!
+      message: String!
+      timestamp: Float!
+    ): Message!
+    updateMessage(id: ID!, message: String!): Message!
+    deleteMessage(id: String!): Boolean!
+
     addUser(
       username: String!
       password: String!
