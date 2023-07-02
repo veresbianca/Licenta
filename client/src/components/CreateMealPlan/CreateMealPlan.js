@@ -92,117 +92,138 @@ export default function Component() {
   const renderMeal = () => {
     return (
       <>
-        <FormControl as="fieldset" margin="20px 0">
-          <Heading size="md" children="Alege tipul de masa" mb="20px" />
+        <Stack
+              bg="white"
+              border={'1px solid transparent'}
+              borderRadius={'8px'}
+              boxShadow={'0px 0px 10px -2px #ACACAC'}
+              padding="20px"
+            >
+             <FormControl as="fieldset" margin="20px 0">
+            <Heading size="md" className="sub-heading" mb="20px">
+              Alege tipul de masa
+            </Heading>
 
-          <RadioGroup onChange={setMealTypeValue} value={mealTypeValue}>
-            <Stack spacing="24px" direction="row">
-              <Radio name="mealType" value="breakfast">
-                Mic dejun
-              </Radio>
-              <Radio name="mealType" value="snack">
-                Gustare
-              </Radio>
-              <Radio name="mealType" value="lunch">
-                Pranz
-              </Radio>
-              <Radio name="mealType" value="dinner">
-                Cina
-              </Radio>
-            </Stack>
-          </RadioGroup>
-        </FormControl>
+            <RadioGroup onChange={setMealTypeValue} value={mealTypeValue}>
+              <Stack spacing="24px" direction="row">
+                <Radio name="mealType" value="breakfast">
+                  Mic dejun
+                </Radio>
+                <Radio name="mealType" value="snack">
+                  Gustare
+                </Radio>
+                <Radio name="mealType" value="lunch">
+                  Pranz
+                </Radio>
+                <Radio name="mealType" value="dinner">
+                  Cina
+                </Radio>
+              </Stack>
+            </RadioGroup>
+          </FormControl>
 
-        <FormControl as="fieldset" margin="20px 0">
-          <Heading size="md" children="Alege unitatea de masura" mb="20px" />
+          <FormControl as="fieldset" margin="20px 0">
+            <Heading size="md" className="sub-heading" mb="20px">
+              Alege unitatea de masura
+            </Heading>
 
-          <RadioGroup onChange={setUnit} value={unit}>
-            <Stack spacing="24px" direction="column">
-              <Radio name="unit" value="large">
-                Portie mare
-              </Radio>
-              <Radio name="unit" value="medium">
-                Portie medie
-              </Radio>
-              <Radio name="unit" value="small">
-                Portie mica
-              </Radio>
-              <Radio name="unit" value="oz">
-                Oz
-              </Radio>
-              <Radio name="unit" value="litre">
-                Litrii
-              </Radio>
-              <Radio name="unit" value="g">
-                Grame
-              </Radio>
-            </Stack>
-          </RadioGroup>
-        </FormControl>
+            <RadioGroup onChange={setUnit} value={unit}>
+              <Stack spacing="24px" direction="column">
+                <Radio name="unit" value="large">
+                  Portie mare
+                </Radio>
+                <Radio name="unit" value="medium">
+                  Portie medie
+                </Radio>
+                <Radio name="unit" value="small">
+                  Portie mica
+                </Radio>
+                <Radio name="unit" value="oz">
+                  Oz
+                </Radio>
+                <Radio name="unit" value="litre">
+                  Litrii
+                </Radio>
+                <Radio name="unit" value="g">
+                  Grame
+                </Radio>
+              </Stack>
+            </RadioGroup>
+          </FormControl>
 
-        <FormControl margin="20px 0">
-          <Heading size="md" children="Valoare numerica" mb="20px" />
-          <Input
-            id="valuePerMeal"
-            name="valuePerMeal"
-            type="valuePerMeal"
-            onChange={valueMealChange}
-          />
-        </FormControl>
+          <FormControl margin="20px 0">
+            <Heading size="md" className="sub-heading" mb="20px">
+              Valoare numerica
+            </Heading>
 
-        <FormControl margin="20px 0">
-          <Heading size="md" children="Data" mb="20px" />
-          <Input
-            id="date"
-            name="date"
-            type="date"
-            onChange={dateMealOnChange}
-          />
-        </FormControl>
+            <Input
+              id="valuePerMeal"
+              name="valuePerMeal"
+              type="valuePerMeal"
+              onChange={valueMealChange}
+            />
+          </FormControl>
 
-        <FormControl margin="20px 0">
-          <Heading
-            size="md"
-            children="Cauta alimente in baza de date"
-            mb="20px"
-          />
-          <Input
-            id="query"
-            name="query"
-            type="query"
-            value={search}
-            onChange={handleChange}
-          />
-        </FormControl>
+          <FormControl margin="20px 0">
+            <Heading size="md" className="sub-heading" mb="20px">
+              Data
+            </Heading>
 
-        <Button
-          my={6}
-          onClick={() => searchNutrition(search)}
-          children="Cauta"
-        ></Button>
+            <Input
+              id="date"
+              name="date"
+              type="date"
+              onChange={dateMealOnChange}
+            />
+          </FormControl>
 
-        {results === 'loading' ? (
-          <CircularProgress isIndeterminate />
-        ) : results === 'done' ? (
-          <>
-            {data.foods.map((food, index) => (
-              <SearchResult key={index} food={food} index={index} />
-            ))}
-          </>
-        ) : null}
+          <FormControl margin="20px 0">
+           
+            <Heading size="md" className="sub-heading" mb="20px">
+              Cauta alimente in baza de date
+            </Heading>
 
-        <Box>
+            <Input
+              id="query"
+              name="query"
+              type="query"
+              value={search}
+              onChange={handleChange}
+            />
+          </FormControl>
+
           <Button
-            type="submit"
             my={6}
-            children="Adauga"
-            disabled={addMealBtnDisabled}
+            onClick={() => searchNutrition(search)}
+            children="Cauta"
           ></Button>
-        </Box>
 
+          {results === 'loading' ? (
+            <CircularProgress isIndeterminate />
+          ) : results === 'done' ? (
+            <>
+              {data.foods.map((food, index) => (
+                <SearchResult key={index} food={food} index={index} />
+              ))}
+            </>
+          ) : null}
+
+          <Box>
+            <Button
+              type="submit"
+              my={6}
+              children="Adauga"
+              disabled={addMealBtnDisabled}
+            ></Button>
+          </Box>
+          
+        </Stack>
         <MealPlan></MealPlan>
       </>
-    );
+        
+
+      );
+      
   };
 
   const addMeal = async (type, unit, value, date) => {
@@ -248,9 +269,11 @@ export default function Component() {
 
   return (
     <>
+
       <Image src={nutritionBanner} width="100%" />
-      <Container maxW={'5xl'} py={12}>
-        <SimpleGrid>
+      <Box display="flex" bg="gray.100">
+        <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
+          <SimpleGrid>
           <chakra.form
             method="POST"
             onSubmit={e => {
@@ -258,16 +281,15 @@ export default function Component() {
               return addMeal(mealTypeValue, unit, valueMeal, mealDate);
             }}
           >
-            <Center>
-              <Heading size="lg">
+              <Heading size="lg" mb="40px" align="center">
                 Cauta alimente pentru a ale adauga in planul tau alimentar!
               </Heading>
-            </Center>
 
             {renderMeal()}
           </chakra.form>
         </SimpleGrid>
-      </Container>
+        </Container>
+      </Box>
     </>
   );
 }

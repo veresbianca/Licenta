@@ -78,17 +78,24 @@ export default function MealPlan() {
 
   return (
     <>
-      <Heading size="lg" children="Acesta este meniul tau de azi" mb="20px" />
+      <Heading size="lg" children="Acesta este meniul tau de azi" mb="40px" mt="40px" align="center"/>
       <SimpleGrid gap="20px">
         <GridItem
           border="1px solid #0000"
           borderRadius="8px"
           boxShadow="0px 0px 10px -2px #acacac"
         >
-          <Heading size="md" children="Mic dejun" padding="20px 20px 0" />
-          <Center height="50px">
-            <Divider />
-          </Center>
+          <Stack
+              bg="white"
+              border={'1px solid transparent'}
+              borderRadius={'8px'}
+              boxShadow={'0px 0px 10px -2px #ACACAC'}
+          >
+            <Heading size="md" children="Mic dejun" padding="20px 20px 0" />
+            <Center height="50px">
+              <Divider />
+            </Center>
+          </Stack>
 
           <UnorderedList listStyleType="none" margin={0}>
             {breakfast.map((meal, index, { length }) => {
@@ -116,104 +123,128 @@ export default function MealPlan() {
             })}
           </UnorderedList>
         </GridItem>
+
         <GridItem
           border="1px solid #0000"
           borderRadius="8px"
           boxShadow="0px 0px 10px -2px #acacac"
         >
-          <Heading size="md" children="Gustare" padding="20px 20px 0" />
-          <Center height="50px">
-            <Divider />
-          </Center>
-          <UnorderedList listStyleType="none" margin={0}>
-            {snack.map((meal, index, { length }) => {
-              return (
-                <>
-                  <ListItem
-                    key={index}
-                    display="grid"
-                    gap="20px"
-                    gridTemplateColumns="90px auto 1fr"
-                    alignItems="center"
-                    padding="20px"
-                  >
-                    <Image src={meal.photo} />
-                    <Text fontSize="xl">{meal.name}</Text>
-                    <Text fontSize="xl" justifySelf="end">
-                      {meal.value} {meal.unit}
-                    </Text>
-                  </ListItem>
-                  <Divider display={length - 1 === index ? 'none' : 'block'} />
-                </>
-              );
-            })}
-          </UnorderedList>
+
+          <Stack
+              bg="white"
+              border={'1px solid transparent'}
+              borderRadius={'8px'}
+              boxShadow={'0px 0px 10px -2px #ACACAC'}
+          >
+            <Heading size="md" children="Gustare" padding="20px 20px 0" />
+            <Center height="50px">
+              <Divider />
+            </Center>
+            <UnorderedList listStyleType="none" margin={0}>
+              {snack.map((meal, index, { length }) => {
+                return (
+                  <>
+                    <ListItem
+                      key={index}
+                      display="grid"
+                      gap="20px"
+                      gridTemplateColumns="90px auto 1fr"
+                      alignItems="center"
+                      padding="20px"
+                    >
+                      <Image src={meal.photo} />
+                      <Text fontSize="xl">{meal.name}</Text>
+                      <Text fontSize="xl" justifySelf="end">
+                        {meal.value} {meal.unit}
+                      </Text>
+                    </ListItem>
+                    <Divider display={length - 1 === index ? 'none' : 'block'} />
+                  </>
+                );
+              })}
+            </UnorderedList>
+          </Stack>
+        </GridItem>
+
+        <GridItem
+          border="1px solid #0000"
+          borderRadius="8px"
+          boxShadow="0px 0px 10px -2px #acacac"
+        >
+          <Stack
+              bg="white"
+              border={'1px solid transparent'}
+              borderRadius={'8px'}
+              boxShadow={'0px 0px 10px -2px #ACACAC'}
+          >
+            <Heading size="md" children="Pranz" padding="20px 20px 0" />
+            <Center height="50px">
+              <Divider />
+            </Center>
+            <UnorderedList listStyleType="none" margin={0}>
+              {lunch.map((meal, index, { length }) => {
+                return (
+                  <>
+                    <ListItem
+                      key={index}
+                      display="grid"
+                      gap="20px"
+                      gridTemplateColumns="90px auto 1fr"
+                      alignItems="center"
+                      padding="20px"
+                    >
+                      <Image src={meal.photo} />
+                      <Text fontSize="xl">{meal.name}</Text>
+                      <Text fontSize="xl" justifySelf="end">
+                        {meal.value} {meal.unit}
+                      </Text>
+                    </ListItem>
+                    <Divider display={length - 1 === index ? 'none' : 'block'} />
+                  </>
+                );
+              })}
+            </UnorderedList>
+          </Stack>
         </GridItem>
         <GridItem
           border="1px solid #0000"
           borderRadius="8px"
           boxShadow="0px 0px 10px -2px #acacac"
         >
-          <Heading size="md" children="Pranz" padding="20px 20px 0" />
-          <Center height="50px">
-            <Divider />
-          </Center>
-          <UnorderedList listStyleType="none" margin={0}>
-            {lunch.map((meal, index, { length }) => {
-              return (
-                <>
-                  <ListItem
-                    key={index}
-                    display="grid"
-                    gap="20px"
-                    gridTemplateColumns="90px auto 1fr"
-                    alignItems="center"
-                    padding="20px"
-                  >
-                    <Image src={meal.photo} />
-                    <Text fontSize="xl">{meal.name}</Text>
-                    <Text fontSize="xl" justifySelf="end">
-                      {meal.value} {meal.unit}
-                    </Text>
-                  </ListItem>
-                  <Divider display={length - 1 === index ? 'none' : 'block'} />
-                </>
-              );
-            })}
-          </UnorderedList>
-        </GridItem>
-        <GridItem
-          border="1px solid #0000"
-          borderRadius="8px"
-          boxShadow="0px 0px 10px -2px #acacac"
-        >
-          <Heading size="md" children="Cina" padding="20px 20px 0" />
-          <Center height="50px">
-            <Divider />
-          </Center>
-          <UnorderedList listStyleType="none" margin={0}>
-            {dinner.map((meal, index, { length }) => {
-              return (
-                <>
-                  <ListItem
-                    key={index}
-                    display="grid"
-                    gap="20px"
-                    gridTemplateColumns="90px auto 1fr"
-                    alignItems="center"
-                    padding="20px"
-                  >
-                    <Image src={meal.photo} />
-                    <Text fontSize="xl">{meal.name}</Text>
-                    <Text fontSize="xl" justifySelf="end">
-                      {meal.value} {meal.unit}
-                    </Text>
-                  </ListItem>
-                  <Divider display={length - 1 === index ? 'none' : 'block'} />
-                </>
-              );
-            })}
-          </UnorderedList>
+           <Stack
+              bg="white"
+              border={'1px solid transparent'}
+              borderRadius={'8px'}
+              boxShadow={'0px 0px 10px -2px #ACACAC'}
+          >
+            <Heading size="md" children="Cina" padding="20px 20px 0" />
+            <Center height="50px">
+              <Divider />
+            </Center>
+            <UnorderedList listStyleType="none" margin={0}>
+              {dinner.map((meal, index, { length }) => {
+                return (
+                  <>
+                    <ListItem
+                      key={index}
+                      display="grid"
+                      gap="20px"
+                      gridTemplateColumns="90px auto 1fr"
+                      alignItems="center"
+                      padding="20px"
+                    >
+                      <Image src={meal.photo} />
+                      <Text fontSize="xl">{meal.name}</Text>
+                      <Text fontSize="xl" justifySelf="end">
+                        {meal.value} {meal.unit}
+                      </Text>
+                    </ListItem>
+                    <Divider display={length - 1 === index ? 'none' : 'block'} />
+                  </>
+                );
+              })}
+            </UnorderedList>
+          </Stack>
         </GridItem>
       </SimpleGrid>
     </>
