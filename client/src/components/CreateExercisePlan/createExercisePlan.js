@@ -62,7 +62,7 @@ export default function ExercisePlan() {
   return (
     <Box display="flex" bg="gray.100">
       <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
-        <Heading fonstSize={'lg'}>
+        <Heading fonstSize={'lg'} align="center" mb="40px">
           Dacă nu găsesți nimic care să îți placă, adaugă un exercițiu nou
         </Heading>
 
@@ -74,31 +74,29 @@ export default function ExercisePlan() {
         >
           <Stack spacing={4}>
             <form onSubmit={formik.handleSubmit}>
-              <FormControl>
+              <FormControl mb="20px">
                 <FormLabel htmlFor="workout">Nume</FormLabel>
                 <Input
                   id="workout"
                   name="workout"
                   type="text"
                   variant="filled"
-                  // use handlechange, variable name is same as variable above
                   onChange={formik.handleChange}
                   value={formik.values.initialValues.workouts.workout}
                 />
               </FormControl>
-              <FormControl>
+              <FormControl mb="20px">
                 <FormLabel htmlFor="reps">Repetări</FormLabel>
                 <Input
                   id="reps"
                   name="reps"
                   type="number"
                   variant="filled"
-                  // use handlechange, variable name is same as variable above
                   onChange={formik.handleChange}
                   value={formik.values.initialValues.workouts.reps}
                 />
               </FormControl>
-              <FormControl>
+              <FormControl mb="20px">
                 <FormLabel htmlFor="sets">Seturi</FormLabel>
                 <Input
                   id="sets"
@@ -110,7 +108,7 @@ export default function ExercisePlan() {
                 />
               </FormControl>
 
-              <FormControl>
+              <FormControl mb="40px">
                 <FormLabel htmlFor="date">Dată</FormLabel>
                 <Input
                   id="date"
@@ -123,11 +121,9 @@ export default function ExercisePlan() {
               </FormControl>
 
               <FormControl as="fieldset" margin="20px 0">
-                <Heading
-                  size="md"
-                  children="Alege tipul exercițiului"
-                  mb="20px"
-                />
+                <Heading size="md" className="sub-heading" mb="20px">
+                  Alege tipul exercițiului
+                </Heading>
 
                 <RadioGroup
                   name="type"

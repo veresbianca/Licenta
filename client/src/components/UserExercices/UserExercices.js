@@ -50,7 +50,7 @@ export default function UserExercices() {
   return (
     <Box display="flex" bg="gray.100">
       <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
-        <Heading>Aceasta este rutina ta de azi!</Heading>
+        <Heading mb="40px" align="center">Aceasta este rutina ta de azi!</Heading>
         {exercisePlan !== undefined && exercisePlan.length > 0 ? (
           exercisePlan.map((exercise, index) => {
             return (
@@ -65,15 +65,9 @@ export default function UserExercices() {
                   <UpdateExercise exercise={exercise}></UpdateExercise>
                 ) : (
                   <>
-                    <Box display="grid" gridTemplateColumns="repeat(5, 1fr)">
-                      <Box
-                        display="grid"
-                        gridTemplateColumns="auto 1fr"
-                        alignItems="center"
-                      >
-                        <Heading size="sm">Nume:</Heading>
-                        <span>{exercise.name}</span>
-                      </Box>
+                    <Heading size="sm">{exercise.name}</Heading>
+
+                    <Box display="grid" gridTemplateColumns="repeat(2, 1fr)">
                       <Box
                         display="grid"
                         gridTemplateColumns="auto 1fr"

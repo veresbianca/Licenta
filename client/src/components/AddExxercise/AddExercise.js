@@ -84,7 +84,7 @@ export default function AddExercise({ exerciseType }) {
                 alignItems="center"
                 gridTemplateColumns="repeat(5, 1fr)"
                 gap="30px"
-                padding="20px"
+                padding="20px 0"
                 borderBottom="1px solid"
               >
                 <Heading size="sm">{exercise.name}</Heading>
