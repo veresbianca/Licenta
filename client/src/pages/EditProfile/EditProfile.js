@@ -51,6 +51,7 @@ export default function EditProfile() {
   const [updateUser, { error }] = useMutation(UPDATE_USER);
   const { data } = useQuery(QUERY_ME);
   const user = data?.me || {};
+
   const formik = useFormik({
     initialValues: {
       username: user.username ? user.username : '',
@@ -104,6 +105,7 @@ export default function EditProfile() {
             phone,
           },
         });
+
         if (error) {
           throw new Error('something went wrong!');
         } else {
@@ -118,16 +120,17 @@ export default function EditProfile() {
   return (
     <Box display="flex" bg="gray.100">
       <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
+        <Heading align="center" mb="40px">Editeaza Profilul</Heading>
+
         <Box bg="white" p={6} rounded="md">
-          <Heading>Edit Profile</Heading>
           <form
             onSubmit={e => {
               e.preventDefault();
               formik.handleSubmit(e);
             }}
           >
-            <FormControl isRequired>
-              <FormLabel htmlFor="username">Username</FormLabel>
+            <FormControl isRequired mb="20px">
+              <FormLabel htmlFor="username">Nume utilizator</FormLabel>
               <Input
                 id="username"
                 name="username"
@@ -137,8 +140,8 @@ export default function EditProfile() {
                 value={formik.values.username}
               />
             </FormControl>
-            <FormControl isRequired>
-              <FormLabel htmlFor="email">Email address</FormLabel>
+            <FormControl isRequired mb="20px">
+              <FormLabel htmlFor="email">Adresa email</FormLabel>
               <Input
                 id="email"
                 name="email"
@@ -148,8 +151,8 @@ export default function EditProfile() {
                 value={formik.values.email}
               />
             </FormControl>
-            <FormControl>
-              <FormLabel htmlFor="weight">Weight</FormLabel>
+            <FormControl mb="20px">
+              <FormLabel htmlFor="weight">Greutate</FormLabel>
               <Input
                 id="weight"
                 name="weight"
@@ -158,8 +161,8 @@ export default function EditProfile() {
                 value={formik.values.weight}
               />
             </FormControl>
-            <FormControl>
-              <FormLabel htmlFor="height">Height</FormLabel>
+            <FormControl mb="20px">
+              <FormLabel htmlFor="height">Inaltime</FormLabel>
               <Input
                 id="height"
                 name="height"
@@ -168,8 +171,8 @@ export default function EditProfile() {
                 value={formik.values.height}
               />
             </FormControl>
-            <FormControl>
-              <FormLabel htmlFor="age">Age</FormLabel>
+            <FormControl mb="20px">
+              <FormLabel htmlFor="age">Varsta</FormLabel>
               <Input
                 id="age"
                 name="age"
@@ -178,21 +181,21 @@ export default function EditProfile() {
                 value={formik.values.age}
               />
             </FormControl>
-            <FormControl as="fieldset">
-              <FormLabel as="legend">Gender</FormLabel>
+            <FormControl as="fieldset" mb="20px">
+              <FormLabel as="legend">Gen</FormLabel>
               <RadioGroup value={formik.values.gender}>
                 <HStack spacing="24px">
                   <Radio
                     name="gender"
                     onChange={formik.handleChange}
-                    value="Male"
+                    value="Masculin"
                   >
                     Male
                   </Radio>
                   <Radio
                     name="gender"
                     onChange={formik.handleChange}
-                    value="Female"
+                    value="Feminin"
                   >
                     Female
                   </Radio>
@@ -200,8 +203,8 @@ export default function EditProfile() {
               </RadioGroup>
             </FormControl>
 
-            <FormControl>
-              <FormLabel htmlFor="birthday">Birthday</FormLabel>
+            <FormControl mb="20px">
+              <FormLabel htmlFor="birthday">Zi de nastere</FormLabel>
               <Input
                 id="birthday"
                 name="birthday"
@@ -211,8 +214,8 @@ export default function EditProfile() {
               />
             </FormControl>
 
-            <FormControl>
-              <FormLabel htmlFor="country">Country</FormLabel>
+            <FormControl mb="20px">
+              <FormLabel htmlFor="country">Tara</FormLabel>
               <Input
                 id="country"
                 name="country"
@@ -222,8 +225,8 @@ export default function EditProfile() {
               />
             </FormControl>
 
-            <FormControl>
-              <FormLabel htmlFor="city">City</FormLabel>
+            <FormControl mb="20px">
+              <FormLabel htmlFor="city">Oras</FormLabel>
               <Input
                 id="city"
                 name="city"
@@ -233,8 +236,8 @@ export default function EditProfile() {
               />
             </FormControl>
 
-            <FormControl>
-              <FormLabel htmlFor="address">Address</FormLabel>
+            <FormControl mb="20px">
+              <FormLabel htmlFor="address">Adresa</FormLabel>
               <Input
                 id="address"
                 name="address"
@@ -244,8 +247,8 @@ export default function EditProfile() {
               />
             </FormControl>
 
-            <FormControl>
-              <FormLabel htmlFor="phone">phone</FormLabel>
+            <FormControl mb="20px">
+              <FormLabel htmlFor="phone">Nr. telefon</FormLabel>
               <Input
                 id="phone"
                 name="phone"
@@ -255,27 +258,6 @@ export default function EditProfile() {
               />
             </FormControl>
 
-            {/* <FormControl as="fieldset">
-            <FormLabel as="legend">Private Profile?</FormLabel>
-            <RadioGroup value={formik.values.isPrivate}>
-              <HStack spacing="24px">
-                <Radio
-                  name="isPrivate"
-                  value="1"
-                  onChange={formik.handleChange}
-                >
-                  Yes
-                </Radio>
-                <Radio
-                  name="isPrivate"
-                  value="0"
-                  onChange={formik.handleChange}
-                >
-                  No
-                </Radio>
-              </HStack>
-            </RadioGroup>
-          </FormControl> */}
             <Stack spacing={10} pt={2}>
               <Button
                 type="submit"
@@ -287,7 +269,7 @@ export default function EditProfile() {
                   bg: 'darkgreen',
                 }}
               >
-                Submit
+                Editeaza
               </Button>
             </Stack>
           </form>

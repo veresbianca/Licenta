@@ -163,7 +163,7 @@ export default function Profile() {
     <>
       <Box display="flex" bg="gray.100">
         <Container display="grid" gap="20px" maxW={'5xl'} py={12}>
-          <Heading mb="40px">Profilul tău</Heading>
+          <Heading mb="40px" align="center">Profilul tău</Heading>
           <Stack
             bg="white"
             border={'1px solid transparent'}
@@ -261,7 +261,6 @@ export default function Profile() {
                     name={user.username}
                     src="https://bit.ly/"
                   />{' '}
-                  <Button children="Adaugă poza de profil" />
                 </SimpleGrid>
               </SimpleGrid>
             </Box>
