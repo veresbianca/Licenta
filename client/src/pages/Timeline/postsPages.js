@@ -13,6 +13,8 @@ export default function PostsPages() {
   const { loading, error, data } = useQuery(GET_POSTS);
   const posts = data?.posts?.slice().reverse() || [];
 
+  console.log('postsPages')
+
   if (loading) {
     return (
       <Container h={'73vh'}>

@@ -99,6 +99,26 @@ export const QUERY_ME = gql`
   ${userFragment}
 `;
 
+export const QUERY_CLIENT = gql`
+  query client($userId: ID!) {
+    client(userId: $userId) {
+      mealPlan {
+        id
+        name
+        type
+        calories
+        proteins
+        carbs
+        fats
+        photo
+        unit
+        value
+        date
+      }
+    }
+  }
+`;
+
 export const GET_POSTS = gql`
   query posts {
     posts {

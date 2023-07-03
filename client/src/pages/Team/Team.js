@@ -82,8 +82,8 @@ export default function Team() {
 
   console.log(currentUser);
 
-  const findProf = userRole => {
-    const result = currentUser?.friends.find(o => o.userRole === userRole);
+  const findProf = (email) => {
+    const result = currentUser?.friends.find(o => o.email === email);
 
     if (result) {
       return true;
@@ -223,7 +223,7 @@ export default function Team() {
                       >
                         {result.username}
                       </Text>
-                      {!findProf('MEDIC') ? (
+                      {!findProf(result.email) ? (
                         <Button
                           children="Alege"
                           onClick={() => handleClick(result.email)}
@@ -282,7 +282,7 @@ export default function Team() {
                       >
                         {result.username}
                       </Text>
-                      {!findProf('TRAINNER') ? (
+                      {!findProf(result.email) ? (
                         <Button
                           children="Alege"
                           onClick={() => handleClick(result.email)}
@@ -341,7 +341,7 @@ export default function Team() {
                       >
                         {result.username}
                       </Text>
-                      {!findProf('NUTRITIONIST') ? (
+                      {!findProf(result.email) ? (
                         <Button
                           children="Alege"
                           onClick={() => handleClick(result.email)}
@@ -399,7 +399,7 @@ export default function Team() {
                       >
                         {result.username}
                       </Text>
-                      {!findProf('PSIHOLOGIST') ? (
+                      {!findProf(result.email) ? (
                         <Button
                           children="Alege"
                           onClick={() => handleClick(result.email)}

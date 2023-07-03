@@ -130,6 +130,7 @@ export const UPDATE_USER = gql`
 
 export const ADD_MEAL = gql`
   mutation addMeal(
+    $userId: String
     $mealAuthor: String
     $name: String!
     $type: [String]
@@ -143,6 +144,7 @@ export const ADD_MEAL = gql`
     $date: Date
   ) {
     addMeal(
+      userId :$userId
       mealAuthor: $mealAuthor
       name: $name
       type: $type

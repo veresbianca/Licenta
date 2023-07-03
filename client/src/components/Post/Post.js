@@ -52,6 +52,8 @@ export default function Post({
   const [updateLikes, { error }] = useMutation(UPDATE_LIKES);
   let navigate = useNavigate();
 
+  console.log('Post')
+
   const handleSinglePost = async event => {
     event.preventDefault();
     navigate(`/post/${postId}`, { replace: true });

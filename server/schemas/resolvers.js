@@ -34,6 +34,12 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    client: async(parent, args, context) => {
+      const userData = await User.findOne({ _id: args.userId })
+        .populate("mealPlan")
+        .select("-__v -password");
+      return userData;
+    },
     users: async () => {
       // Populate the meal and exercise subdocuments when querying for user
       return await User.find({}).populate("goals");
@@ -263,8 +269,9 @@ const resolvers = {
       if (!context.user) throw new AuthenticationError("Trebuie să fii logat!");
       const meal = await Meal.create(args);
       const mealId = meal.id;
+      const userId = args.userId !== '123' ? args.userId : context.user._id
       const updatedUser = await User.findByIdAndUpdate(
-        { _id: args.userId },
+        { _id: userId },
         { $addToSet: { mealPlan: mealId } },
         { new: true }
       );

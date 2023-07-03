@@ -7,6 +7,11 @@ const typeDefs = gql`
   goals - user can set more than one goal
   exercise and meal - each goal will have related exercise and meal plan
   """ # ----------Queries-----------
+  type Client {
+    id: ID!
+    mealPlan: [Meal]
+  }
+
   type User {
     id: ID!
     username: String!
@@ -133,6 +138,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
+    client(userId: ID!): Client
     posts: [Post]
     meals: [Meal]
     stats: [Stats]

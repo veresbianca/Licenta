@@ -23,6 +23,7 @@ import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_MEAL } from '../../utils/mutations';
 import MealPlan from '../MealPlan';
+import MealPlanForClientsListing from '../MealPlanForClientsListing'
 import { useLocation } from "react-router-dom";
 
 import nutritionBanner from '../../assets/images/nutrition-baner.jpg';
@@ -40,6 +41,7 @@ export default function Component(props) {
   const [data, setData] = useState(null);
   const [search, setSearch] = useState('');
   const [addMealBtnDisabled, setAddMealBtnDisabled] = useState(true);
+  const { userId } = useParams();
 
   const valueMealChange = event => {
     const { value } = event.target;
@@ -220,15 +222,15 @@ export default function Component(props) {
           </Box>
           
         </Stack>
-        <MealPlan></MealPlan>
-      </>
-        
 
+        {userId ? (
+          <MealPlanForClientsListing></MealPlanForClientsListing>
+        ) : <MealPlan></MealPlan>}
+      </>
       );
       
   };
 
-  const { userId } = useParams();
 
   const addMeal = async (type, unit, value, date) => {
     let newMeals;
@@ -256,12 +258,12 @@ export default function Component(props) {
 
     await newMeal({
       variables: {
+        userId: userId ? userId : '123',
         name: newMeals[0].name,
         type: type,
         unit: unit,
         value: value,
         date: date,
-        mealAuthor: user.data.username,
         calories: newMeals[0].calories,
         proteins: newMeals[0].proteins,
         carbs: newMeals[0].carbs,
