@@ -95,7 +95,7 @@ const userSchema = new Schema({
   },
   userRole: {
     type: String,
-    default: "BASIC",
+    default: "Client",
   },
 });
 

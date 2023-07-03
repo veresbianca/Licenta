@@ -43,17 +43,6 @@ export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { showMobileMenu, setShowMobileMenu } = useContext(AppContext);
   const [isLargerThan426] = useMediaQuery('(min-width: 426px)');
-  // const { locale } = useContext(LocaleContext);
-  // const { t } = useTranslation();
-
-  // replace with authentication
-
-  // const toggleLanguage = (l) =>  {
-  //   if (locale !== l) {
-  //     i18n.changeLanguage(l);
-  //   }
-  // }
-
   const showNav = () => {
     setShowMobileMenu(!showMobileMenu);
   };
@@ -71,36 +60,8 @@ export default function Navbar() {
             display={isLargerThan426 ? 'none' : 'block'}
             onClick={showNav}
           />
-
-          <HStack spacing={8} alignItems={'center'}>
-            {/* <HStack
-              as={'nav'}
-              spacing={4}
-              display={{ base: 'none', md: 'flex' }}
-            > */}
-            {/* <Link as={RouterLink} to='/posts'>
-                  <Button>Postari</Button>
-              </Link>
-              {Auth.loggedIn() &&
-                <Link as={RouterLink} to='/profile'>
-                    <Button>Profil</Button>
-                </Link>
-              } */}
-            {/* </HStack> */}
-          </HStack>
-
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
-              {/* <Menu>
-              <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-              {t('changeLanguage')}
-              </MenuButton>
-              <MenuList>
-                <MenuItem onClick={() => {toggleLanguage('en')}}>{t('lang-english')}</MenuItem>
-                <MenuItem onClick={() => {toggleLanguage('ro')}}>{t('lang-ro')}</MenuItem>
-              </MenuList>
-            </Menu> */}
-
               <Button onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>
@@ -135,7 +96,6 @@ export default function Navbar() {
                 </Menu>
               ) : (
                 <>
-                  {/*Replace buttons*/}
                   <Link as={RouterLink} to="/login">
                     <Button
                       color={'black'}

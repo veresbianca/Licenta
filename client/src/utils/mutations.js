@@ -51,6 +51,7 @@ export const ADD_USER = gql`
     $city: String
     $address: String
     $phone: String
+    $userRole: String
   ) {
     addUser(
       username: $username
@@ -66,12 +67,14 @@ export const ADD_USER = gql`
       city: $city
       address: $address
       phone: $phone
+      userRole: $userRole
     ) {
       token
       user {
         id
         username
         email
+        userRole
       }
     }
   }
@@ -171,6 +174,7 @@ export const ADD_MEAL = gql`
 export const ADD_FRIEND = gql`
   mutation addFriend($email: String) {
     addFriend(email: $email) {
+      id
       username
       email
       userRole

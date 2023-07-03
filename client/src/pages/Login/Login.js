@@ -60,7 +60,7 @@ export default function SimpleCard() {
                   formik.handleSubmit(e);
                 }}
               >
-                <FormControl>
+                <FormControl mb="20px">
                   <FormLabel htmlFor="email">Adresă email</FormLabel>
                   <Input
                     id="email"

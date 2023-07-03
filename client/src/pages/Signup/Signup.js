@@ -16,6 +16,8 @@ import {
   useColorModeValue,
   Link,
   Container,
+  Radio,
+  RadioGroup
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useFormik } from 'formik';
@@ -41,18 +43,13 @@ export default function SignupCard() {
       username: '',
       email: '',
       password: '',
+      userRole: ''
     },
-    onSubmit: async ({ username, email, password }) => {
-      // if (!validatePassword(password)) {
-      //   setErrorMessage(`Password must be at least 8 characters long and contain one uppercase,
-      //   one lowercase, one number and one special case character!`);
-      //   return;
-      // }
+    onSubmit: async ({ username, email, password, userRole }) => {
       try {
-        // setErrorMessage('');
         console.log('before addUser');
         const { data } = await addUser({
-          variables: { username, email, password },
+          variables: { username, email, password, userRole },
         });
         console.log('after addUser');
         Auth.login(data.addUser.token);
@@ -129,6 +126,48 @@ export default function SignupCard() {
                     </InputRightElement>
                   </InputGroup>
                 </FormControl>
+
+                <FormControl as="fieldset" mb="20px">
+                  <FormLabel as="legend">Tip utilizator</FormLabel>
+                  <RadioGroup value={formik.values.userRole}>
+                      <Radio
+                        name="userRole"
+                        onChange={formik.handleChange}
+                        value="Client"
+                      >
+                        Client
+                      </Radio>
+                      <Radio
+                        name="userRole"
+                        onChange={formik.handleChange}
+                        value="Medic"
+                      >
+                        Medic
+                      </Radio>
+                      <Radio
+                        name="userRole"
+                        onChange={formik.handleChange}
+                        value="Trainer"
+                      >
+                        Trainer
+                      </Radio>
+                      <Radio
+                        name="userRole"
+                        onChange={formik.handleChange}
+                        value="Psiholog"
+                      >
+                        Psiholog
+                      </Radio>
+                      <Radio
+                        name="userRole"
+                        onChange={formik.handleChange}
+                        value="Nutritionist"
+                      >
+                        Nutritionist
+                      </Radio>
+                  </RadioGroup>
+                </FormControl>
+
                 <Stack spacing={10} pt={2}>
                   <Button
                     type="submit"

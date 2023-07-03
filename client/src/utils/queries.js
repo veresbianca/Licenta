@@ -88,6 +88,7 @@ export const QUERY_ME = gql`
         tags
       }
       friends {
+        id
         username
         email
         userRole

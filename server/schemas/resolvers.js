@@ -264,7 +264,7 @@ const resolvers = {
       const meal = await Meal.create(args);
       const mealId = meal.id;
       const updatedUser = await User.findByIdAndUpdate(
-        { _id: context.user._id },
+        { _id: args.userId },
         { $addToSet: { mealPlan: mealId } },
         { new: true }
       );

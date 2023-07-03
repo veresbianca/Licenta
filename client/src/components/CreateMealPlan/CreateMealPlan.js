@@ -23,10 +23,12 @@ import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_MEAL } from '../../utils/mutations';
 import MealPlan from '../MealPlan';
+import { useLocation } from "react-router-dom";
 
 import nutritionBanner from '../../assets/images/nutrition-baner.jpg';
+import { useParams } from 'react-router-dom';
 
-export default function Component() {
+export default function Component(props) {
   const user = Auth.loggedIn() ? Auth.getProfile() : null;
   const [newMeal] = useMutation(ADD_MEAL);
   const [mealTypeValue, setMealTypeValue] = useState('');
@@ -226,6 +228,8 @@ export default function Component() {
       
   };
 
+  const { userId } = useParams();
+
   const addMeal = async (type, unit, value, date) => {
     let newMeals;
 
@@ -269,7 +273,6 @@ export default function Component() {
 
   return (
     <>
-
       <Image src={nutritionBanner} width="100%" />
       <Box display="flex" bg="gray.100">
         <Container display="grid" gap="20px" maxW={'5xl'} py={12}>

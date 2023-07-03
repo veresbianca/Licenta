@@ -24,30 +24,33 @@ import { useQuery } from '@apollo/client';
 import { ADD_FRIEND, REMOVE_FRIEND } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
+
+import { useNavigate } from "react-router-dom";
+
 export default function Team() {
   const { loading, error, data: userData } = useQuery(QUERY_ME);
   const [currentUser, setCurrentUser] = useState();
   const [addFriend] = useMutation(ADD_FRIEND);
   const [removeFriend] = useMutation(REMOVE_FRIEND);
   const { loading: loadingMedicData, data: medicData } = useQuery(GET_MEDIC, {
-    variables: { type: 'MEDIC' },
+    variables: { type: 'Medic' },
   });
   const { loading: loadingTrainnerData, data: trainnerData } = useQuery(
     GET_TRAINNER,
     {
-      variables: { type: 'TRAINNER' },
+      variables: { type: 'Trainner' },
     }
   );
   const { loading: loadingNutritionistData, data: nutritionistData } = useQuery(
     GET_NUTRITIONIST,
     {
-      variables: { type: 'NUTRITIONIST' },
+      variables: { type: 'Nutritionist' },
     }
   );
   const { loading: loadingPsihologistData, data: psihologistData } = useQuery(
     GET_PSIHOLOGIST,
     {
-      variables: { type: 'PSIHOLOGIST' },
+      variables: { type: 'Psiholog' },
     }
   );
   const [isLargerThan426] = useMediaQuery('(min-width: 426px)');
@@ -87,6 +90,12 @@ export default function Team() {
     }
   };
 
+  let navigate = useNavigate();
+
+  const handleGoToMealPlan = (userId) => {
+    navigate(`/meal-plan/${userId}`, { replace: true });
+  }
+
   return (
     <Container maxW={'5xl'} py={12}>
       <Stack
@@ -95,8 +104,7 @@ export default function Team() {
         boxShadow={'0px 0px 10px -2px #ACACAC'}
         padding="20px"
       >
-        {currentUser?.userRole === 'BASIC' ||
-        currentUser?.userRole === 'FULL' ? (
+        {currentUser?.userRole === 'Client' ? (
           <Heading size="md" className="sub-heading">
             Echipa ta!
           </Heading>
@@ -118,9 +126,20 @@ export default function Team() {
                   >
                     <Heading size="sm">Nume: </Heading>
                     <span>{friend.username}</span>
-                    <Button onClick={() => handleRemoveFriend(friend.email)}>
+                    <div>
+                      <Button onClick={() => handleRemoveFriend(friend.email)}>
                       Renunță
-                    </Button>
+                      </Button>
+                      {currentUser.userRole !== 'Client' ? (
+                      <><Button onClick={() => handleGoToMealPlan(friend.id)}>
+                        Adauga masa
+                      </Button>
+                      <Button onClick={() => {}}>
+                        Adauga exercitii
+                      </Button></>
+                      ) : (<></>)}
+                      
+                    </div>
                   </Box>
                   <Box
                     display="grid"
@@ -138,8 +157,7 @@ export default function Team() {
           <>
             <Text>Nu ai pe nimeni in echipa ta.</Text>
 
-            {currentUser?.userRole === 'BASIC' ||
-            currentUser?.userRole === 'FULL' ? (
+            {currentUser?.userRole === 'Client' ? (
               <Text>
                 Alege profesioniștii pentru echipa ta, dintre cei de mai jos!
               </Text>
@@ -150,7 +168,7 @@ export default function Team() {
         )}
       </Stack>
 
-      {currentUser?.userRole === 'BASIC' || currentUser?.userRole === 'FULL' ? (
+      {currentUser?.userRole === 'Client' ? (
         <>
           <Heading
             textAlign="center"
@@ -191,7 +209,7 @@ export default function Team() {
                       <Image
                         borderRadius="full"
                         objectFit="contain"
-                        src={`/Medici/${result.photoSrc}.jpg`}
+                        src=""
                         boxSize="150px"
                         fallbackSrc="https://via.placeholder.com/150"
                       />
@@ -250,7 +268,7 @@ export default function Team() {
                       <Image
                         borderRadius="full"
                         objectFit="contain"
-                        src={`/Traineri/${result.photoSrc}.jpg`}
+                        src=""
                         boxSize="150px"
                         fallbackSrc="https://via.placeholder.com/150"
                       />
@@ -309,7 +327,7 @@ export default function Team() {
                       <Image
                         borderRadius="full"
                         objectFit="contain"
-                        src={`/Nutritionisti/${result.photoSrc}.jpg`}
+                        src=""
                         boxSize="150px"
                         fallbackSrc="https://via.placeholder.com/150"
                       />
@@ -367,7 +385,7 @@ export default function Team() {
                       <Image
                         borderRadius="full"
                         objectFit="contain"
-                        src={`/Nutritionisti/${result.photoSrc}.jpg`}
+                        src=""
                         boxSize="150px"
                         fallbackSrc="https://via.placeholder.com/150"
                       />

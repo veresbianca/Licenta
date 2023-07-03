@@ -108,6 +108,10 @@ const App = withContextProvider(() => {
                   element={Auth.loggedIn() ? <Meals /> : <Login />}
                 />
                 <Route
+                  path="/meal-plan/:userId"
+                  element={Auth.loggedIn() ? <Meals /> : <Login />}
+                />
+                <Route
                   path="/post/:postId"
                   element={Auth.loggedIn() ? <SinglePost /> : <Login />}
                 />

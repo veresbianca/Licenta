@@ -159,6 +159,11 @@ export default function Profile() {
     });
   };
 
+
+  const handleGoToMealPlan = (userId) => {
+    navigate(`/meal-plan/${userId}`, { replace: true });
+  }
+
   return (
     <>
       <Box display="flex" bg="gray.100">
@@ -364,21 +369,20 @@ export default function Profile() {
             <Heading size="md" className="sub-heading">
               Planul tău alimentar
             </Heading>
-            <Link as={RouterLink} to="/meal-plan">
-              <Button
-                leftIcon={<BsFillPlusCircleFill />}
-                px={5}
-                bg={buttonBg}
-                color={'white'}
-                rounded={'md'}
-                _hover={{
-                  transform: 'translateY(-2px)',
-                  boxShadow: 'lg',
-                }}
-              >
-                Vezi planul tău alimentar
-              </Button>
-            </Link>
+            <Button
+              leftIcon={<BsFillPlusCircleFill />}
+              px={5}
+              bg={buttonBg}
+              color={'white'}
+              rounded={'md'}
+              onClick={() => handleGoToMealPlan(user.id)}
+              _hover={{
+                transform: 'translateY(-2px)',
+                boxShadow: 'lg',
+              }}
+            >
+              Vezi planul tău alimentar
+            </Button>
             <Alert
               display={user.mealPlan.length > 0 ? 'none' : 'flex'}
               status="error"

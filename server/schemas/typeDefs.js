@@ -225,6 +225,7 @@ const typeDefs = gql`
       city: String
       address: String
       phone: String
+      userRole: String
     ): Auth
     # User authentication: Check for valid login using email and password
     login(email: String!, password: String!): Auth
@@ -257,6 +258,7 @@ const typeDefs = gql`
     removeExercise(id: ID!): Exercise
     # Allow user to add meal plan
     addMeal(
+      userId: String
       mealAuthor: String
       name: String!
       type: [String]
