@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import React, { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_EXERCISE_FROM_ROUTINE } from '../../utils/mutations';
-import { Text, Button, Input } from '@chakra-ui/react';
+import { Text, Button, Input, Center } from '@chakra-ui/react';
 
 export default function UpdateExercise({ exercise }) {
   const [updateExercise] = useMutation(UPDATE_EXERCISE_FROM_ROUTINE);
@@ -50,24 +50,24 @@ export default function UpdateExercise({ exercise }) {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <Text>
-        name:{' '}
+      <Text mb="20px">
+        nume:{' '}
         <Input
           id="name"
           value={formik.values.name}
           onChange={formik.handleChange}
         ></Input>
       </Text>
-      <Text>
-        type:{' '}
+      <Text mb="20px">
+        tip:{' '}
         <Input
           id="type"
           value={formik.values.type}
           onChange={formik.handleChange}
         ></Input>
       </Text>
-      <Text>
-        sets:
+      <Text mb="20px">
+        seturi:
         <Input
           id="sets"
           type="number"
@@ -75,8 +75,8 @@ export default function UpdateExercise({ exercise }) {
           onChange={formik.handleChange}
         ></Input>
       </Text>
-      <Text>
-        reps:
+      <Text mb="20px">
+        repetitii:
         <Input
           id="reps"
           type="number"
@@ -84,8 +84,8 @@ export default function UpdateExercise({ exercise }) {
           onChange={formik.handleChange}
         ></Input>
       </Text>
-      <Text>
-        time:{' '}
+      <Text mb="20px">
+        timp:{' '}
         <Input
           id="time"
           type="number"
@@ -93,8 +93,8 @@ export default function UpdateExercise({ exercise }) {
           onChange={formik.handleChange}
         ></Input>
       </Text>
-      <Text>
-        liftingWeight:{' '}
+      <Text mb="20px">
+        greutate:{' '}
         <Input
           id="liftingWeight"
           type="number"
@@ -102,8 +102,8 @@ export default function UpdateExercise({ exercise }) {
           onChange={formik.handleChange}
         ></Input>
       </Text>
-      <Text>
-        distance:{' '}
+      <Text mb="20px">
+        distanta:{' '}
         <Input
           id="distance"
           type="number"
@@ -111,8 +111,8 @@ export default function UpdateExercise({ exercise }) {
           onChange={formik.handleChange}
         ></Input>
       </Text>
-      <Text>
-        calories:{' '}
+      <Text mb="20px">
+        calorii:{' '}
         <Input
           id="calories"
           type="number"
@@ -120,8 +120,8 @@ export default function UpdateExercise({ exercise }) {
           onChange={formik.handleChange}
         ></Input>
       </Text>
-      <Text>
-        dates:{' '}
+      <Text mb="20px">
+        data:{' '}
         <Input
           id="plannedDates"
           type="date"
@@ -130,7 +130,19 @@ export default function UpdateExercise({ exercise }) {
         ></Input>
       </Text>
 
-      <Button type="submit">save</Button>
+      <Center>
+        <Button 
+          type="submit"
+          bg={'green'}
+          w="250px"
+          color={'black'}
+          rounded={'md'}
+          _hover={{
+            transform: 'translateY(-2px)',
+            boxShadow: 'lg',
+          }}
+        >save</Button>
+      </Center>
     </form>
   );
 }

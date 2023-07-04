@@ -133,7 +133,6 @@ export default function Subscription() {
                   Ultimele <b>4 cifre</b> ale cardului tau sunt:{' '}
                   <b>{currentUser?.ccLast4}</b>
                 </Text>
-                <ChangeCreditCard />
               </>
             ) : (
               <>

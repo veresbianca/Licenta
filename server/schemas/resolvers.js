@@ -237,7 +237,7 @@ const resolvers = {
       updatedUser = await User.findByIdAndUpdate(
         { _id: context.user._id },
         { $addToSet: { exercisePlan: exerciseId } },
-        { new: true }
+        { new: false }
       );
 
       return updatedUser;

@@ -39,11 +39,17 @@ import { useQuery } from '@apollo/client';
 import { QUERY_CLIENT } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
 
-const checkDate = date => {
-  const today = new Date();
-  const comparisonDate = new Date(date);
+import { DateTime } from 'luxon';
 
-  return today.getTime() === comparisonDate.getTime();
+const checkDate = dateString => {
+  const dateToCompare = DateTime.fromISO(dateString, { zone: "utc" });
+  const today = DateTime.local();
+
+  const hasSameDate = dateToCompare.hasSame(today, "day");
+  const hasSameMonth = dateToCompare.hasSame(today, "month");
+  const hasSameYear = dateToCompare.hasSame(today, "year");
+
+  return hasSameYear && hasSameMonth && hasSameDate;
 };
 
 export default function MealPlanForClientsListing() {
@@ -99,10 +105,7 @@ export default function MealPlanForClientsListing() {
             <Center height="50px">
               <Divider />
             </Center>
-          </Stack>
-
-          <UnorderedList listStyleType="none" margin={0}>
-          {console.log('breakfast is here', breakfast)}
+            <UnorderedList listStyleType="none" margin={0}>
             {breakfast.map((meal, index, { length }) => {
               return checkDate(meal.date) ? (
                 <>
@@ -127,6 +130,9 @@ export default function MealPlanForClientsListing() {
               );
             })}
           </UnorderedList>
+          </Stack>
+
+          
         </GridItem>
 
         <GridItem

@@ -143,10 +143,13 @@ export default function ExercisePlan() {
 
               <Button
                 type="submit"
-                bg={'blue.400'}
-                color={'white'}
+                bg={'green'}
+                w="250px"
+                color={'black'}
+                rounded={'md'}
                 _hover={{
-                  bg: 'blue.500',
+                  transform: 'translateY(-2px)',
+                  boxShadow: 'lg',
                 }}
               >
                 Crează exercițiu

@@ -12,6 +12,8 @@ import {
   Box,
   UnorderedList,
   ListItem,
+  Link,
+  Center
 } from '@chakra-ui/react';
 import {
   GET_MEDIC,
@@ -23,8 +25,7 @@ import {
 import { useQuery } from '@apollo/client';
 import { ADD_FRIEND, REMOVE_FRIEND } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
-
-
+import { Link as RouterLink } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 export default function Team() {
@@ -126,7 +127,11 @@ export default function Team() {
                   >
                     <Heading size="sm">Nume: </Heading>
                     <span>{friend.username}</span>
-                    <div>
+                    <Box 
+                      display="grid"
+                      gridTemplateColumns="1fr 1fr 1fr"
+                      gap="10px"
+                    >
                       <Button 
                         onClick={() => handleRemoveFriend(friend.email)}
                         bg={'green'}
@@ -141,15 +146,34 @@ export default function Team() {
                         Renunță
                       </Button>
                       {currentUser.userRole !== 'Client' ? (
-                      <><Button onClick={() => handleGoToMealPlan(friend.id)}>
+                      <><Button 
+                          onClick={() => handleGoToMealPlan(friend.id)}
+                          bg={'green'}
+                          w="150px"
+                          color={'black'}
+                          rounded={'md'}
+                          _hover={{
+                            transform: 'translateY(-2px)',
+                            boxShadow: 'lg',
+                          }}
+                        >
                         Adauga masa
                       </Button>
-                      <Button onClick={() => {}}>
+                      <Button 
+                        onClick={() => {}}
+                        bg={'green'}
+                        w="150px"
+                        color={'black'}
+                        rounded={'md'}
+                        _hover={{
+                          transform: 'translateY(-2px)',
+                          boxShadow: 'lg',
+                        }}
+                      >
                         Adauga exercitii
                       </Button></>
                       ) : (<></>)}
-                      
-                    </div>
+                    </Box>
                   </Box>
                   <Box
                     display="grid"
@@ -167,18 +191,34 @@ export default function Team() {
           <>
             <Text>Nu ai pe nimeni in echipa ta.</Text>
 
-            {currentUser?.userRole === 'Client' ? (
+            {currentUser?.userRole === 'Client' && currentUser.userType === 'yearlySubscription' ? (
               <Text>
                 Alege profesioniștii pentru echipa ta, dintre cei de mai jos!
               </Text>
             ) : (
-              <></>
+              <>
+                  <Text><b>Subsciptia ta: {currentUser.userType}</b> nu iti permite sa adaugi profesionisti.</Text>
+                  <Link as={RouterLink} to="/subscription">
+                  <Button
+                    bg={'green'}
+                    w="250px"
+                    color={'black'}
+                    rounded={'md'}
+                    _hover={{
+                      transform: 'translateY(-2px)',
+                      boxShadow: 'lg',
+                    }}
+                  >
+                    Cumpara o subscriptie
+                  </Button>
+                </Link>
+              </>
             )}
           </>
         )}
       </Stack>
 
-      {currentUser?.userRole === 'Client' ? (
+      {currentUser?.userRole === 'Client' && currentUser.userType === 'yearlySubscription' ? (
         <>
           <Heading
             textAlign="center"

@@ -110,12 +110,20 @@ export default function AddExercise({ exerciseType }) {
                   width="120px"
                   alignSelf="end"
                   justifySelf="center"
+                  bg={'green'}
+                  w="150px"
+                  color={'black'}
+                  rounded={'md'}
+                  _hover={{
+                    transform: 'translateY(-2px)',
+                    boxShadow: 'lg',
+                  }}
                   onClick={() => {
                     toast({
                       duration: 1500,
                       isClosable: true,
                       render: () => (
-                        <Box color="white" p={3} bg="blue.500">
+                        <Box color="white" p={3} bg="green.500">
                           {exercise.name} adăugat.
                         </Box>
                       ),

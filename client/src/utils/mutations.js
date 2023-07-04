@@ -28,10 +28,8 @@ export const LOGIN_USER = gql`
 export const REMOVE_USER = gql`
   mutation removeUser($username: String!) {
     removeUser(username: $username) {
-      user {
-        id
-        username
-      }
+      username
+      email
     }
   }
 `;

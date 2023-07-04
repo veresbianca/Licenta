@@ -3,7 +3,7 @@ import { Button, Heading } from '@chakra-ui/react';
 import { useQuery, gql, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../../utils/queries';
 
-import { Stack, Text, Box } from '@chakra-ui/react';
+import { Stack, Text, Box, Center } from '@chakra-ui/react';
 
 import { REMOVE_USER } from '../../utils/mutations';
 
@@ -45,6 +45,8 @@ export default function CancelSubscription() {
   //     }
   //   };
 
+  console.log(currentUser)
+
   return (
     <Box bg="white">
       <Stack
@@ -55,13 +57,29 @@ export default function CancelSubscription() {
         padding="20px"
         mb="60px"
       >
-        <Text mb="20px">
+        <Text mb="20px" align="center">Ai o subscriptie de tip: <b>{currentUser?.userType}</b></Text>
+        <Text mb="20px" align="center">
           Anulează subscripția trimițând un email la adresa:
           healthystudio@app.com
         </Text>
-        <Button type="button" onClick={() => sendEmailToRemoveUser()}>
-          Trimite email
-        </Button>
+        <Center>
+          <Button 
+          type="button" 
+          onClick={() => sendEmailToRemoveUser()}
+          children="Trimite email"
+          bg={'green'}
+          w="250px"
+          mt="25px"
+          color={'black'}
+          rounded={'md'}
+          _hover={{
+            transform: 'translateY(-2px)',
+            boxShadow: 'lg',
+          }}
+          >
+          </Button>
+        </Center>
+
       </Stack>
     </Box>
   );

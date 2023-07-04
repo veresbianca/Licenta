@@ -159,15 +159,31 @@ export default function UserExercices() {
                     gap="20px"
                     mt="20px"
                   >
-                    <Button onClick={() => handleRemoveExercise(exercise.id)}>
-                      Sterge
+                    <Button 
+                      onClick={() => handleRemoveExercise(exercise.id)}
+                      bg={'green'}
+                      color={'black'}
+                      children="Salveaza"
+                      rounded={'md'}
+                      _hover={{
+                        transform: 'translateY(-2px)',
+                        boxShadow: 'lg',
+                      }}
+                    >
                     </Button>
 
                     <Button
                       onClick={() => setEditMode(true)}
                       display={editMode ? 'none' : 'block'}
+                      bg={'green'}
+                      color={'black'}
+                      children="Editează"
+                      rounded={'md'}
+                      _hover={{
+                        transform: 'translateY(-2px)',
+                        boxShadow: 'lg',
+                      }}
                     >
-                      Editează
                     </Button>
                   </Box>
                 </>

@@ -16,16 +16,14 @@ const generatePaymentSuccesfulEmail = ({ username, email }) => ({
         <p>Plata abonamentului a fost inregistrata cu succes.</p>
         <p>Acum te poti bucura de toate avantajele pe care ti le putem oferi!</p>
         <p>In pagina de profil poti gasi mai multe detalii despre abonamentul achizitionat.</p>
-        <p>Pentru intrebari, ne poti contacta la adresa urmatoare: </p>
-        <a href="http://duckduckgo.com" target="_blank">Contacteaza-ne aici</a>
         `,
 });
 
 const generateRemoveAccountEmail = ({ username, email }) => ({
   from: "HealthyStudio <healthystudio.noreply@app.com",
   to: email,
-  subject: `Stergere cont, ${username}`,
-  html: `<h1>Doresc stergerea contului!</h1>`,
+  subject: `Anulare subscriptie, ${username}`,
+  html: `<h1>Doresc anularea subscriptiei!</h1>`,
 });
 
 module.exports = {
