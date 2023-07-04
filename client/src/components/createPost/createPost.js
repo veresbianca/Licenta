@@ -24,7 +24,6 @@ import {
   AccordionIcon,
   Container,
 } from '@chakra-ui/react';
-// import { Formik, useFormik } from 'formik';
 import { searchFood, searchExercise } from '../../utils/API';
 import { FaPlus, FaCheck } from 'react-icons/fa';
 import Auth from '../../utils/auth';
@@ -523,7 +522,6 @@ export default function Component({ postUpdate }) {
                   <Accordion allowMultiple allowToggle>
                     <FormControl id="createpost" mt={1}>
                       <Textarea
-                        placeholder="Adaugă în jurnalul tău..."
                         mt={1}
                         rows={3}
                         shadow="sm"
@@ -532,95 +530,24 @@ export default function Component({ postUpdate }) {
                         onChange={textChange}
                       />
                     </FormControl>
-
-                    {/* <AccordionItem>
-                      <h2>
-                        <AccordionButton>
-                          <AccordionPanel>
-                            <FormControl alignItems="center" mt={1}>
-                              <Flex wrap="wrap">
-                                <Button
-                                  type="button"
-                                  ml={5}
-                                  variant="outline"
-                                  size="sm"
-                                  fontWeight="medium"
-                                  _focus={{ shadow: 'none' }}
-                                  onClick={() => handleExercise()}
-                                  bg="lightblue"
-                                  color={'white'}
-                                  _hover={{
-                                    bg: 'darkblue',
-                                    boxShadow: 'xl',
-                                  }}
-                                >
-                                  antrenament cu greutăți
-                                </Button>
-                                <Button
-                                  type="button"
-                                  ml={5}
-                                  variant="outline"
-                                  size="sm"
-                                  fontWeight="medium"
-                                  _focus={{ shadow: 'none' }}
-                                  onClick={() => handleCardio()}
-                                  bg="lightblue"
-                                  color={'white'}
-                                  _hover={{
-                                    bg: 'darkblue',
-                                    boxShadow: 'xl',
-                                  }}
-                                >
-                                  antrenament cardio
-                                </Button>
-                                <Button
-                                  type="button"
-                                  ml={5}
-                                  variant="outline"
-                                  size="sm"
-                                  fontWeight="medium"
-                                  _focus={{ shadow: 'none' }}
-                                  onClick={() => handleMeal()}
-                                  bg="lightblue"
-                                  color={'white'}
-                                  _hover={{
-                                    bg: 'darkblue',
-                                    boxShadow: 'xl',
-                                  }}
-                                >
-                                  mâncare
-                                </Button>
-                              </Flex>
-                            </FormControl>
-                          </AccordionPanel>
-                          <AccordionIcon />
-                        </AccordionButton>
-                      </h2>
-                    </AccordionItem> */}
                   </Accordion>
-                  {/* {renderExercise()}
-                  {renderCardio()}
-                  {renderMeal()} */}
                 </Stack>
                 <FormControl>
                   <Center pb="2">
                     <Button
-                      ml={5}
-                      variant="outline"
-                      size="md"
-                      fontWeight="medium"
-                      _focus={{ shadow: 'none' }}
-                      verticalAlign="center"
-                      top="25"
-                      bg="lightgreen"
-                      color={'white'}
+                      px={8}
+                      bg={'green'}
+                      w="250px"
+                      top="25px"
+                      color={'black'}
+                      rounded={'md'}
                       _hover={{
-                        bg: 'darkgreen',
-                        boxShadow: 'xl',
+                        transform: 'translateY(-2px)',
+                        boxShadow: 'lg',
                       }}
                       type="submit"
                     >
-                      Post
+                      Posteaza
                     </Button>
                   </Center>
                 </FormControl>
@@ -642,14 +569,6 @@ export default function Component({ postUpdate }) {
               </chakra.form>
             </GridItem>
           </Grid>
-        </Box>
-        <Box visibility={{ base: 'hidden', sm: 'visible' }} aria-hidden="true">
-          <Box py={5}>
-            <Box
-              borderTop="solid 1px"
-              borderTopColor={useColorModeValue('gray.200', 'whiteAlpha.200')}
-            ></Box>
-          </Box>
         </Box>
       </Box>
     </Container>

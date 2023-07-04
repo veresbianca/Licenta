@@ -25,7 +25,7 @@ export default function CreateComment({ postId, commentAuthor }) {
   });
 
   return (
-    <Center>
+    <Center mt="50px">
       <Box
         bg={'white'}
         p={3}
@@ -45,7 +45,18 @@ export default function CreateComment({ postId, commentAuthor }) {
             resize={'none'}
           />
           <Center>
-            <Button mt={3} type="submit">
+            <Button 
+              px={8}
+              bg={'green'}
+              w="250px"
+              mt="20px"
+              color={'black'}
+              rounded={'md'}
+              _hover={{
+                transform: 'translateY(-2px)',
+                boxShadow: 'lg',
+              }} type="submit"
+            >
               Comment
             </Button>
           </Center>
