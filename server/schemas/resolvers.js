@@ -104,28 +104,6 @@ const resolvers = {
       return await Exercise.find({});
     },
 
-    // createCheckoutSession: async () => {
-    //   const FRONTEND_DOMAIN = "http://localhost:3000";
-    //   const session = await stripe.checkout.sessions.create({
-    //     line_items: [
-    //       {
-    //         price: "price_1MTrL5L1p6qnKEuvDkY1BIdw",
-    //         quantity: 1,
-    //       },
-    //       {
-    //         price: "price_1MTsj1L1p6qnKEuv98A1mB3j",
-    //         quantity: 1,
-    //       },
-    //     ],
-    //     mode: "subscription",
-    //     success_url: FRONTEND_DOMAIN + "/success",
-    //     cancel_url: FRONTEND_DOMAIN + "/cancel",
-    //   });
-
-    //   return JSON.stringify({
-    //     url: session.url,
-    //   });
-    // },
   },
   Mutation: {
     // add new user
@@ -303,10 +281,7 @@ const resolvers = {
     },
     // add goal plan
     addGoal: async (parent, goalInput, context) => {
-      // To add new goal with array of exercise ids plus add each exercise record in exercise collection
-      // iterate over array of exercise and insert each to exercise collection
-      // store auto ids for each exercise in array goalExercise
-      if (!context.user)
+     
         throw new AuthenticationError("You must be logged in to add Goal!");
       // create goalExercise array
       let goalExerciseList = [];
