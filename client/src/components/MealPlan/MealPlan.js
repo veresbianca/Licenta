@@ -38,11 +38,17 @@ import {
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../../utils/queries';
 
-const checkDate = date => {
-  const today = new Date();
-  const comparisonDate = new Date(date);
+import { DateTime } from 'luxon';
 
-  return today.getDate() === comparisonDate.getDate();
+const checkDate = dateString => {
+  const dateToCompare = DateTime.fromISO(dateString, { zone: "utc" });
+  const today = DateTime.local();
+
+  const hasSameDate = dateToCompare.hasSame(today, "day");
+  const hasSameMonth = dateToCompare.hasSame(today, "month");
+  const hasSameYear = dateToCompare.hasSame(today, "year");
+
+  return hasSameYear && hasSameMonth && hasSameDate;
 };
 
 export default function MealPlan() {
@@ -95,33 +101,33 @@ export default function MealPlan() {
             <Center height="50px">
               <Divider />
             </Center>
-          </Stack>
 
-          <UnorderedList listStyleType="none" margin={0}>
-            {breakfast.map((meal, index, { length }) => {
-              return checkDate(meal.date) ? (
-                <>
-                  <ListItem
-                    key={index}
-                    display="grid"
-                    gap="20px"
-                    gridTemplateColumns="90px auto 1fr"
-                    alignItems="center"
-                    padding="20px"
-                  >
-                    <Image src={meal.photo} />
-                    <Text fontSize="xl">{meal.name}</Text>
-                    <Text fontSize="xl" justifySelf="end">
-                      {meal.value} {meal.unit}
-                    </Text>
-                  </ListItem>
-                  <Divider display={length - 1 === index ? 'none' : 'block'} />
-                </>
-              ) : (
-                <></>
-              );
-            })}
-          </UnorderedList>
+            <UnorderedList listStyleType="none" margin={0}>
+              {breakfast.map((meal, index, { length }) => {
+                return checkDate(meal.date) ? (
+                  <>
+                    <ListItem
+                      key={index}
+                      display="grid"
+                      gap="20px"
+                      gridTemplateColumns="90px auto 1fr"
+                      alignItems="center"
+                      padding="20px"
+                    >
+                      <Image src={meal.photo} />
+                      <Text fontSize="xl">{meal.name}</Text>
+                      <Text fontSize="xl" justifySelf="end">
+                        {meal.value} {meal.unit}
+                      </Text>
+                    </ListItem>
+                    <Divider display={length - 1 === index ? 'none' : 'block'} />
+                  </>
+                ) : (
+                  <></>
+                );
+              })}
+            </UnorderedList>
+          </Stack>
         </GridItem>
 
         <GridItem

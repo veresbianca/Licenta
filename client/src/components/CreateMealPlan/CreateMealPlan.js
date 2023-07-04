@@ -196,11 +196,21 @@ export default function Component(props) {
             />
           </FormControl>
 
-          <Button
-            my={6}
-            onClick={() => searchNutrition(search)}
-            children="Cauta"
-          ></Button>
+          <Center>
+            <Button
+              onClick={() => searchNutrition(search)}
+              children="Cauta"
+              bg={'green'}
+              w="250px"
+              mt="25px"
+              color={'black'}
+              rounded={'md'}
+              _hover={{
+                transform: 'translateY(-2px)',
+                boxShadow: 'lg',
+              }}
+            ></Button>
+          </Center>
 
           {results === 'loading' ? (
             <CircularProgress isIndeterminate />
@@ -212,14 +222,22 @@ export default function Component(props) {
             </>
           ) : null}
 
-          <Box>
+          <Center>
             <Button
               type="submit"
-              my={6}
-              children="Adauga"
+              children="Adauga la planul alimentar"
               disabled={addMealBtnDisabled}
+              bg={'green'}
+              w="250px"
+              mt="25px"
+              color={'black'}
+              rounded={'md'}
+              _hover={{
+                transform: 'translateY(-2px)',
+                boxShadow: 'lg',
+              }}
             ></Button>
-          </Box>
+          </Center>
           
         </Stack>
 
