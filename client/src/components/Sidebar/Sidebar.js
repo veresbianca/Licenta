@@ -93,7 +93,7 @@ export default function Sidebar() {
               color="black"
               title="Mese"
               link="/meal-plan"
-              active={location.pathname === '/meals' ? true : false}
+              active={location.pathname === '/meal-plan' ? true : false}
             />
 
             <NavItem

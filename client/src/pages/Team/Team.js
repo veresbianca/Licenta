@@ -127,8 +127,18 @@ export default function Team() {
                     <Heading size="sm">Nume: </Heading>
                     <span>{friend.username}</span>
                     <div>
-                      <Button onClick={() => handleRemoveFriend(friend.email)}>
-                      Renunță
+                      <Button 
+                        onClick={() => handleRemoveFriend(friend.email)}
+                        bg={'green'}
+                        w="150px"
+                        color={'black'}
+                        rounded={'md'}
+                        _hover={{
+                          transform: 'translateY(-2px)',
+                          boxShadow: 'lg',
+                        }}
+                      >
+                        Renunță
                       </Button>
                       {currentUser.userRole !== 'Client' ? (
                       <><Button onClick={() => handleGoToMealPlan(friend.id)}>
@@ -227,6 +237,14 @@ export default function Team() {
                         <Button
                           children="Alege"
                           onClick={() => handleClick(result.email)}
+                          bg={'green'}
+                          w="150px"
+                          color={'black'}
+                          rounded={'md'}
+                          _hover={{
+                            transform: 'translateY(-2px)',
+                            boxShadow: 'lg',
+                          }}
                         />
                       ) : (
                         <></>
@@ -286,6 +304,14 @@ export default function Team() {
                         <Button
                           children="Alege"
                           onClick={() => handleClick(result.email)}
+                          bg={'green'}
+                          w="150px"
+                          color={'black'}
+                          rounded={'md'}
+                          _hover={{
+                            transform: 'translateY(-2px)',
+                            boxShadow: 'lg',
+                      }}
                         />
                       ) : (
                         <></>
@@ -345,6 +371,14 @@ export default function Team() {
                         <Button
                           children="Alege"
                           onClick={() => handleClick(result.email)}
+                          bg={'green'}
+                          w="150px"
+                          color={'black'}
+                          rounded={'md'}
+                          _hover={{
+                            transform: 'translateY(-2px)',
+                            boxShadow: 'lg',
+                          }}
                         />
                       ) : (
                         <></>
@@ -403,6 +437,14 @@ export default function Team() {
                         <Button
                           children="Alege"
                           onClick={() => handleClick(result.email)}
+                          bg={'green'}
+                          w="150px"
+                          color={'black'}
+                          rounded={'md'}
+                          _hover={{
+                            transform: 'translateY(-2px)',
+                            boxShadow: 'lg',
+                          }}
                         />
                       ) : (
                         <></>
