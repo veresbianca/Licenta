@@ -197,7 +197,7 @@ export default function Team() {
               </Text>
             ) : (
               <>
-                  <Text><b>Subsciptia ta: {currentUser.userType}</b> nu iti permite sa adaugi profesionisti.</Text>
+                  <Text><b>Subsciptia ta: {currentUser?.userType}</b> nu iti permite sa adaugi profesionisti.</Text>
                   <Link as={RouterLink} to="/subscription">
                   <Button
                     bg={'green'}
