@@ -8,7 +8,7 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
+    "build": "CI=false cd client && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -41,5 +41,8 @@
     "stripe": "^11.7.0",
     "stripe-graphql": "^0.2.0",
     "talkjs": "^0.15.6"
+  },
+  "devDependencies": {
+    "netlify-cli": "^15.8.0"
   }
 }
