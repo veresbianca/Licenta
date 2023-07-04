@@ -62,9 +62,6 @@ export default function Navbar() {
           />
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
-              <Button onClick={toggleColorMode}>
-                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-              </Button>
               {Auth.loggedIn() ? (
                 <Menu>
                   <MenuList alignItems={'center'}>

@@ -1,10 +1,10 @@
-const generateRegisterConfirmationEmail = ({ username, email }) => ({
+const generateRegisterConfirmationEmail = ({ username, email, userRole }) => ({
   from: "HealthyStudio <healthystudio.noreply@app.com",
   to: email,
   subject: `Bine ai venit pe HealthyStudio, ${username}`,
   html: `<h1>Bine ai venit!</h1>\
-        <p>Da click aici ca sa ajungi pe platforma si sa te loghezi</p>
-        <a href="http://duckduckgo.com" target="_blank">Logheza-te aici</a>
+        <p>Esti inregistrat in platforma HealthyStudio, cu numele de ${username}.</p>
+        ${userRole !== "Client" ? `<p>Esti inregistrat cu un rol de: ${userRole}</p>` : ""}
         `,
 });
 

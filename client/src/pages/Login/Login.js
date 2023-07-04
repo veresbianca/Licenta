@@ -60,7 +60,7 @@ export default function SimpleCard() {
                   formik.handleSubmit(e);
                 }}
               >
-                <FormControl mb="20px">
+                <FormControl isRequired mb="20px">
                   <FormLabel htmlFor="email">Adresă email</FormLabel>
                   <Input
                     id="email"
@@ -71,7 +71,7 @@ export default function SimpleCard() {
                     value={formik.values.email}
                   />
                 </FormControl>
-                <FormControl>
+                <FormControl isRequired>
                   <FormLabel htmlFor="password">Parolă</FormLabel>
                   <Input
                     id="password"

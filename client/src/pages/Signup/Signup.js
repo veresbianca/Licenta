@@ -81,7 +81,7 @@ export default function SignupCard() {
                   formik.handleSubmit(e);
                 }}
               >
-                <FormControl isRequired>
+                <FormControl isRequired mb="20px">
                   <FormLabel htmlFor="username">Nume</FormLabel>
                   <Input
                     id="username"
@@ -92,7 +92,7 @@ export default function SignupCard() {
                     value={formik.values.username}
                   />
                 </FormControl>
-                <FormControl isRequired>
+                <FormControl isRequired mb="20px">
                   <FormLabel htmlFor="email">Adresă email</FormLabel>
                   <Input
                     id="email"
@@ -103,7 +103,7 @@ export default function SignupCard() {
                     value={formik.values.email}
                   />
                 </FormControl>
-                <FormControl isRequired>
+                <FormControl isRequired mb="20px">
                   <FormLabel htmlFor="password">Parolă</FormLabel>
                   <InputGroup>
                     <Input
@@ -126,14 +126,14 @@ export default function SignupCard() {
                     </InputRightElement>
                   </InputGroup>
                 </FormControl>
-
-                <FormControl as="fieldset" mb="20px">
+                <FormControl isRequired as="fieldset" mb="20px">
                   <FormLabel as="legend">Tip utilizator</FormLabel>
                   <RadioGroup value={formik.values.userRole}>
                       <Radio
                         name="userRole"
                         onChange={formik.handleChange}
                         value="Client"
+                        mr="10px"
                       >
                         Client
                       </Radio>
@@ -141,6 +141,7 @@ export default function SignupCard() {
                         name="userRole"
                         onChange={formik.handleChange}
                         value="Medic"
+                        mr="10px"
                       >
                         Medic
                       </Radio>
@@ -148,6 +149,7 @@ export default function SignupCard() {
                         name="userRole"
                         onChange={formik.handleChange}
                         value="Trainer"
+                        mr="10px"
                       >
                         Trainer
                       </Radio>
@@ -155,6 +157,7 @@ export default function SignupCard() {
                         name="userRole"
                         onChange={formik.handleChange}
                         value="Psiholog"
+                        mr="10px"
                       >
                         Psiholog
                       </Radio>
@@ -162,6 +165,7 @@ export default function SignupCard() {
                         name="userRole"
                         onChange={formik.handleChange}
                         value="Nutritionist"
+                        mr="10px"
                       >
                         Nutritionist
                       </Radio>

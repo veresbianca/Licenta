@@ -249,8 +249,9 @@ export default function Profile() {
                       children="Modifică date personale"
                       leftIcon={<BsFillPersonLinesFill />}
                       px={8}
-                      bg={buttonBg}
-                      color={'white'}
+                      bg={'green'}
+                      w="250px"
+                      color={'black'}
                       rounded={'md'}
                       _hover={{
                         transform: 'translateY(-2px)',
@@ -337,14 +338,14 @@ export default function Profile() {
               <Button
                 leftIcon={<BsFillPlusCircleFill />}
                 px={8}
-                bg={buttonBg}
-                color={'white'}
+                bg={'green'}
+                color={'black'}
                 rounded={'md'}
+                w="250px"
                 _hover={{
                   transform: 'translateY(-2px)',
                   boxShadow: 'lg',
                 }}
-                // onClick={console.log("poke")}
               >
                 Vezi planul de exerciții
               </Button>
@@ -372,9 +373,10 @@ export default function Profile() {
             <Button
               leftIcon={<BsFillPlusCircleFill />}
               px={5}
-              bg={buttonBg}
-              color={'white'}
+              bg={'green'}
+              color={'black'}
               rounded={'md'}
+              w="250px"
               onClick={() => handleGoToMealPlan(user.id)}
               _hover={{
                 transform: 'translateY(-2px)',
@@ -406,9 +408,10 @@ export default function Profile() {
               <Button
                 leftIcon={<BsFillPlusCircleFill />}
                 px={8}
-                bg={buttonBg}
-                color={'white'}
+                bg={'green'}
+                color={'black'}
                 rounded={'md'}
+                w="250px"
                 _hover={{
                   transform: 'translateY(-2px)',
                   boxShadow: 'lg',

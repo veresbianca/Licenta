@@ -43,7 +43,7 @@ const checkDate = date => {
   const today = new Date();
   const comparisonDate = new Date(date);
 
-  return today.getDate() === comparisonDate.getDate();
+  return today.getTime() === comparisonDate.getTime();
 };
 
 export default function MealPlanForClientsListing() {

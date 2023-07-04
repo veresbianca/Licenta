@@ -138,6 +138,7 @@ const resolvers = {
           generateRegisterConfirmationEmail({
             username: user.username,
             email: user.email,
+            userRole: user.userRole
           })
         )
         .then((info) => {
