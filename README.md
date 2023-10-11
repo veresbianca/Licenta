@@ -12,6 +12,8 @@
 
 ## Description
 
+This is an app for a Social Fitness Network. Within the app, there are multiple user types, including professionals such as medics, trainers, psychologists, and nutritionists, as well as regular users. Each user has the option to select the professional they want to work with, build a team, and then begin their life transformation journey with the support of these professionals and the platform.
+
 ## Deployment
 
 Deployed Application:
